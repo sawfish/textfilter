@@ -17,6 +17,7 @@ public class WholeFileInputFormat extends FileInputFormat<Text, Text> {
     // TODO Auto-generated method stub
     return false;
   }
+  
 
   @Override
   public RecordReader<Text, Text> createRecordReader(InputSplit split,

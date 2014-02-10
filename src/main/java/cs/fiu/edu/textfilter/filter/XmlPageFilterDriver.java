@@ -21,12 +21,16 @@ public class XmlPageFilterDriver extends Configured implements Tool {
 
   public static class FilterMapper extends
       Mapper<NullWritable, Text, Text, Text> {
-
+	  
+	  
+	  
   }
 
   public static class FilterReducer extends
       Reducer<Text, Text, NullWritable, NullWritable> {
 
+	  
+	  
   }
 
   public int run(String[] args) throws Exception {
