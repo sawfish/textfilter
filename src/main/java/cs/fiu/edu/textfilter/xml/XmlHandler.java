@@ -4,10 +4,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class StaffXmlHandler extends DefaultHandler {
+public class XmlHandler extends DefaultHandler {
 
 	private static int count = 1;
-	private StringBuffer sb = new StringBuffer();
 	
 	boolean bfname = false;
 	boolean blname = false;
@@ -15,7 +14,7 @@ public class StaffXmlHandler extends DefaultHandler {
 	boolean bsalary = false;
 
 	
-	public StaffXmlHandler() {
+	public XmlHandler() {
 		// TODO Auto-generated constructor stub
 		super();
 		System.out.println(count++);
