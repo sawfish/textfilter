@@ -30,7 +30,7 @@
         <configuration>
           <transformers>
             <transformer>
-              <mainClass>cs.fiu.edu.textfilter.App</mainClass>
+              <mainClass>cs.fiu.edu.textfilter.filter.XmlPageFilterDriver</mainClass>
             </transformer>
           </transformers>
         </configuration>

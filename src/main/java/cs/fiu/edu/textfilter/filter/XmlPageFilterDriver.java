@@ -17,6 +17,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.dom4j.Document;
@@ -29,7 +30,7 @@ import cs.fiu.edu.textfilter.custom.WholeFileInputFormat;
 public class XmlPageFilterDriver extends Configured implements Tool {
 
   public static class FilterMapper extends
-      Mapper<NullWritable, Text, Text, Text> {
+      Mapper<Text, Text, Text, Text> {
 
     private Document document;
     private SAXReader saxReader = new SAXReader();
@@ -45,20 +46,25 @@ public class XmlPageFilterDriver extends Configured implements Tool {
     }
 
     @Override
-    protected void map(NullWritable key, Text value, Context context)
+    protected void map(Text key, Text value, Context context)
         throws IOException, InterruptedException {
       // TODO Auto-generated method stub
 
       try {
+        
+        System.out.println(value.toString());
+        
         document = saxReader.read(new StringReader(value.toString()));
-
         List list = document.selectNodes("//page");
         Iterator iter = list.iterator();
-
+        
+        System.out.println(list.size());
+        
         while (iter.hasNext()) {
           Element page = (Element) iter.next();
           Element textEle = page.element("revision").element("text");
           Element timeEle = page.element("revision").element("timestamp");
+          System.out.println(timeEle.getText());
           if (textEle.getTextTrim().contains(query)) {
             context.write(new Text(timeEle.getText()),
                 new Text(textEle.asXML()));
@@ -83,6 +89,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
         throws IOException, InterruptedException {
       // TODO Auto-generated method stub
       for (Text value : values) {
+        System.out.println(value.toString());
         context.write(NullWritable.get(), value);
       }
     }
@@ -102,18 +109,19 @@ public class XmlPageFilterDriver extends Configured implements Tool {
     filterJob.setMapperClass(FilterMapper.class);
     filterJob.setReducerClass(FilterReducer.class);
 
-    FileSystem fs = FileSystem.get(conf);
-    FileStatus[] list = fs.listStatus(new Path(args[1]));
-    if (list != null) {
-      for (FileStatus status : list) {
-        FileInputFormat.addInputPath(filterJob, status.getPath());
-      }
-    }
-    
+//    FileSystem fs = FileSystem.get(conf);
+//    FileStatus[] list = fs.listStatus(new Path(args[1]));
+//    if (list != null) {
+//      for (FileStatus status : list) {
+//        FileInputFormat.addInputPath(filterJob, status.getPath());
+//      }
+//    }
+    FileInputFormat.setInputPaths(filterJob, new Path(args[1]));
     FileOutputFormat.setOutputPath(filterJob, new Path(args[2]));
 
     // WholeFileInputFormat
     filterJob.setInputFormatClass(WholeFileInputFormat.class);
+    filterJob.setOutputFormatClass(TextOutputFormat.class);
     filterJob.setMapOutputKeyClass(Text.class);
     filterJob.setMapOutputValueClass(Text.class);
 

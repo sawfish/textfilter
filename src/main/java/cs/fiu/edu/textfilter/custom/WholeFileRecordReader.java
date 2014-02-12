@@ -2,20 +2,26 @@ package cs.fiu.edu.textfilter.custom;
 
 import java.io.IOException;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.io.BytesWritable;
+import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.InputSplit;
 import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
-import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
 
 public class WholeFileRecordReader extends RecordReader<Text, Text> {
 
-  private LineRecordReader lineReader;
+  private FileSplit split;
+  private Configuration conf;
+  
+  private final BytesWritable currValue = new BytesWritable();
   private String fileName;
 
   private boolean fileProcessed = false;
-  private StringBuffer valueBuffer = new StringBuffer();
   private Text value = new Text();
 
   @Override
@@ -42,9 +48,9 @@ public class WholeFileRecordReader extends RecordReader<Text, Text> {
   @Override
   public void initialize(InputSplit split, TaskAttemptContext context)
       throws IOException, InterruptedException {
-    lineReader = new LineRecordReader();
-    lineReader.initialize(split, context);
-    fileName = ((FileSplit) split).getPath().getName();
+    this.split = (FileSplit)split;
+    this.fileName = ((FileSplit) split).getPath().getName();
+    this.conf = context.getConfiguration();
   }
 
   @Override
@@ -53,12 +59,23 @@ public class WholeFileRecordReader extends RecordReader<Text, Text> {
     if (fileProcessed) {
       return false;
     }
-
-    while (lineReader.nextKeyValue()) {
-      valueBuffer.append(lineReader.getCurrentValue());
+    
+    int fileLength = (int)split.getLength();
+    byte [] result = new byte[fileLength];
+    
+    FileSystem  fs = FileSystem.get(conf);
+    FSDataInputStream in = null; 
+    try {
+            in = fs.open( split.getPath());
+            IOUtils.readFully(in, result, 0, fileLength);
+            currValue.set(result, 0, fileLength);
+            
+    } finally {
+            IOUtils.closeStream(in);
     }
-    value.set(valueBuffer.toString());
-    fileProcessed = true;
+    
+    value.set(currValue.getBytes());
+    this.fileProcessed = true;
     return true;
   }
 

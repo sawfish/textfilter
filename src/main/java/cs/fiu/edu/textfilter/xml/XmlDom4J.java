@@ -2,21 +2,17 @@ package cs.fiu.edu.textfilter.xml;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.dom4j.Attribute;
 
 import java.util.List;
 import java.util.Iterator;
 
-import org.dom4j.io.XMLWriter;
-
 import java.io.*;
 
-import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
 import cs.fiu.edu.textfilter.custom.Constants;
 
-public class Dom4JParser {
+public class XmlDom4J {
 
   public void modifyDocument(File inputXml) {
 
@@ -24,7 +20,7 @@ public class Dom4JParser {
       SAXReader saxReader = new SAXReader();
       Document document = saxReader.read(inputXml);
 
-      List list = document.selectNodes("/mediawiki");
+      List list = document.selectNodes("//article");
       Iterator iter = list.iterator();
       System.out.println(list.size());
       
@@ -38,15 +34,15 @@ public class Dom4JParser {
       System.out.println();
       
     }catch (Exception e) {
-      System.out.println(e.getMessage());
+      e.printStackTrace();
     }
   }
   
 
   public static void main(String[] argv) {
 
-    Dom4JParser dom4jParser = new Dom4JParser();
-    dom4jParser.modifyDocument(new File(Constants.PAGE_XML_PATH));
+    XmlDom4J dom4jParser = new XmlDom4J();
+    dom4jParser.modifyDocument(new File(Constants.XML_OUTPUT_PATH));
 
   }
 
