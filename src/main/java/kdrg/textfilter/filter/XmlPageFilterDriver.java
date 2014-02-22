@@ -1,4 +1,4 @@
-package cs.fiu.edu.textfilter.filter;
+package kdrg.textfilter.filter;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -30,7 +30,9 @@ import org.dom4j.Element;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
-import cs.fiu.edu.textfilter.custom.WholeFileInputFormat;
+import kdrg.textfilter.custom.WholeFileInputFormat;
+import kdrg.wikipedia.WikiPage;
+import kdrg.wikipedia.WikiParagraph;
 
 public class XmlPageFilterDriver extends Configured implements Tool {
 
@@ -81,7 +83,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
           Element textEle = page.element("revision").element("text");
           Element timeEle = page.element("revision").element("timestamp");
           
-          if (page.element("redirect title") != null)
+          if (page.element("redirect") != null)
             continue;
           if (page.element("restrictions") != null)
             continue;
@@ -90,20 +92,32 @@ public class XmlPageFilterDriver extends Configured implements Tool {
           if (title.startsWith("Wikipedia:"))
             continue;
           
-          for (String query : keywords) {
-            boolean match = true;
-            for(String word : query.split(" ")) {
-              if (!StringUtils.containsIgnoreCase(textEle.getText(), word)) {
-                match = false;
+          String text = textEle.getText();
+        	
+          if (text.startsWith("{{Wiktionary") || text.startsWith("{{wiktionary"))
+          	continue;
+          
+          WikiPage wikipage = WikiPage.parseWikiPage(title, text);
+          
+          for(WikiParagraph para : wikipage.getParagraphs()) {
+          	String paratext = para.text();
+          	for (String query : keywords) {
+              boolean match = true;
+              for(String word : query.split(" ")) {
+                if (!StringUtils.containsIgnoreCase(paratext, word)) {
+                  match = false;
+                  break;
+                }
+              }
+              if (match == true) {
+                context.write(new Text(title),
+                    new Text(paratext));
                 break;
               }
             }
-            if (match == true) {
-              context.write(new Text(timeEle.getText()),
-                  new Text(page.asXML()));
-              break;
-            }
           }
+          
+          
         }
 
       } catch (DocumentException e) {

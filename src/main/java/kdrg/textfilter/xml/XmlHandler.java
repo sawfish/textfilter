@@ -1,4 +1,4 @@
-package cs.fiu.edu.textfilter.xml;
+package kdrg.textfilter.xml;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

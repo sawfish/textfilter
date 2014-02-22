@@ -1,4 +1,4 @@
-package cs.fiu.edu.textfilter.custom;
+package kdrg.textfilter.custom;
 
 import java.io.IOException;
 

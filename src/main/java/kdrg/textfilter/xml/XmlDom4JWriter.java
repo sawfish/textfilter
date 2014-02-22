@@ -1,4 +1,4 @@
-package cs.fiu.edu.textfilter.xml;
+package kdrg.textfilter.xml;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +9,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.XMLWriter;
 
-import cs.fiu.edu.textfilter.custom.Constants;
+import kdrg.textfilter.custom.Constants;
 
 public class XmlDom4JWriter {
 

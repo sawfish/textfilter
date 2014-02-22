@@ -1,4 +1,4 @@
-package cs.fiu.edu.textfilter;
+package kdrg.textfilter;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
