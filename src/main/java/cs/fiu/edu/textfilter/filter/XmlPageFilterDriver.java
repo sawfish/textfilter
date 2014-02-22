@@ -47,7 +47,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
         InterruptedException {
       // TODO Auto-generated method stub
       conf = context.getConfiguration();
-      keywords = conf.get("textfilter.query").trim().split("@");
+      keywords = conf.get("textfilter.query").trim().replaceAll("@", " ").split(",");
       System.out.println("keywords:length: " + keywords.length);
       System.out.println(conf.get("textfilter.query"));
     }
@@ -80,11 +80,25 @@ public class XmlPageFilterDriver extends Configured implements Tool {
           Element page = (Element) iter.next();
           Element textEle = page.element("revision").element("text");
           Element timeEle = page.element("revision").element("timestamp");
-          for (String keyword : keywords) {
-            if (StringUtils.containsIgnoreCase(textEle.getText(), keyword)) {
-              System.out.println(count++);
-//              System.out.println(textEle.getText());
-//              System.out.println(page.asXML());
+          
+          if (page.element("redirect title") != null)
+            continue;
+          if (page.element("restrictions") != null)
+            continue;
+          
+          String title = page.elementText("title");
+          if (title.startsWith("Wikipedia:"))
+            continue;
+          
+          for (String query : keywords) {
+            boolean match = true;
+            for(String word : query.split(" ")) {
+              if (!StringUtils.containsIgnoreCase(textEle.getText(), word)) {
+                match = false;
+                break;
+              }
+            }
+            if (match == true) {
               context.write(new Text(timeEle.getText()),
                   new Text(page.asXML()));
               break;
@@ -119,7 +133,6 @@ public class XmlPageFilterDriver extends Configured implements Tool {
 
   public int run(String[] args) throws Exception {
     // TODO Auto-generated method stub
-
     Configuration conf = getConf();
     String query = "";
     for(int i = 2; i < args.length - 1; i++){
