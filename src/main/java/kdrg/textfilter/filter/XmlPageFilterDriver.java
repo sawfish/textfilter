@@ -130,7 +130,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
   }
 
   public static class FilterReducer extends
-      Reducer<Text, Text, NullWritable, Text> {
+      Reducer<Text, Text, Text, Text> {
 
     int count = 1;
     
@@ -140,7 +140,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
       // TODO Auto-generated method stub
       for (Text value : values) {
         System.out.println(count++);
-        context.write(NullWritable.get(), value);
+        context.write(key, value);
       }
     }
   }

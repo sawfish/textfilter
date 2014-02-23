@@ -2,6 +2,7 @@ package kdrg.wikipedia;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class WikiPage {
 	private String title;
@@ -23,6 +24,7 @@ public class WikiPage {
 		WikiPage wikipage = new WikiPage(title, page);
 		
 		page = page.replaceAll("\r", "");
+		page = Pattern.compile("<!--.+?-->", Pattern.DOTALL).matcher(page).replaceAll("");
 		page = removeTable(page);
 		
 		String[] paragraphs = page.split("\n\n");
@@ -41,7 +43,7 @@ public class WikiPage {
 			
 			
 			
-			paragraph = paragraph.replaceAll("<!--.+?-->", "");
+			
 			
 			String[] lines = paragraph.split("\n");
 			StringBuilder sb = new StringBuilder();
