@@ -101,6 +101,9 @@ public class XmlPageFilterDriver extends Configured implements Tool {
           
           for(WikiParagraph para : wikipage.getParagraphs()) {
           	String paratext = para.text();
+          	if (title.equals("Aircraft hijacking"))
+          		System.out.println(paratext);
+
           	for (String query : keywords) {
               boolean match = true;
               for(String word : query.split(" ")) {
@@ -177,7 +180,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
     filterJob.setMapOutputKeyClass(Text.class);
     filterJob.setMapOutputValueClass(Text.class);
 
-    filterJob.setNumReduceTasks(1);
+//    filterJob.setNumReduceTasks(1);
 
     filterJob.waitForCompletion(true);
     return 0;
