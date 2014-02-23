@@ -110,7 +110,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
                 }
               }
               if (match == true) {
-                context.write(new Text(paratext), new Text(title));
+                context.write(new Text(title), new Text(paratext));
                 break;
               }
             }
@@ -138,7 +138,6 @@ public class XmlPageFilterDriver extends Configured implements Tool {
         throws IOException, InterruptedException {
       // TODO Auto-generated method stub
       for (Text value : values) {
-        System.out.println(count++);
         context.write(key, value);
       }
     }

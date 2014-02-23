@@ -68,6 +68,7 @@ public class WikiPage {
 				paragraph = paragraph.replaceAll("'''", "\"");
 				paragraph = paragraph.replaceAll("''", "\"");
 				paragraph = paragraph.replaceAll("<[^>]+>", "");
+				paragraph = paragraph.trim();
 				wikipage.paragraphs.add(new WikiTextParagraph(paragraph));
 			}
 		}
