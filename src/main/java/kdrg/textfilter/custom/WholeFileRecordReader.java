@@ -55,7 +55,7 @@ public class WholeFileRecordReader extends RecordReader<Text, Text> {
     }
 
     while (lineReader.nextKeyValue()) {
-      valueBuffer.append(lineReader.getCurrentValue());
+      valueBuffer.append(lineReader.getCurrentValue() + "\n");
     }
     value.set(valueBuffer.toString());
     fileProcessed = true;

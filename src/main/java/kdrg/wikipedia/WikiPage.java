@@ -60,6 +60,7 @@ public class WikiPage {
 				if (line.matches("\\w+\\:.+"))
 					continue;
 				
+				line = line.replaceAll("&nbsp;", " ");
 				if (line.length() > 30)
 					sb.append(line + " ");
 			}

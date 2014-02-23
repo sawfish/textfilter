@@ -102,7 +102,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
           for(WikiParagraph para : wikipage.getParagraphs()) {
           	String paratext = para.text();
           	if (title.equals("Aircraft hijacking"))
-          		System.out.println(paratext);
+          		System.out.println(wikipage.getParagraphs().size() + " " + paratext);
 
           	for (String query : keywords) {
               boolean match = true;
