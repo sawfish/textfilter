@@ -110,8 +110,7 @@ public class XmlPageFilterDriver extends Configured implements Tool {
                 }
               }
               if (match == true) {
-                context.write(new Text(title),
-                    new Text(paratext));
+                context.write(new Text(paratext), new Text(title));
                 break;
               }
             }
