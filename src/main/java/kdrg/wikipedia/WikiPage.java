@@ -26,11 +26,12 @@ public class WikiPage {
 		page = page.replaceAll("\r", "");
 		page = Pattern.compile("<!--.+?-->", Pattern.DOTALL).matcher(page).replaceAll("");
 		page = removeTable(page);
+		page = removeBraces(page);
 		
 		String[] paragraphs = page.split("\n\n");
 		for(String paragraph : paragraphs) {
 //			paragraph = paragraph.replaceAll("\\{\\{[^\\}]*\\}\\}", "");
-			paragraph = removeBraces(paragraph);
+			
 			paragraph = paragraph.replaceAll("\\*[^\n]\n", "");
 			
 			paragraph = paragraph.replaceAll("\\[\\[([^\\|\\]\\[]+\\|)?([^\\|\\]\\[]+)\\]\\]", "$2");

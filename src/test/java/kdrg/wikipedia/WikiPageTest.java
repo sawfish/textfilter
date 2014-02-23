@@ -24,7 +24,7 @@ public class WikiPageTest {
 		Document document;
     SAXReader saxReader = new SAXReader();
     
-    document = saxReader.read(new FileReader("chunk-0001.xml"));
+    document = saxReader.read(new FileReader("chunk-0007-small.xml"));
     document.normalize();
     Map<String, String> namespaceUris = new HashMap<String, String>();
     namespaceUris.put("mediawiki",
