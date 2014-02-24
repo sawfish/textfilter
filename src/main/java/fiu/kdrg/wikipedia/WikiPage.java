@@ -1,4 +1,4 @@
-package kdrg.wikipedia;
+package fiu.kdrg.wikipedia;
 
 import java.util.ArrayList;
 import java.util.List;

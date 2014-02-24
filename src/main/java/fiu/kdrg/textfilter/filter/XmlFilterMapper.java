@@ -1,4 +1,4 @@
-package kdrg.textfilter.filter;
+package fiu.kdrg.textfilter.filter;
 
 import java.io.IOException;
 

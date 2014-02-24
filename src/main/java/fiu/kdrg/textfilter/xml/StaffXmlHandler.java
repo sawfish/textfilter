@@ -1,4 +1,4 @@
-package kdrg.textfilter.xml;
+package fiu.kdrg.textfilter.xml;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

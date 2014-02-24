@@ -1,4 +1,4 @@
-package kdrg.textfilter.custom;
+package fiu.kdrg.textfilter.custom;
 
 public class Constants {
 

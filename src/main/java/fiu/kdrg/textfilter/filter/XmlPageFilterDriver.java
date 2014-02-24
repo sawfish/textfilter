@@ -1,4 +1,4 @@
-package kdrg.textfilter.filter;
+package fiu.kdrg.textfilter.filter;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -30,9 +30,9 @@ import org.dom4j.Element;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
-import kdrg.textfilter.custom.WholeFileInputFormat;
-import kdrg.wikipedia.WikiPage;
-import kdrg.wikipedia.WikiParagraph;
+import fiu.kdrg.textfilter.custom.WholeFileInputFormat;
+import fiu.kdrg.wikipedia.WikiPage;
+import fiu.kdrg.wikipedia.WikiParagraph;
 
 public class XmlPageFilterDriver extends Configured implements Tool {
 

@@ -1,4 +1,4 @@
-package kdrg.textfilter.xml;
+package fiu.kdrg.textfilter.xml;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -14,7 +14,7 @@ import java.io.*;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
-import kdrg.textfilter.custom.Constants;
+import fiu.kdrg.textfilter.custom.Constants;
 
 public class Dom4JParser {
 

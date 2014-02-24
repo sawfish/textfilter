@@ -1,4 +1,4 @@
-package kdrg.textfilter.examples;
+package fiu.kdrg.textfilter.examples;
 
 
 import javax.xml.parsers.SAXParser;
@@ -6,7 +6,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.helpers.DefaultHandler;
 
-import kdrg.textfilter.xml.StaffXmlHandler;
+import fiu.kdrg.textfilter.xml.StaffXmlHandler;
 
 /**
  * use handler to store and extract information, but another problem is 

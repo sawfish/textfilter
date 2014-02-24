@@ -1,4 +1,4 @@
-package kdrg.textfilter;
+package fiu.kdrg.textfilter;
 
 /**
  * Hello world!

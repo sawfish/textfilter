@@ -17,6 +17,9 @@ import org.dom4j.io.SAXReader;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import fiu.kdrg.wikipedia.WikiPage;
+import fiu.kdrg.wikipedia.WikiParagraph;
+
 public class WikiPageTest {
 	
 	@Test
