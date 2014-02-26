@@ -64,7 +64,7 @@ public class WikiPageTest {
       	
       
 			WikiPage wikiPage = WikiPage.parseWikiPage(title, text);
-      for(WikiParagraph para : wikiPage.paragraphs) {
+      for(WikiParagraph para : wikiPage.getParagraphs()) {
       	System.out.println(para.text());
       }
     }

@@ -13,6 +13,24 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://datamining-node01.cs.fiu.edu:8080/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://datamining-node01.cs.fiu.edu:8080/artifactory/libs-snapshot</url>
+        </repository>
+      </repositories>
+	
 
 	<dependencies>
 		<dependency>
@@ -54,6 +72,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>fiu.kdrg</groupId>
+		    <artifactId>textmining</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
