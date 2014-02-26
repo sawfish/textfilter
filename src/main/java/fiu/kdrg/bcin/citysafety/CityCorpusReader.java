@@ -7,11 +7,31 @@ import java.util.regex.Pattern;
 import fiu.kdrg.textmining.data.CorpusReader;
 import fiu.kdrg.textmining.data.Document;
 import fiu.kdrg.textmining.data.DocumentCorpus;
+import fiu.kdrg.textmining.data.Sentence;
+import fiu.kdrg.textmining.data.SentenceCorpus;
+import fiu.kdrg.textmining.data.TextInstance;
+import fiu.kdrg.textmining.pipe.NGram2FeatureVectorNoStopwords;
+import fiu.kdrg.textmining.pipe.Pipe;
+import fiu.kdrg.textmining.pipe.Pipes;
+import fiu.kdrg.textmining.pipe.SentenceSplitterByOpenNLP;
+import fiu.kdrg.textmining.pipe.TokenizerByOpenNLP;
 
 public class CityCorpusReader implements CorpusReader {
   
-  public static void main(String[] args) {
-    DocumentCorpus miami = loadDocumentCorpus("miami", "disaster,storm,destroyed,damage,earthquake");
+  public static void main(String[] args) throws Exception {
+    DocumentCorpus miami = Comparison.loadDocumentCorpus("miami", "disaster,storm,destroyed,damage,earthquake");
+
+    Pipes pipe = new Pipes(new SentenceSplitterByOpenNLP(), new TokenizerByOpenNLP());
+    
+    BufferedWriter bw = new BufferedWriter(new FileWriter("disaster-miami.txt"));
+    pipe.process(miami);
+    for(TextInstance doc : miami.getTextInstances()) {
+      for(Sentence sent : ((Document) doc).getSentences()) {
+        bw.write(sent.getText() + "\n");
+      }
+      bw.write("\n");
+    }
+    bw.close();
   }
 
   private List<Integer> relatedTopics = new ArrayList<Integer>();
