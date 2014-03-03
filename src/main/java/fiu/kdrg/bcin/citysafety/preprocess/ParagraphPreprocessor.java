@@ -1,8 +1,12 @@
 package fiu.kdrg.bcin.citysafety.preprocess;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -15,6 +19,7 @@ import edu.stanford.nlp.util.CoreMap;
 
 public class ParagraphPreprocessor {
 
+        private static Logger logger = LoggerFactory.getLogger(ParagraphPreprocessor.class);
 	private static StanfordCoreNLP pipeline;
 	
 	static{
@@ -29,10 +34,19 @@ public class ParagraphPreprocessor {
 	
 	public static void main(String[] args) {
 		
-		
+	  ParagraphPreprocessor preprocessor = new ParagraphPreprocessor();
+	  preprocessor.removeEntity(Constants.testString);
 		
 	}
 	
+	
+	public String removeEntity(String paragraph){
+	  
+	  Set<String> entityFilter = new HashSet<String>();
+	  entityFilter.add(Constants.LOCATION_ENTITY);
+	  return removeEntity(paragraph, entityFilter);
+	  
+	}
 	
 	
 	public String removeEntity(String paragraph, Set<String> entityFilter){
@@ -45,9 +59,9 @@ public class ParagraphPreprocessor {
 		for(CoreMap sentence : sentences){
 			String type;
 			String sentenceText = sentence.toString();
-			
 			for(CoreLabel token: sentence.get(TokensAnnotation.class)){
 				type = token.get(NamedEntityTagAnnotation.class);
+				logger.info(type);
 				//remove this token from original text
 				if(entityFilter.contains(type)){
 					sentenceText = sentenceText.replace(token.get(TextAnnotation.class) + " ", "");
@@ -60,12 +74,5 @@ public class ParagraphPreprocessor {
 		
 		return sb.toString();
 	}
-	
-	
-	public String removeStopWords(String paragraph){
-		
-		return "";
-	}
-	
 	
 }
