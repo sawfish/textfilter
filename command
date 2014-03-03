@@ -1,0 +1,2 @@
+bin/mallet import-file --input ~/U/workplace/textfilter/disasters-NER.txt --print-output --remove-stopwords TRUE --output ~/U/workplace/textfilter/disasters-STOP.mallet --label 0 --name 0 --data 1 --line-regex '^(.*)$' --keep-sequence TRUE --extra-stopwords ~/U/workplace/textfilter/extra-stopwords.txt 
+bin/mallet train-topics --input ~/U/workplace/textfilter/disasters-STOP.mallet

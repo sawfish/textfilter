@@ -40,7 +40,7 @@ public class ParagraphPreprocessor {
 		
 		ParagraphPreprocessor preprocessor = new ParagraphPreprocessor();
 //		preprocessor.removeEntity(Constants.testString);
-		String cityName = "miami";
+		String cityName = "chicago";
 		String input = String.format("disaster-%s.txt", cityName);
 		String output = String.format("disaster-%s-NER.txt", cityName);
 		preprocessor.removeEntity(input, output);
