@@ -6,6 +6,12 @@ public class Constants {
 	public static String DATE_ENTITY = "DATE";
 	public static String DURATION_ENTITY = "DURATION";
 	public static String TIME_ENTITY = "TIME";
+	public static String PERSON_ENTITY = "PERSON";
+	public static String MISC_ENTITY = "MISC";
+	public static String NUMBER_ENTITY = "NUMBER";
+	public static String ORGANIZATION_ENTITY = "ORGANIZATION";
+	public static String ORDINAL_ENTITY = "ORDINAL";
+	
 	
 	public static String testString = "Late on October 13, "
 	    + "a minimal tropical storm formed in the western Caribbean "
