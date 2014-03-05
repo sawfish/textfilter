@@ -22,10 +22,10 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
-public class ParagraphPreprocessor {
+public class ParagraphEnityRemover {
 
 	private static Logger logger = LoggerFactory
-			.getLogger(ParagraphPreprocessor.class);
+			.getLogger(ParagraphEnityRemover.class);
 	private static StanfordCoreNLP pipeline;
 
 	static {
@@ -36,14 +36,15 @@ public class ParagraphPreprocessor {
 		pipeline = new StanfordCoreNLP(props);
 	}
 
+	
 	public static void main(String[] args) {
 		
-		ParagraphPreprocessor preprocessor = new ParagraphPreprocessor();
+		ParagraphEnityRemover entityRemover = new ParagraphEnityRemover();
 //		preprocessor.removeEntity(Constants.testString);
 		String cityName = "chicago";
 		String input = String.format("disaster-%s.txt", cityName);
 		String output = String.format("disaster-%s-NER.txt", cityName);
-		preprocessor.removeEntity(input, output);
+		entityRemover.removeEntity(input, output);
 		
 	}
 	
