@@ -21,6 +21,8 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
+import fiu.kdrg.bcin.citysafety.core.Sentence;
+import fiu.kdrg.bcin.citysafety.util.Constants;
 
 public class ParagraphEnityRemover {
 
@@ -41,10 +43,62 @@ public class ParagraphEnityRemover {
 		
 		ParagraphEnityRemover entityRemover = new ParagraphEnityRemover();
 //		preprocessor.removeEntity(Constants.testString);
-		String cityName = "chicago";
-		String input = String.format("disaster-%s.txt", cityName);
-		String output = String.format("disaster-%s-NER.txt", cityName);
-		entityRemover.removeEntity(input, output);
+		String city = "miami";
+		String input = String.format(Constants.dataBaseUrl + "disaster-%s.txt", city);
+		String mOutput = String.format(Constants.dataBaseUrl + "disaster-%s-NER.txt", city);
+		String oOutput = String.format(Constants.dataBaseUrl + "disaster-%s-OBJ.txt", city);
+//		entityRemover.removeEntity(input, mOutput);
+		entityRemover.removeEntityParaWithFormat(input, mOutput, oOutput, city);
+		
+	}
+	
+	
+	public void removeEntityParaWithFormat(String input, 
+			String mOutput, String oOutput, String city){
+		
+		BufferedReader br = null;
+		int count = 0;
+		
+		try{
+			br = new BufferedReader(new FileReader(input));
+			String line = br.readLine();
+			List<Sentence> sentences = new ArrayList<Sentence>();
+			
+			while(line != null){
+				if(line.trim().isEmpty()){
+					line = br.readLine();
+					continue;
+				}
+				
+				Sentence st = new Sentence();
+				st.setSid(count++);
+				st.setCity(city);
+				st.setText(line.trim());
+				st.setRemovedEntityText(removeEntity(line).trim());
+				
+				logger.info(String.format("processing %d sentence of city %s done.", count,city));
+				sentences.add(st);
+				line = br.readLine();
+			}
+			
+			BufferedWriter mBW = new BufferedWriter(new FileWriter(mOutput));
+			BufferedWriter oBW = new BufferedWriter(new FileWriter(oOutput));
+			for(Sentence sentence : sentences){
+				mBW.append(sentence.genMALLETStr());
+				oBW.append(sentence.genSerializedStr());
+				mBW.append("\n");
+				oBW.append("\n");
+			}
+			
+			mBW.flush();
+			mBW.close();
+			oBW.flush();
+			oBW.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -83,7 +137,7 @@ public class ParagraphEnityRemover {
 			int count = 0;
 			for(String para : paragraphs){
 				bw.append(removeEntity(para));
-				bw.append("\n");
+//				bw.append("\n");
 				logger.info(String.format("paragraph %d done!", ++count));
 			}
 			
