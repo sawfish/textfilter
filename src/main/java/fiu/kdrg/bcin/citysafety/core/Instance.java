@@ -6,7 +6,7 @@ package fiu.kdrg.bcin.citysafety.core;
  * @date Mar 6, 2014
  * @email zhouwubai@gmail.com Apache Licence 2.0
  */
-public class Sentence {
+public class Instance {
 
 	private String text;
 	private String removedEntityText;
@@ -44,17 +44,36 @@ public class Sentence {
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
-	
-	
-	public String genMALLETStr(){
-		return sid + "_" + city + " " + city + " "  + removedEntityText; 
+
+	public String genMALLETStr() {
+		return sid + "_" + city + " " + city + " " + removedEntityText;
 	}
-	
-	
-	public String genSerializedStr(){
+
+	public String genSerializedStr() {
 		return sid + " " + city + " " + text + " " + removedEntityText;
 	}
+
+	@Override
+	public int hashCode() {
+		return this.genRealID().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Instance other = (Instance) obj;
+		if (!(this.genRealID()).equals(other.genRealID())) {
+			return false;
+		}
+		return true;
+	}
 	
-	
-	
+	public String genRealID(){
+		return this.sid+"_"+this.city;
+	}
 }

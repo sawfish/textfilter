@@ -21,7 +21,7 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
-import fiu.kdrg.bcin.citysafety.core.Sentence;
+import fiu.kdrg.bcin.citysafety.core.Instance;
 import fiu.kdrg.bcin.citysafety.util.Constants;
 
 public class InstanceEnityRemover {
@@ -62,7 +62,7 @@ public class InstanceEnityRemover {
 		try{
 			br = new BufferedReader(new FileReader(input));
 			String line = br.readLine();
-			List<Sentence> sentences = new ArrayList<Sentence>();
+			List<Instance> sentences = new ArrayList<Instance>();
 			
 			while(line != null){
 				if(line.trim().isEmpty()){
@@ -70,7 +70,7 @@ public class InstanceEnityRemover {
 					continue;
 				}
 				
-				Sentence st = new Sentence();
+				Instance st = new Instance();
 				st.setSid(count++);
 				st.setCity(city);
 				st.setText(line.trim());
@@ -83,7 +83,7 @@ public class InstanceEnityRemover {
 			
 			BufferedWriter mBW = new BufferedWriter(new FileWriter(mOutput));
 			BufferedWriter oBW = new BufferedWriter(new FileWriter(oOutput));
-			for(Sentence sentence : sentences){
+			for(Instance sentence : sentences){
 				mBW.append(sentence.genMALLETStr());
 				oBW.append(sentence.genSerializedStr());
 				mBW.append("\n");
