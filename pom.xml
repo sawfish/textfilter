@@ -100,6 +100,12 @@
 			<version>2.0.7</version>
 		</dependency>
 
+		<!-- org.apache.common-math -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 	</dependencies>
 

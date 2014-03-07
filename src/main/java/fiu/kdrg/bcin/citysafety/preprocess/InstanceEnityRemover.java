@@ -24,10 +24,10 @@ import edu.stanford.nlp.util.CoreMap;
 import fiu.kdrg.bcin.citysafety.core.Sentence;
 import fiu.kdrg.bcin.citysafety.util.Constants;
 
-public class ParagraphEnityRemover {
+public class InstanceEnityRemover {
 
 	private static Logger logger = LoggerFactory
-			.getLogger(ParagraphEnityRemover.class);
+			.getLogger(InstanceEnityRemover.class);
 	private static StanfordCoreNLP pipeline;
 
 	static {
@@ -41,19 +41,19 @@ public class ParagraphEnityRemover {
 	
 	public static void main(String[] args) {
 		
-		ParagraphEnityRemover entityRemover = new ParagraphEnityRemover();
+		InstanceEnityRemover entityRemover = new InstanceEnityRemover();
 //		preprocessor.removeEntity(Constants.testString);
-		String city = "miami";
+		String city = "chicago";
 		String input = String.format(Constants.dataBaseUrl + "disaster-%s.txt", city);
 		String mOutput = String.format(Constants.dataBaseUrl + "disaster-%s-NER.txt", city);
 		String oOutput = String.format(Constants.dataBaseUrl + "disaster-%s-OBJ.txt", city);
 //		entityRemover.removeEntity(input, mOutput);
-		entityRemover.removeEntityParaWithFormat(input, mOutput, oOutput, city);
+		entityRemover.removeSentenceEntityWithFormat(input, mOutput, oOutput, city);
 		
 	}
 	
 	
-	public void removeEntityParaWithFormat(String input, 
+	public void removeSentenceEntityWithFormat(String input, 
 			String mOutput, String oOutput, String city){
 		
 		BufferedReader br = null;
@@ -169,9 +169,9 @@ public class ParagraphEnityRemover {
 	}
 	
 	
-	public String removeEntity(String paragraph, Set<String> entityFilter) {
+	public String removeEntity(String instance, Set<String> entityFilter) {
 
-		Annotation document = new Annotation(paragraph);
+		Annotation document = new Annotation(instance);
 		pipeline.annotate(document);
 		List<CoreMap> sentences = document.get(SentencesAnnotation.class);
 		StringBuilder sb = new StringBuilder();
@@ -190,9 +190,9 @@ public class ParagraphEnityRemover {
 			}
 
 			sb.append(sentenceText);
-			sb.append("\t\n");
 		}
-
+		
+		sb.append("\n");
 //		System.out.println(sb.toString());
 		return sb.toString();
 	}
