@@ -31,19 +31,31 @@ public class TrainedModel {
 	private String cityTwo;
 	private Map<String, List<Instance>> instOfCities;
 	private Map<Integer,Map<String,Double>> topicWeightedWords;
+	private Map<Integer,Map<Integer,Double>> cityOneDocWeightedTopics;
+	private Map<Integer,Map<Integer,Double>> cityTwoDocWeightedTopics;
+	private Map<String,Map<Integer,Map<Integer,Double>>> weightedTopics;
 	//number of words in one topic
 	private int numTopicWords;
+//	private int numTopics;
+	private int numOfcityOneInst;
+	private int numOfcityTwoInst;
+	
 
 	public TrainedModel(String cityOne, String cityTwo) {
 		this.cityOne = cityOne;
 		this.cityTwo = cityTwo;
 		instOfCities = new HashMap<String, List<Instance>>();
+		topicWeightedWords= new HashMap<Integer, Map<String,Double>>();
+		cityOneDocWeightedTopics = new HashMap<Integer, Map<Integer,Double>>();
+		cityTwoDocWeightedTopics = new HashMap<Integer, Map<Integer,Double>>();
+		weightedTopics = new HashMap<String, Map<Integer,Map<Integer,Double>>>();
+		weightedTopics.put(cityOne, cityOneDocWeightedTopics);
+		weightedTopics.put(cityTwo, cityTwoDocWeightedTopics);
 		//default value
 		numTopicWords = 100;
 	}
 
-	
-	
+
 	public List<Instance> loadCityInstances(String city) {
 		
 		if(!instOfCities.containsKey(city))
@@ -55,7 +67,7 @@ public class TrainedModel {
 	
 	
 	public Map<Integer, Map<String, Double>> getTopicWeightedWords() {
-		if(topicWeightedWords == null)
+		if(topicWeightedWords.isEmpty())
 			loadTopicWeightedWords();
 		
 		return topicWeightedWords;
@@ -63,13 +75,69 @@ public class TrainedModel {
 	
 	
 
+	public Map<Integer,Map<Integer,Double>> getCityDocsWeightedTopics(String city){
+		if(cityOneDocWeightedTopics.isEmpty() || cityTwoDocWeightedTopics.isEmpty())
+			loadDocWeightedTopics();
+		
+		return weightedTopics.get(city);
+	}
 	
 	
 	
-	
-	
-	
-	
+	private void loadDocWeightedTopics(){
+		
+		String path = String.format(Constants.dataBaseUrl + "%s-%s-doc-topics.txt",cityOne,cityTwo);
+		int numC1 = getNumOfcityOneInst();
+		int numC2 = getNumOfcityTwoInst();
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(path));
+			String line = br.readLine();
+			
+			int count = 0;
+			while((line = br.readLine()) != null){
+				
+				if(line.trim().isEmpty()) continue;
+				String[] tmp = line.split("\\s+");
+				count ++;
+				
+				if(count <= numC1){
+					if(cityOneDocWeightedTopics.containsKey(Integer.parseInt(tmp[0]))){
+						for(int i = 1; 2*i < tmp.length; i++){
+							cityOneDocWeightedTopics.get(Integer.parseInt(tmp[0]))
+								.put(Integer.parseInt(tmp[2*i]), Double.parseDouble(tmp[2*i+1]));
+						}
+					}else{
+						cityOneDocWeightedTopics.put(Integer.parseInt(tmp[0]), new HashMap<Integer, Double>());
+						for(int i = 1; 2*i < tmp.length; i++){
+							cityOneDocWeightedTopics.get(Integer.parseInt(tmp[0]))
+								.put(Integer.parseInt(tmp[2*i]), Double.parseDouble(tmp[2*i+1]));
+						}
+					}
+				}else{
+					if(cityTwoDocWeightedTopics.containsKey(Integer.parseInt(tmp[0]) - numC1)){
+						for(int i = 1; 2*i < tmp.length; i++){
+							cityTwoDocWeightedTopics.get(Integer.parseInt(tmp[0]) - numC1)
+								.put(Integer.parseInt(tmp[2*i]), Double.parseDouble(tmp[2*i+1]));
+						}
+					}else{
+						cityTwoDocWeightedTopics.put(Integer.parseInt(tmp[0]) - numC1, new HashMap<Integer, Double>());
+						for(int i = 1; 2*i < tmp.length; i++){
+							cityTwoDocWeightedTopics.get(Integer.parseInt(tmp[0]) - numC1)
+								.put(Integer.parseInt(tmp[2*i]), Double.parseDouble(tmp[2*i+1]));
+						}
+					}
+				}
+			}
+			
+			br.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	
@@ -83,7 +151,6 @@ public class TrainedModel {
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			
 			String line = "";
-			topicWeightedWords= new HashMap<Integer, Map<String,Double>>();
 			
 			while((line = br.readLine()) != null){
 				
@@ -172,6 +239,9 @@ public class TrainedModel {
 			});
 			instOfCities.put(cityTwo, cityTwoInst);
 			brTwo.close();
+			
+			numOfcityOneInst = instOfCities.get(cityOne).size();
+			numOfcityTwoInst = instOfCities.get(cityTwo).size();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -211,5 +281,26 @@ public class TrainedModel {
 	public void setNumTopicWords(int numTopicWords) {
 		this.numTopicWords = numTopicWords;
 	}
+
+
+
+	public int getNumOfcityOneInst() {
+		if(topicWeightedWords.isEmpty())
+			loadTopicWeightedWords();
+		
+		
+		return numOfcityOneInst;
+	}
+
+
+
+	public int getNumOfcityTwoInst() {
+		if(topicWeightedWords.isEmpty())
+			loadTopicWeightedWords();
+		
+		return numOfcityTwoInst;
+	}
+	
+	
 
 }
