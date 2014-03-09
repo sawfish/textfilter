@@ -10,18 +10,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.jblas.DoubleMatrix;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fiu.kdrg.bcin.citysafety.util.Constants;
 import fiu.kdrg.bcin.citysafety.util.InstanceUtil;
+import fiu.kdrg.bcin.citysafety.util.MatrixUtil;
 
 /**
  * 
  * @author zhouwubai
  * @date Mar 7, 2014
  * @email zhouwubai@gmail.com Apache Licence 2.0 Get topic trained data from
- *        text and parse them for latter use.
+ *        text and parse them for latter use. All indices begin with 0
  */
 public class TrainedModel {
 
@@ -56,6 +58,11 @@ public class TrainedModel {
 	}
 
 
+	/**
+	 * 
+	 * @param city 
+	 * @return all sentence instances about this city
+	 */
 	public List<Instance> loadCityInstances(String city) {
 		
 		if(!instOfCities.containsKey(city))
@@ -66,6 +73,10 @@ public class TrainedModel {
 	
 	
 	
+	/**
+	 * 
+	 * @return words' distribution of each topic
+	 */
 	public Map<Integer, Map<String, Double>> getTopicWeightedWords() {
 		if(topicWeightedWords.isEmpty())
 			loadTopicWeightedWords();
@@ -74,7 +85,23 @@ public class TrainedModel {
 	}
 	
 	
+	/**
+	 * 
+	 * @param city
+	 * @return a matrix stores instances' topic distribution. row corresponds to instance,
+	 * and column corresponds to topics, value is the weight.
+	 */
+	public DoubleMatrix getCityDocsWeightedTopicsMatrix(String city){
+	  return MatrixUtil.transformMapToMatrix(getCityDocsWeightedTopics(city));
+	}
+	
 
+	/**
+	 * 
+	 * @param city
+	 * @return a nested map stores instances' topic distribution. first level corresponds to instance,
+	 * and second level corresponds to topics, value is the weight.
+	 */
 	public Map<Integer,Map<Integer,Double>> getCityDocsWeightedTopics(String city){
 		if(cityOneDocWeightedTopics.isEmpty() || cityTwoDocWeightedTopics.isEmpty())
 			loadDocWeightedTopics();
@@ -300,6 +327,17 @@ public class TrainedModel {
 		
 		return numOfcityTwoInst;
 	}
+
+
+    public String getCityOne() {
+      return cityOne;
+    }
+
+
+    public String getCityTwo() {
+      return cityTwo;
+    }
+	
 	
 	
 
