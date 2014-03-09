@@ -29,18 +29,20 @@ public class TrainedModel {
 
 	private static Logger logger = LoggerFactory.getLogger(TrainedModel.class);
 	
-	private String cityOne;
-	private String cityTwo;
-	private Map<String, List<Instance>> instOfCities;
-	private Map<Integer,Map<String,Double>> topicWeightedWords;
-	private Map<Integer,Map<Integer,Double>> cityOneDocWeightedTopics;
-	private Map<Integer,Map<Integer,Double>> cityTwoDocWeightedTopics;
-	private Map<String,Map<Integer,Map<Integer,Double>>> weightedTopics;
+	String cityOne;
+	String cityTwo;
+	Map<String, List<Instance>> instOfCities;
+	Map<Integer,Map<String,Double>> topicWeightedWords;
+	Map<String,Map<Integer,Map<Integer,Double>>> weightedTopics;
+	int numOfcityOneInst;
+        int numOfcityTwoInst;
+        
 	//number of words in one topic
 	private int numTopicWords;
+	private Map<Integer,Map<Integer,Double>> cityOneDocWeightedTopics;
+        private Map<Integer,Map<Integer,Double>> cityTwoDocWeightedTopics;
 //	private int numTopics;
-	private int numOfcityOneInst;
-	private int numOfcityTwoInst;
+	
 	
 
 	public TrainedModel(String cityOne, String cityTwo) {
