@@ -2,15 +2,28 @@ package fiu.kdrg.bcin.citysafety.core;
 
 public class Edge {
 
-  int weight;
+  double weight;
   int source;
   int target;
+  String city;
 
-  public int getWeight() {
+  public Edge() {
+  }
+  
+  
+  public Edge(String city, int source, int target, double weight){
+	  this.city = city;
+	  this.source = source;
+	  this.target = target;
+	  this.weight = weight;
+  }
+  
+  
+  public double getWeight() {
     return weight;
   }
 
-  public void setWeight(int weight) {
+  public void setWeight(double weight) {
     this.weight = weight;
   }
 
@@ -52,9 +65,13 @@ public class Edge {
   }
   
   
-  private String genRealID(){
-    return source+"_"+target;
+  public String genRealID(){
+    return source + "_" + city + "_"+target;
   }
   
+  
+  public void addWeight(double a){
+	  weight += a;
+  }
 
 }
