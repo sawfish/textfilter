@@ -7,10 +7,7 @@ public class Edge {
   int target;
   String city;
 
-  public Edge() {
-  }
-  
-  
+
   public Edge(String city, int source, int target, double weight){
 	  this.city = city;
 	  this.source = source;
@@ -73,5 +70,13 @@ public class Edge {
   public void addWeight(double a){
 	  weight += a;
   }
+  
+  
+  @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("city: %s, source %d, target %d, weight %f.", city, source, target, weight);
+	}
+  
 
 }

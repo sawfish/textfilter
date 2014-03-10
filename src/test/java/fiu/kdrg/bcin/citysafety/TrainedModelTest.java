@@ -11,14 +11,13 @@ import fiu.kdrg.bcin.citysafety.util.MatrixUtil;
 
 public class TrainedModelTest {
 
-	
 	TrainedModel model;
 	String cityOne;
 	String cityTwo;
-	
+
 	@Before
 	public void setUp() throws Exception {
-		
+
 		cityOne = "miami";
 		cityTwo = "chicago";
 		model = new TrainedModel(cityOne, cityTwo);
@@ -26,7 +25,7 @@ public class TrainedModelTest {
 
 	@Test
 	public void test() {
-		
+
 		model.loadCityInstances(cityOne);
 		model.loadCityInstances(cityTwo);
 		model.getCityDocsWeightedTopics(cityOne);
@@ -37,10 +36,11 @@ public class TrainedModelTest {
 		assertTrue(model.loadCityInstances(cityOne).get(0).getSid() == 0);
 		assertTrue(model.loadCityInstances(cityOne).get(1).getSid() == 1);
 		assertTrue(model.loadCityInstances(cityTwo).get(0).getSid() == 0);
-                assertTrue(model.loadCityInstances(cityTwo).get(1).getSid() == 1);
-                DoubleMatrix dm = MatrixUtil.transformMapToMatrix(model.getCityDocsWeightedTopics(cityOne));
-                System.out.println(dm.columns);
-                System.out.println(dm.rows);
+		assertTrue(model.loadCityInstances(cityTwo).get(1).getSid() == 1);
+		DoubleMatrix dm = MatrixUtil.transformMapToMatrix(model.getCityDocsWeightedTopics(cityOne));
+		System.out.println(dm.columns);
+		System.out.println(dm.rows);
+		
 	}
 
 }

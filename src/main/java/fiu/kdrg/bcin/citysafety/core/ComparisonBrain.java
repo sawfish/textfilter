@@ -12,6 +12,8 @@ import org.jblas.DoubleMatrix;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fiu.kdrg.bcin.citysafety.util.EdgeUtil;
+
 public class ComparisonBrain extends TrainedModel {
 
 	private Logger logger = LoggerFactory.getLogger(ComparisonBrain.class);
@@ -217,6 +219,7 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	
+	
 	public int getNumTopics() {
 		return numTopics;
 	}
@@ -226,5 +229,35 @@ public class ComparisonBrain extends TrainedModel {
 		return disaster.length;
 	}
 
+	
+	
+	public static void main(String[] args) {
+		
+		
+		String cityOne = "miami";
+		String cityTwo = "chicago";
+		ComparisonBrain brain = new ComparisonBrain(cityOne, cityTwo);
+		
+		List<Edge> edges = brain.queryEdges(cityOne);
+		System.out.println(edges.size());
+		EdgeUtil.printEdges(edges);
+		
+		edges = brain.queryEdges(cityTwo);
+		System.out.println(edges.size());
+		EdgeUtil.printEdges(edges);
+		
+		edges = brain.queryEdges(cityOne, 0);
+		System.out.println(edges.size());
+		EdgeUtil.printEdges(edges);
+		
+		edges = brain.queryEdges(cityOne, 0, 0);
+		System.out.println(edges.size());
+		EdgeUtil.printEdges(edges);
+		
+		
+	}
+	
+	
+	
 	
 }
