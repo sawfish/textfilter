@@ -2,22 +2,68 @@
  * Drag and Drop
  */
 
+
 $(function(){
 	
-	jsPlumb.Defaults.Container = $("body");
+	jsPlumbInit();
 	
-	var firstInstance = jsPlumb.getInstance();
-	firstInstance.importDefaults({
-		Connector : [ "Bezier", { curviness: 150 } ],
-		Anchors : [ "TopCenter", "BottomCenter" ]
+	var source = $("<div class='node' id='source' style='left:50px;top:50px'></div>");
+	var target = $("<div class='node' id='target' style='left:200px;top:50px'></div>");
+	
+	$("#graph_panel").append(source);
+	$("#graph_panel").append(target);
+	
+	s = jsPlumb.addEndpoint("source", {}, {
+		isSource : true,
+		isTarget : true,
+		maxConnections : -1
 	});
 	
-	var e1 = jsPlumb.addEndpoint("node0");
-	var t1 = jsPlumb.addEndpoint("node1");
-	
-	firstInstance.connect({
-		source:e1,
-		target:t1
+	t = jsPlumb.addEndpoint("target", {}, {
+		isSource : true,
+		isTarget : true,
+		maxConnections : -1
 	});
+	
+	jsPlumb.connect({
+		source : s,
+		target : t,
+		overlays : [ [ "Arrow", {
+			width : 10,
+			length : 15,
+			location : 1
+		} ] ]
+	});
+	
 	
 });
+
+
+function jsPlumbInit(){
+	
+	var dynamicAnchors = [ [ 0.2, 0, 0, -1 ], [ 1, 0.2, 1, 0 ],
+	           			[ 0.8, 1, 0, 1 ], [ 0, 0.8, -1, 0 ] ];
+
+	           	jsPlumb.Defaults.Container = $("#graph_panel");
+	           	jsPlumb.importDefaults({
+	           		PaintStyle : {
+	           			lineWidth : 0,
+	           			strokeStyle : "orange",
+	           			outlineColor : "orange",
+	           			outlineWidth : 0
+	           		},
+	           		Connector : [ "StateMachine", {
+	           			curviness : 20
+	           		} ],
+	           		Endpoint : [ "Dot", {
+	           			radius : 3
+	           		} ],
+	           		EndpointStyle : {
+	           			fillStyle : "orange"
+	           		},
+	           		Anchor : dynamicAnchors,
+	           		// [ "TopCenter", "RightMiddle", "BottomCenter", "LeftMiddle" ]
+	           		ConnectionsDetachable : false
+	 });
+	
+}
