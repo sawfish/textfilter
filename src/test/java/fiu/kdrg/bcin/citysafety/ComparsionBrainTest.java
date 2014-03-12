@@ -41,9 +41,9 @@ public class ComparsionBrainTest {
 		System.out.println(edges.size());
 		EdgeUtil.printEdges(edges);
 		
-		edges = brain.queryEdges(cityOne, 0, 0);
-		System.out.println(edges.size());
-		EdgeUtil.printEdges(edges);
+		Edge edge = brain.queryEdges(cityOne, 0, 0);
+		if(edge != null)
+			System.out.println(edge.toString());
 	}
 
 }

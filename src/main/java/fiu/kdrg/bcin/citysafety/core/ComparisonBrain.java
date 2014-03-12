@@ -80,17 +80,16 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	
-	public List<Edge> queryEdges(String city, int disaster, int topic){
+	public Edge queryEdges(String city, int disaster, int topic){
 		List<Edge> edges = queryEdges(city, disaster);
-		List<Edge> qualifiedEdges = new ArrayList<Edge>();
 		
 		for(Edge edge : edges){
 			if(edge.getTarget() == topic){
-				qualifiedEdges.add(edge);
+				return edge;
 			}
 		}
 		
-		return qualifiedEdges;
+		return null;
 	}
 	
 	
@@ -231,6 +230,61 @@ public class ComparisonBrain extends TrainedModel {
 
 	
 	
+	public void computeStat(){
+		
+		int numD = getNumDisasters();
+		int numT = getNumTopics();
+		System.out.println(String.format("number of disaster %d, number of topic %d.", numD,numT));
+		
+		//compute instance number level 1
+		DoubleMatrix cities = new DoubleMatrix(2,numD);
+		for(int d = 0; d < numD; d++){
+			cities.put(0, d, queryInstances(cityOne, d).size());
+			cities.put(1, d, queryInstances(cityTwo, d).size());
+		}
+		System.out.println(cities.toString("%2.0f"));
+		
+		//compute instance number
+		DoubleMatrix cityOneM = new DoubleMatrix(numD, numT);
+		for(int row = 0; row < numD; row ++){
+			for(int col = 0; col < numT; col ++){
+				cityOneM.put(row, col, queryInstances(cityOne, row, col).size());
+			}
+		}
+		System.out.println(cityOneM.toString("%2.0f"));
+		
+		DoubleMatrix cityTwoM = new DoubleMatrix(numD, numT);
+		for(int row = 0; row < numD; row ++){
+			for(int col = 0; col < numT; col ++){
+				cityTwoM.put(row, col, queryInstances(cityTwo, row, col).size());
+			}
+		}
+		System.out.println(cityTwoM.toString("%2.0f"));
+		
+		
+		
+		//compute edge weight
+		DoubleMatrix cityOneE = new DoubleMatrix(numD, numT);
+		for(int row = 0; row < numD; row ++){
+			for(int col = 0; col < numT; col ++){
+				Edge edge = queryEdges(cityOne, row, col);
+				cityOneE.put(row, col, (edge == null) ? 0 : edge.getWeight());
+			}
+		}
+		System.out.println(cityOneE.toString("%3.1f"));
+		
+		DoubleMatrix cityTwoE = new DoubleMatrix(numD, numT);
+		for(int row = 0; row < numD; row ++){
+			for(int col = 0; col < numT; col ++){
+				Edge edge = queryEdges(cityTwo, row, col);
+				cityTwoE.put(row, col, (edge == null) ? 0 : edge.getWeight());
+			}
+		}
+		System.out.println(cityTwoE.toString("%3.1f"));
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		
@@ -250,9 +304,10 @@ public class ComparisonBrain extends TrainedModel {
 		System.out.println(edges.size());
 		EdgeUtil.printEdges(edges);
 		
-		edges = brain.queryEdges(cityOne, 0, 0);
-		System.out.println(edges.size());
-		EdgeUtil.printEdges(edges);
+		Edge edge = brain.queryEdges(cityOne, 0, 0);
+		System.out.println(edge.toString());
+//		EdgeUtil.printEdges(edges);
+		brain.computeStat();
 		
 		
 	}

@@ -25,6 +25,7 @@ $(function(){
 		maxConnections : -1
 	});
 	
+	
 	jsPlumb.connect({
 		source : s,
 		target : t,
@@ -37,6 +38,7 @@ $(function(){
 	
 	
 });
+
 
 
 function jsPlumbInit(){
