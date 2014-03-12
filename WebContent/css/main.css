@@ -15,6 +15,55 @@
 	float:top;
 	align:center;
 	width: 5em;
+	height: 5em;
+	padding: 1em;
+	position: relative;
+	border: 1px solid black;
+	z-index: 4;
+	outline-width:50px;
+	border-radius: 1em;
+	border: 1px solid #346789;
+	box-shadow: 2px 2px 19px #e0e0e0;
+	-o-box-shadow: 2px 2px 19px #e0e0e0;
+	-webkit-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	cursor: move;
+}
+
+
+.d_node{
+	float:top;
+	align:center;
+	width: 5em;
+	height: 5em;
+	padding: 1em;
+	position: relative;
+	border: 1px solid black;
+	z-index: 4;
+	outline-width:50px;
+	border-radius: 1em;
+	border: 1px solid #346789;
+	box-shadow: 2px 2px 19px #e0e0e0;
+	-o-box-shadow: 2px 2px 19px #e0e0e0;
+	-webkit-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	cursor: move;
+}
+
+
+.t_node{
+	float:top;
+	align:center;
+	width: 5em;
+	height: 5em;
 	padding: 1em;
 	position: relative;
 	border: 1px solid black;

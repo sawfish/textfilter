@@ -21,5 +21,5 @@ public class Constants {
 	    + "and it attained hurricane intensity on October 17.Chan was born on 7 April 1954, "
 	    + "in British Hong Kong, as Chan Kong-sang, to Charles and Lee-Lee Chan, refugees from the Chinese Civil War.";
 	
-	public static String dataBaseUrl = "data/";
+	public static String dataBaseUrl = "/home/zhouwubai/U/workplace/textfilter/data/";
 }

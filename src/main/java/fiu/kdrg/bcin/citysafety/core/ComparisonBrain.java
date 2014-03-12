@@ -1,6 +1,7 @@
 package fiu.kdrg.bcin.citysafety.core;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +31,67 @@ public class ComparisonBrain extends TrainedModel {
 		numTopics = topicWeightedWords.size();
 	}
 
+	
+	
+	
+	//query basic element about this topic
+	public List<Disaster> queryAllDisaster(){
+		
+		List<Disaster> ds = new ArrayList<Disaster>();
+		for(int i = 0; i < disaster.length; i++){
+			ds.add(new Disaster(i, disaster[i]));
+		}
+		
+		return ds;
+	}
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param eSize eSize indicates how many words we will extract.remember eSize 
+	 *  should be less than word size. Here we will skip this check.
+	 * @return
+	 */
+	public List<Effect> queryAllEffect(int eSize){
+		
+		List<Effect> effects = new ArrayList<Effect>();
+		
+		for(Map.Entry<Integer, Map<String,Double>> en : getTopicWeightedWords().entrySet()){
+			
+			int did = en.getKey();
+			Map<String,Double> words = en.getValue();
+			List<Double> prob = new ArrayList<Double>();
+			for(Map.Entry<String, Double> en2 : words.entrySet()){
+				prob.add(en2.getValue());
+			}
+			Collections.sort(prob,Collections.reverseOrder());
+			
+			Double threshold = prob.get(eSize - 1);
+			Map<String,Double> tWords = new HashMap<String, Double>();
+			int count = 0;
+			for(Map.Entry<String, Double> en2 : words.entrySet()){
+				if(count > eSize) break;
+				if(en2.getValue() >= threshold){
+					tWords.put(en2.getKey(), en2.getValue());
+					count ++;
+				}
+			}
+			
+			effects.add(new Effect(did, tWords));
+			
+		}
+		
+		return effects;
+	}
+	
+	
+	//default eSize 50
+	public List<Effect> queryAllEffect(){
+		return queryAllEffect(50);
+	}
+	
 	
 	
 	// queryInstances API

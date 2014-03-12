@@ -7,8 +7,8 @@ $(function(){
 	
 	jsPlumbInit();
 	
-	var source = $("<div class='node' id='source' style='left:50px;top:50px'></div>");
-	var target = $("<div class='node' id='target' style='left:200px;top:50px'></div>");
+	var source = $("<div class='d_node' id='source' style='left:50px;top:50px'></div>");
+	var target = $("<div class='d_node' id='target' style='left:200px;top:50px'></div>");
 	
 	$("#graph_panel").append(source);
 	$("#graph_panel").append(target);
@@ -35,6 +35,8 @@ $(function(){
 			location : 1
 		} ] ]
 	});
+	
+	jsPlumb.draggable($(".d_node"));
 	
 	
 });
