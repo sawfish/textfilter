@@ -66,6 +66,8 @@ public class InitComparisonServlet extends HttpServlet {
 		jsonObj.add("disasters", gson.toJsonTree(disasters));
 		jsonObj.add("effects", gson.toJsonTree(effects));
 		jsonObj.add("edges", gson.toJsonTree(edges));
+		jsonObj.addProperty("cityOne", cityOne);
+		jsonObj.addProperty("cityTwo", cityTwo);
 		
 //		System.out.println(jsonObj.toString());
 		
