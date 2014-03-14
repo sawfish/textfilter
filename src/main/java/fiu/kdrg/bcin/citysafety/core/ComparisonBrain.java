@@ -69,12 +69,12 @@ public class ComparisonBrain extends TrainedModel {
 			Collections.sort(prob,Collections.reverseOrder());
 			
 			Double threshold = prob.get(eSize - 1);
-			Map<String,Double> tWords = new HashMap<String, Double>();
+			List<Word> tWords = new ArrayList<Word>();
 			int count = 0;
 			for(Map.Entry<String, Double> en2 : words.entrySet()){
-				if(count > eSize) break;
+				if(count >= eSize) break;
 				if(en2.getValue() >= threshold){
-					tWords.put(en2.getKey(), en2.getValue());
+					tWords.add(new Word(en2.getKey(), en2.getValue()));
 					count ++;
 				}
 			}

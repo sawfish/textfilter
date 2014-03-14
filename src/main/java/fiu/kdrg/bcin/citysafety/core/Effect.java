@@ -1,15 +1,15 @@
 package fiu.kdrg.bcin.citysafety.core;
 
-import java.util.Map;
+import java.util.List;
 
 public class Effect {
 
 	int id;
-	Map<String,Double> words;
+	List<Word> words;
 	
 	
 	
-	public Effect(int id, Map<String,Double> words) {
+	public Effect(int id, List<Word> words) {
 		this.id = id;
 		this.words = words;
 	}
@@ -23,7 +23,7 @@ public class Effect {
 
 	
 	
-	public Map<String, Double> getWords() {
+	public List<Word> getWords() {
 		return words;
 	}
 	

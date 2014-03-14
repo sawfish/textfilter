@@ -63,7 +63,7 @@ public class InitComparisonServlet extends HttpServlet {
 		jsonObj.add("disasters", gson.toJsonTree(disasters));
 		jsonObj.add("effects", gson.toJsonTree(effects));
 		
-		System.out.println(jsonObj.toString());
+//		System.out.println(jsonObj.toString());
 		
 		response.setContentType("application/json;charset=UTF-8");
 		response.setHeader("pragma", "no-cache");

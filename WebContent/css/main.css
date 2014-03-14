@@ -41,7 +41,7 @@
 	width: 8em;
 	height: 5em;
 	padding: 1em;
-	position: relative;
+	position: absolute;
 	border: 1px solid black;
 	z-index: 4;
 	outline-width:50px;
@@ -59,13 +59,13 @@
 }
 
 
-.t_node{
+.e_node{
 	float:top;
 	align:center;
 	width: 5em;
 	height: 5em;
 	padding: 1em;
-	position: relative;
+	position: absolute;
 	border: 1px solid black;
 	z-index: 4;
 	outline-width:50px;
