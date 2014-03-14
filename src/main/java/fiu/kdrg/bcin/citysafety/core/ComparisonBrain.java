@@ -118,6 +118,17 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	//queryEdges API
+	/**
+	 * @return
+	 * 		return map containing edges about two cities.
+	 */
+	public Map<String, List<Edge>> queryAllEdges(){
+		if(edgesOfCities.isEmpty())
+			computeAllEdges();
+		
+		return edgesOfCities;
+	}
+	
 	public List<Edge> queryEdges(String city) {
 		if(edgesOfCities.isEmpty())
 			computeAllEdges();
@@ -236,6 +247,8 @@ public class ComparisonBrain extends TrainedModel {
 
 			for (Instance inst : value) {
 				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst.getSid()].length - 1];
+				if(docTopicCityOne.get(key,wEntry) <= 0) continue;
+				
 				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(key,wEntry));
 				if (edgesMCityOne.containsKey(tmp.genRealID())) {
 					edgesMCityOne.get(tmp.genRealID()).addWeight(tmp.getWeight());
@@ -265,6 +278,8 @@ public class ComparisonBrain extends TrainedModel {
 			
 			for(Instance inst : value){
 				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst.getSid()].length - 1];
+				if(docTopicCityTwo.get(key, wEntry) <= 0) continue;
+				
 				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(key, wEntry));
 				if (edgesMCityTwo.containsKey(tmp.genRealID())){
 					edgesMCityTwo.get(tmp.genRealID()).addWeight(tmp.getWeight());
@@ -330,7 +345,8 @@ public class ComparisonBrain extends TrainedModel {
 		for(int row = 0; row < numD; row ++){
 			for(int col = 0; col < numT; col ++){
 				Edge edge = queryEdges(cityOne, row, col);
-				cityOneE.put(row, col, (edge == null) ? 0 : edge.getWeight());
+				if(edge != null && edge.getWeight() > 0)
+					cityOneE.put(row, col, edge.getWeight());
 			}
 		}
 		System.out.println(cityOneE.toString("%3.1f"));
@@ -339,7 +355,8 @@ public class ComparisonBrain extends TrainedModel {
 		for(int row = 0; row < numD; row ++){
 			for(int col = 0; col < numT; col ++){
 				Edge edge = queryEdges(cityTwo, row, col);
-				cityTwoE.put(row, col, (edge == null) ? 0 : edge.getWeight());
+				if(edge != null && edge.getWeight() > 0)
+					cityTwoE.put(row, col, edge.getWeight());
 			}
 		}
 		System.out.println(cityTwoE.toString("%3.1f"));

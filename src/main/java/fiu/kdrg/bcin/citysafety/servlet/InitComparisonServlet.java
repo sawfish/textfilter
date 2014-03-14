@@ -2,6 +2,7 @@ package fiu.kdrg.bcin.citysafety.servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import com.google.gson.JsonObject;
 
 import fiu.kdrg.bcin.citysafety.core.ComparisonBrain;
 import fiu.kdrg.bcin.citysafety.core.Disaster;
+import fiu.kdrg.bcin.citysafety.core.Edge;
 import fiu.kdrg.bcin.citysafety.core.Effect;
 import fiu.kdrg.bcin.citysafety.servlet.helper.ModelCache;
 
@@ -56,12 +58,14 @@ public class InitComparisonServlet extends HttpServlet {
 		ComparisonBrain brain = ModelCache.query(cityOne, cityTwo);
 		List<Disaster> disasters = brain.queryAllDisaster();
 		List<Effect> effects = brain.queryAllEffect();
+		Map<String,List<Edge>> edges = brain.queryAllEdges();
 		
 		Gson gson = new Gson();
 		JsonObject jsonObj = new JsonObject();
 		jsonObj.addProperty("Result", "OK");
 		jsonObj.add("disasters", gson.toJsonTree(disasters));
 		jsonObj.add("effects", gson.toJsonTree(effects));
+		jsonObj.add("edges", gson.toJsonTree(edges));
 		
 //		System.out.println(jsonObj.toString());
 		
