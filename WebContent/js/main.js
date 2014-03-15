@@ -2,8 +2,9 @@
  * Drag and Drop
  */
 
+//global variable
 var testVar;
-
+var dataMap = {};
 
 $(function() {
 
@@ -22,6 +23,7 @@ function initConnections(cityOne, cityTwo) {
 	}, function(data) {
 		console.log(data);
 		testVar = data;
+		dataMap[cityOne+"_"+cityTwo] = data;
 		createBipartiteGraph(data);
 	}, "json");
 	
@@ -38,7 +40,7 @@ function createBipartiteGraph(data){
 	for(var i = 0; i < disasters.length; i++){
 		var disaster = disasters[i];
 		var dNode = $("<div class='node d_node' id='disaster_" 
-				+ disaster.id +"' style='top:" + (i*80 + 300) +"px;left:50px'></div>");
+				+ disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'></div>");
 		$("#graph_panel").append(dNode);
 	}
 	
@@ -50,13 +52,38 @@ function createBipartiteGraph(data){
 	}
 	
 	
-	var cityOneEdges = edges[data.cityOne];
-	var cityTwoEdges = edges[data.cityTwo];
+	var cityOne = data.cityOne;
+	var cityTwo = data.cityTwo;
+	var cityOneEdges = edges[cityOne];
+	var cityTwoEdges = edges[cityTwo];
 	
 	for(var i = 0; i < cityOneEdges.length; i++){
 		
 		var edge = cityOneEdges[i];
 		var d = jsPlumb.addEndpoint("disaster_" + edge.source, {anchor:jsPlumb.dAnchor}, jsPlumb.cityOneEndpoint);
+		var t = jsPlumb.addEndpoint("effect_" + edge.target, {anchor:jsPlumb.eAnchor}, jsPlumb.cityOneEndpoint);
+		jsPlumb.connect({
+			source : d,
+			target : t,
+			overlays : [ [ "Arrow", {
+				width : 15,
+				length : 15,
+				location : 0.8
+			} ],
+			["Label",{
+				location: 0.8,
+				label: edge.weight.toFixed(2),
+				cssClass:"wLabel " + cityOne + "_wLabel"
+			}]]
+		});
+		
+	}
+	
+	
+	for(var i = 0; i < cityTwoEdges.length; i++){
+		
+		var edge = cityTwoEdges[i];
+		var d = jsPlumb.addEndpoint("disaster_" + edge.source, {anchor:jsPlumb.dAnchor}, jsPlumb.cityTwoEndpoint);
 		var t = jsPlumb.addEndpoint("effect_" + edge.target, {anchor:jsPlumb.eAnchor}, jsPlumb.cityTwoEndpoint);
 		jsPlumb.connect({
 			source : d,
@@ -65,42 +92,42 @@ function createBipartiteGraph(data){
 				width : 10,
 				length : 15,
 				location : 1
-			} ] ]
+			} ],
+			["Label",{
+				location: 1,
+				label: edge.weight.toFixed(2),
+				cssClass:"wLabel " + cityTwo + "_wLabel"
+			}]]
 		});
 		
 	}
 	
+//	jsPlumb.draggable($(".d_node"));
+//	jsPlumb.draggable($(".e_node"));
+
+	
+	//add event listner to node
+	$(".d_node").click(function(){
+		jsPlumb.select({source:$(this).attr("id")}).each(function(con){
+			if(con.isHover()){
+				con.setHover(false);
+			}else{
+				con.setHover(true);
+			}
+		});
+	});
 	
 	
-	var source = $("<div class='d_node' id='source' style='left:100px;top:50px'></div>");
-	var target = $("<div class='d_node' id='target' style='left:400px;top:50px'></div>");
-
-	$("#graph_panel").append(source);
-	$("#graph_panel").append(target);
-
-	s = jsPlumb.addEndpoint("source", {}, {
-		isSource : true,
-		isTarget : true,
-		maxConnections : -1
+	$(".e_node").click(function(){
+		var id = $(this).attr("id");
+		jsPlumb.select().each(function(con){
+			if(con.isHover()){
+				if(con.targetId != id){
+					con.setHover(false);
+				}
+			}
+		});
 	});
-
-	t = jsPlumb.addEndpoint("target", {}, {
-		isSource : true,
-		isTarget : true,
-		maxConnections : -1
-	});
-
-	jsPlumb.connect({
-		source : s,
-		target : t,
-		overlays : [ [ "Arrow", {
-			width : 10,
-			length : 15,
-			location : 1
-		} ] ]
-	});
-
-	jsPlumb.draggable($(".d_node"));
 	
 }
 
@@ -138,7 +165,7 @@ function jsPlumbInit() {
 	
 	
 	
-	var colorCityOne = "#316b31";
+	var colorCityOne = "#2FCC22";
 	jsPlumb.cityOneEndpoint = {
 			endpoint: ["Dot", {
 	            radius: 3
@@ -150,18 +177,23 @@ function jsPlumbInit() {
 	            strokeStyle: colorCityOne,
 	            lineWidth: 3
 	        },
+	        connectorHoverStyle: {
+	        	lineWidth: 4,
+	        	strokeStyle:"#11F0BA",
+	        	outlineWidth: 2,
+	        	outlineColor: "white"
+	        },
 	        connector: "Straight",
 	        maxConnections: -1,
 	        isSource: true,
-	        scope: "green",
+	        scope: "cityOne",
 	        isTarget: true
 	};
-
-
-	var colorCityTwo = "rgba(229,219,61,0.5)";
+	
+	var colorCityTwo = "#6498f3";
 	jsPlumb.cityTwoEndpoint = {
 			endpoint: ["Dot", {
-	            radius: 17
+	            radius: 3
 	        }],
 	        anchor: "BottomLeft",
 	        paintStyle: {
@@ -172,13 +204,19 @@ function jsPlumbInit() {
 	            strokeStyle: colorCityTwo,
 	            lineWidth: 4
 	        },
+	        connectorHoverStyle: {
+	        	lineWidth: 4,
+	        	strokeStyle:"#0d27e7",
+	        	outlineWidth: 2,
+	        	outlineColor: "white"
+	        },
 	        connector: "Straight",
 	        maxConnections: -1,
 	        isSource: true,
-	        scope: 'yellow',
+	        scope: 'cityTwo',
 	        isTarget: true
 	};
-
+	
 	
 	// 10 position for dAnchor, this should be customized according to number of disasters and topics
 	jsPlumb.dAnchor = [[1,0,0,-1],[1,0.1,0,-1],[1,0.2,0,-1],[1,0.3,0,-1],[1,0.4,0,-1],
