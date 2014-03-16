@@ -39,8 +39,9 @@ function createBipartiteGraph(data){
 	
 	for(var i = 0; i < disasters.length; i++){
 		var disaster = disasters[i];
-		var dNode = $("<div class='node d_node' id='disaster_" 
-				+ disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'></div>");
+		var dNode = $("<div class='node d_node' id='disaster_" + 
+						disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'>" +
+						"<div class='d_content'>"+ disaster.text +"</div></div>");
 		$("#graph_panel").append(dNode);
 	}
 	
@@ -49,7 +50,10 @@ function createBipartiteGraph(data){
 		var eNode = $("<div class='node e_node' id='effect_" 
 				+ effect.id +"' style='top:" + i*80 +"px;left:600px'></div>");
 		$("#graph_panel").append(eNode);
+		//generate word cloud
+		$("#effect_" + effect.id).jQCloud(effect.words);
 	}
+	$("#jqcloud").jQCloud(effects[0].words);
 	
 	
 	var cityOne = data.cityOne;
