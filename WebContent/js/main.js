@@ -40,7 +40,7 @@ function createBipartiteGraph(data){
 	for(var i = 0; i < disasters.length; i++){
 		var disaster = disasters[i];
 		var dNode = $("<div class='node d_node' id='disaster_" + 
-						disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'>" +
+						disaster.id +"' style='top:" + (i*250 + 200) +"px;left:50px'>" +
 						"<div class='d_content'>"+ disaster.text +"</div></div>");
 		$("#graph_panel").append(dNode);
 	}
@@ -48,12 +48,12 @@ function createBipartiteGraph(data){
 	for(var i = 0; i < effects.length; i++){
 		var effect = effects[i];
 		var eNode = $("<div class='node e_node' id='effect_" 
-				+ effect.id +"' style='top:" + i*80 +"px;left:600px'></div>");
+				+ effect.id +"' style='top:" + i*5 +"px;left:400px'></div>");
 		$("#graph_panel").append(eNode);
 		//generate word cloud
 		$("#effect_" + effect.id).jQCloud(effect.words);
 	}
-	$("#jqcloud").jQCloud(effects[0].words);
+//	$("#jqcloud").jQCloud(effects[0].words);
 	
 	
 	var cityOne = data.cityOne;
@@ -117,6 +117,8 @@ function createBipartiteGraph(data){
 				con.setHover(false);
 			}else{
 				con.setHover(true);
+				var dID = con.sourceId;
+				visualizeSummaries(cityOne,cityTwo,dID.substring(dID.lastIndexOf("_")+1),"");
 			}
 		});
 	});
@@ -128,12 +130,33 @@ function createBipartiteGraph(data){
 			if(con.isHover()){
 				if(con.targetId != id){
 					con.setHover(false);
+				}else{
+					var dID = con.sourceId;
+					var eID = con.targetId;
+					visualizeSummaries(cityOne,cityTwo,
+							dID.substring(dID.lastIndexOf("_")+1),eID.substring(eID.lastIndexOf("_")+1));
 				}
 			}
 		});
 	});
 	
 }
+
+
+
+
+function visualizeSummaries(cityOne,cityTwo,dID,eID){
+	$.get("GetSummaryServlet",{
+		cityOne: cityOne,
+		cityTwo: cityTwo,
+		dID:dID,
+		eID:eID
+	},function(data){
+		$("#summary_panel .cityOne").text(data.cityOneSummary);
+		$("#summary_panel .cityTwo").text(data.cityTwoSummary);
+	},"json");
+}
+
 
 
 

@@ -94,7 +94,7 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	
-	// queryInstances API
+	// queryInstances API, return empty size array if none
 	public List<Instance> queryInstances(String city, int disasterIdx,
 			int topicIdx) {
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
@@ -117,7 +117,7 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	
-	//queryEdges API
+	//queryEdges API, return empty size array if none, return null if none for single Edge
 	/**
 	 * @return
 	 * 		return map containing edges about two cities.
