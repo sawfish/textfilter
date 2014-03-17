@@ -19,19 +19,24 @@ import fiu.kdrg.textmining.pipe.TokenizerByOpenNLP;
 public class CityCorpusReader implements CorpusReader {
   
   public static void main(String[] args) throws Exception {
-    DocumentCorpus miami = Comparison.loadDocumentCorpus("miami", "disaster,storm,destroyed,damage,earthquake");
-
-    Pipes pipe = new Pipes(new SentenceSplitterByOpenNLP(), new TokenizerByOpenNLP());
+    String[] cities = new String[] {"miami", "new york", "san francisco", "los angeles",
+        "boston", "seattle", "atlanta", "new orleans", "chicago", "houston", "philadelphia", "dallas"};
     
-    BufferedWriter bw = new BufferedWriter(new FileWriter("disaster-miami.txt"));
-    pipe.process(miami);
-    for(TextInstance doc : miami.getTextInstances()) {
-      for(Sentence sent : ((Document) doc).getSentences()) {
-        bw.write(sent.getText() + "\n");
+    for(String city : cities) {
+      DocumentCorpus cityCorpus = Comparison.loadDocumentCorpus(city, "disaster,storm,destroyed,damage,earthquake");
+  
+      Pipes pipe = new Pipes(new SentenceSplitterByOpenNLP(), new TokenizerByOpenNLP());
+      
+      BufferedWriter bw = new BufferedWriter(new FileWriter("disaster-" + city + ".txt"));
+      pipe.process(cityCorpus);
+      for(TextInstance doc : cityCorpus.getTextInstances()) {
+        for(Sentence sent : ((Document) doc).getSentences()) {
+          bw.write(sent.getText() + "\n");
+        }
+        bw.write("\n");
       }
-      bw.write("\n");
+      bw.close();
     }
-    bw.close();
   }
 
   private List<Integer> relatedTopics = new ArrayList<Integer>();
