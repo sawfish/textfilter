@@ -152,8 +152,8 @@ function visualizeSummaries(cityOne,cityTwo,dID,eID){
 		dID:dID,
 		eID:eID
 	},function(data){
-		$("#summary_panel .cityOne").text(data.cityOneSummary);
-		$("#summary_panel .cityTwo").text(data.cityTwoSummary);
+		$(".cityOneSummary").text(data.cityOneSummary);
+		$(".cityTwoSummary").text(data.cityTwoSummary);
 	},"json");
 }
 
