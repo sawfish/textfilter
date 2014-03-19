@@ -30,12 +30,39 @@
 </head>
 <body>
 
-	<div id="op_panel" class="row">City Safety Comparison</div>
+	<div id="op_panel" class="row">
+		<div class="col-md-6">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-danger infoDisplay">miami VS chicago</button>
+			  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+			    <span class="sr-only">City Pairs</span>
+			  </button>
+			  <ul class="dropdown-menu cityPairMenu" role="menu">
+			    <li><a href="#">miami VS chicago</a></li>
+			    <li><a href="#">miami VS los angeles</a></li>
+			    <li><a href="#">miami VS philadelphia</a></li>
+			    <li><a href="#">chicago VS los angeles</a></li>
+			    <li><a href="#">chicago VS philadelphia</a></li>
+			    <li><a href="#">los angeles VS philadelphia</a></li>
+			  </ul>
+			</div>
+		</div>
+		<div class="col-md-6">
+		</div>	
+	</div>
 	<div id="main_frame" class="row">
 		<div id="graph_panel" class="col-md-5"></div>
 		<div id="summary_panel" class="col-md-5">
-			<div class="summary cityOneSummary row">cityOne</div>
-			<div class="summary cityTwoSummary row">cityTwo</div>
+			<div class="summaryLabel cityOneLabel row">
+				<span class="label label-info" style="background-color:#2FCC22;">cityOne</span>
+			</div>
+			<div class="summary cityOneSummary row"></div>
+			
+			<div class="summaryLabel cityTwoLabel row">
+				<span class="label label-info" style="background-color:#6498f3;">cityTwo</span>
+			</div>
+			<div class="summary cityTwoSummary row"></div>
 		</div>	
 	</div>
 	<div id="jqcloud" style="width: 550px; height: 350px;"></div>

@@ -39,7 +39,10 @@ public class Summarizer {
     
     // for test, only show the first 200 character.
     logger.info("summarize done for one corpus!");
-    return sb.toString().substring(0,200);
+    if(sb.toString().length() >= 500)
+    	return sb.toString().substring(0,200);
+    else
+    	return sb.toString();
   }
   
   

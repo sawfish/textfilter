@@ -1,3 +1,5 @@
+Which City is Safer? A Bipartite-Graph Based Approach for Comparative Summarization.
+
 miami 772
 chicago 618
 atlanta 545
@@ -20,6 +22,9 @@ chicago-los+angeles
 chicago-philadelphia
 los+angeles-philadelphia
 
+
+following two mallet commands, replace two cities name for different city pair. 
+The first corresponds to cityOne, and the second to cityTwo 
 
 1. run InstanceEntityRemover
 2. run FileMerger

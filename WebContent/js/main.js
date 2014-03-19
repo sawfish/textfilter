@@ -9,6 +9,14 @@ var dataMap = {};
 $(function() {
 
 	jsPlumbInit();
+	
+	$(".cityPairMenu li").click(function(){
+		var strArr = $(this).text().split("VS");
+		var cityOne = strArr[0].trim().replace(" ","+");
+		var cityTwo = strArr[1].trim().replace(" ","+");
+		$(".infoDisplay").text($(this).text());
+		initConnections(cityOne,cityTwo);
+	});
 	initConnections("miami", "chicago");
 
 });
@@ -17,6 +25,9 @@ $(function() {
 
 function initConnections(cityOne, cityTwo) {
 
+	//refresh main part of the web page
+	refreshMainFramePage();
+	
 	$.get("InitComparisonServlet", {
 		cityOne : cityOne,
 		cityTwo : cityTwo
@@ -29,6 +40,13 @@ function initConnections(cityOne, cityTwo) {
 	
 }
 
+
+function refreshMainFramePage(){
+	
+	$("#graph_panel").empty();
+	$(".summary").empty();
+	
+}
 
 
 function createBipartiteGraph(data){

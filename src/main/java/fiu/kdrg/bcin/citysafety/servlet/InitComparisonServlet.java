@@ -56,6 +56,8 @@ public class InitComparisonServlet extends HttpServlet {
 		String cityTwo = request.getParameter("cityTwo");
 		
 		ComparisonBrain brain = ModelCache.query(cityOne, cityTwo);
+		System.out.println(String.format("cache size is %d.", ModelCache.size()));
+		
 		List<Disaster> disasters = brain.queryAllDisaster();
 		List<Effect> effects = brain.queryAllEffect();
 		Map<String,List<Edge>> edges = brain.queryAllEdges();

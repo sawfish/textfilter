@@ -28,5 +28,10 @@ public class ModelCache {
 	private static String generateKey(String cityOne, String cityTwo) {
 		return cityOne + "_" + cityTwo;
 	}
+	
+	
+	public static int size(){
+		return modelCacher.size();
+	}
 
 }
