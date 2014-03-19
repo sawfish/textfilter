@@ -1,0 +1,588 @@
+0_boston boston The earthquake was felt sharply in  , though the date recorded for the event was   , as   was using the  calendar at the time.
+1_boston boston A church record entry made by Reverend   from ,  (  km from  CSZ) indicated  initial shock was felt around 6 pm that evening and several more shocks followed   .
+2_boston boston On the shores of  , the tops of chimneys were broken on houses and pewter (a malleable metal alloy) was jarred from shelves.
+3_boston boston This level of damage is consistent with a modified  intensity of VI though   have been because the early colonials had the capability of producing only relatively weak mortar.
+4_boston boston Using this MMI value and the distance from the epicenter  can estimate the magnitude of the earthquake using published intensity-attenuation relations.
+5_boston boston In a   report on the earthquake that was published in the "Bulletin  the    ",   , a pressor and researcher at  , used these known relations that apply to earthquakes in northeastern   and determined the magnitude to be  &mdash; .
+6_boston boston Since the  earthquake,  and its surrounding towns have become a major metropolitan area.
+7_boston boston Much new construction has been built on infill, especially in the   area, which may be prone to greater shaking and to compaction of the sand and gravel used as fill.
+8_boston boston Many older buildings in the  area are built from stone and brick, and are likely to collapse completely during a major earthquake.
+9_boston boston Given this, modern observers have expressed concern about the effects of another quake in such a major city.
+10_boston boston A  study by the     estimated potential financial losses at between $4 billion and $5 billion, and potential loss of life in the hundreds.
+11_boston boston As a consequence, the state has updated building codes and zoning laws to require that new construction and additions in vulnerable areas be built to resist earthquakes.
+12_boston boston The "Cape Ann Earthquake" took place off the coast of the British Province of   (the present-day  commonwealth of ) on   .
+13_boston boston At between    on the  scale, it remains the largest earthquake in the history of .
+14_boston boston It damaged hundreds of buildings in  and was felt as far north as   and as far south as  .
+15_boston boston Sailors on a ship more than  offshore felt the quake, and mistook it at  for their ship running aground.
+16_boston boston Many residents of  and the surrounding areas attributed the quake to God, and it occasioned a brief increase in religious fervor in the city.
+17_boston boston Modern studies estimate that if a similar quake shook  , it would result in as much as $5 billion in damage and hundreds of deaths.
+18_boston boston The earthquake took place on    at approximately 4:30 AM.
+19_boston boston Its epicenter is believed to have been offshore, approximately  east of  .
+20_boston boston The quake was felt as far north as ,  , south to the   and  , and from   and   in the northwest to a ship  off the east coast.
+21_boston boston Sailors on the ship reported that the quake was so strong, they had feared that they had run aground.
+22_boston boston The region experienced a number of aftershocks, the  of which was a little     after the quake.
+23_boston boston Most of these aftershocks could not be felt in , affecting only the cape cod northeastern coast of the colony.
+24_boston boston and   were the most heavily damaged.
+25_boston boston In , damage was concentrated in areas of infill near the harbor; infill is less sturdy in earthquakes than solid land.
+26_boston boston From  to  chimneys in the city were damaged in some way, the gable ends of some houses collapsed, and a number of roofs were damaged by falling chimneys.
+27_boston boston Stone chimneys and buildings were damaged in  (present-day , ), , , and  ,  as well.
+28_boston boston Some church steeples in  were damaged, ending up tilted from vertical.
+29_boston boston Stone fencing in rural areas was damaged.
+30_boston boston Observers also reported that several springs dried up, new ones were created, and cracks appeared in the ground near , , and .
+31_boston boston In this last town, observers noted water and fine sand coming from the crack.
+32_boston boston Non-structural damage was minor; residents reported damage to china and glassware, and a distiller lost some of his product after a cistern was damaged.
+33_boston boston The Cape  earthquake may also have created the  recorded tsunami in  history.
+34_boston boston Observers in the   nearly  south of  , reported a receding of water followed by a large wave that lifted several boats ashore and left fish floundering on the beach.
+35_boston boston Sand blows were common throughout the area, and can still be seen from the air in cultivated fields.
+36_boston boston The shockwaves propagated efficiently through the firm midwestern bedrock, with residents as far away as , , and , , awakened by intense shaking.
+37_boston boston Church bells were reported to ring as far as ,  and ,  ( ), and sidewalks were reported to have been cracked and broken in ,
+38_boston boston There were also reports of toppled chimneys in .
+39_boston boston In  , the hurricane produced widespread gale force winds, with damage greatest in .
+40_boston boston The lighthouse in  , , was destroyed.
+41_boston boston Elsewhere in the state, the winds damaged or destroyed churches, houses and small buildings.
+42_boston boston Moderate crop damage to fruit was reported as well.
+43_boston boston Strong winds extended into eastern , though little damage was reported in the  area.
+44_boston boston In the aftermath  the     in present-day  ,     the    was camped south  the battlesite, where he wrote about a "very cold rain-storm" in a   letter to his wife .
+45_boston boston Conditions at the time were characterized by leaking tents and temperatures getting "colder and colder".
+46_boston boston wrote, "We were out  P.M. very near to the enemy's works; were caught in the  of this storm and thoroughly soaked.
+47_boston boston I hardly expect to be dry again until the storm is over."
+48_boston boston Strong winds buffeted the ,  , area from early evening to midnight on  , uprooting trees and causing some damage to property.
+49_boston boston Further north, , , experienced intense winds and light rainfall for    starting at midnight, with no initial reports of significant destruction.
+50_boston boston However, the hurricane also had a significant impact on land.
+51_boston boston Earlier in  , Union forces had captured  fort guarding   at  Battle of   Batteries.
+52_boston boston In       , high seas began to overwash  , "completely covering all dry land except  position   fort itself".
+53_boston boston After  , water began to subside.
+54_boston boston Extremely high tides associated with the cyclone continued up the coast as far north as , .
+55_boston boston Srm tides  various points, including   , port,  , and , reached levels unseen for     and    .
+56_boston boston In  , the storm persisted for   starting early on  ; rising waters inundated wharves along the East and  .
+57_boston boston Floodwaters flowed up to  blocks inland, and a popular bar located in a hotel became isolated by the flooding.
+58_boston boston In response, a man transported customers to and from the bar on his private boat at a cost of two cents per ride.
+59_boston boston Strong winds in  brought down trees and telegraph wires.
+60_boston boston Infrastructure throughout the  area suffered.
+61_boston boston Parts of the    line were undermined, and the Shore Line Railway at  was inundated.
+62_boston boston Flooding was also prominent in the    and along the ark  and  , which was left temporarily impassible.
+63_boston boston Further east, the hurricane triggered coastal flooding along the shores of  , while northeasterly winds blew several ships ashore along the northern coast of  .
+64_boston boston The eastern side of the hurricane blasted the southeastern   coast between   and  , damaging over 50 vessels at , , and running aground 0 others.
+65_boston boston Water from the   surged into the village of .
+66_boston boston In downtown ,  storm began  on   and lasted until    , although  highest tides did not occur until after conditions had already cleared.
+67_boston boston occupants of the ship "Maritania" drowned when the vessel sank after striking a rock during the worst of the storm.
+68_boston boston At the time, she was located  east of the  Light.
+69_boston boston At landfall, the hurricane was compact, estimated around  wide.
+70_boston boston However, less than  miles ( km) west of the center, there were no strong winds.
+71_boston boston The hurricane produced a storm surge of , which was lessened due to it moving ashore at low tide.
+72_boston boston In ,  , high waves damaged coastal wharves and left flooding.
+73_boston boston The hurricane weakened quickly over land, passing just west of  early on   as a minimal hurricane.
+74_boston boston There, the winds downed many trees and left severe damage.
+75_boston boston All telegraph lines between   and  were cut, although the storm did produce beneficial heavy rainfall.
+76_boston boston Shortly thereafter it dissipated over .
+77_boston boston There was  confirmed death in .
+78_boston boston Offshore , a schor capsized, killing all but  in the crew.
+79_boston boston Hurricane warnings were issued on  .
+80_boston boston The warnings extended from   to .
+81_boston boston the warnings were extended to ,  .
+82_boston boston Evacuations may or may not have taken place.
+83_boston boston On  , forecasters issued storm warnings from ,  to ,  .
+84_boston boston , the warnings were extended to .
+85_boston boston As the storm moved closer to land, forecasters predicted that the hurricane would hit   in  .
+86_boston boston Because of this, hurricane and gale warnings were issued from   to , .
+87_boston boston On    unseasonably warm temperatures caused a fog bank to occur inside the   during a game between the   and  .
+88_boston boston Referee   abandoned the game after only   of the  period due to poor visibility.
+89_boston boston The game was replayed   , with  winning .
+90_boston boston Forecasters at     office in  believed that re was a possibility for tornadic activity in  area, but decided not to include it in ir forecast for   in fear that y would cause panic among local citizens.
+91_boston boston was    that tornado and severe thunderstorm warnings were used, so forecasters compromised and issued   severe thunderstorm watch in  history of .
+92_boston boston Because of this, the tornado struck with little to no warning for residents.
+93_boston boston The earthquake was felt in  states and affected a zone of .
+94_boston boston The shaking extended east to  and  , south to  and , north to , , and west to .
+95_boston boston Isolated reports were received from , Mobile, , , , southern , , , , , , , , ,  ,  , ,  , , , , ,  , , , and , presumably because of shaking.
+96_boston boston The worst affected areas were in the general area of , ,  , and , but there was no major damage.
+97_boston boston There were no deaths; the worst injury was a child knocked unconscious by falling debris outside his home.
+98_boston boston Eventually, plumbers were dispatched to shut off water to  the individual floors, then entire buildings.
+99_boston boston By  that night, the Physical Plant director alerted Vice Chancellor for Administration and Finance   about the impending crisis.
+100_boston boston Around    , the town manager was notified of the problem.
+101_boston boston Around this time, water shortages were beginning to be noticed in the   .
+102_boston boston In the   , toilets wouldn’t stop flushing, a consequence of low water pressure.
+103_boston boston By 9:30 that night, about  students were without water.
+104_boston boston Chancellor   returned from meetings in  and was subsequently warned by  that if the pressure continued to drop, the steam plant would have to be shut down, and research projects, air conditioning, and electrical systems would also have to be turned off.
+105_boston boston All of this would prove costly.
+106_boston boston By this time, students were travelling to   in   to clean up.
+107_boston boston The chancellor was also urged by  to close the campus.
+108_boston boston The list below shows the names that appeared on the tropical cyclone naming list in the  basin in .
+109_boston boston Although the Perfect Storm later evolved into a hurricane, the    left it unnamed due to the heavy damage and media interest in the predecessor extratropical storm.
+110_boston boston It later received the name the "Perfect Storm" after a conversation between     forecaster   and author  .
+111_boston boston The names not retired from this list in  appeared again on the naming list for the  season.
+112_boston boston This is the same list used for the  season, with the exception of the names  and Grace, which replaced the names  and  after the  season, and were used for the  time in .
+113_boston boston that were not assigned are marked in .
+114_boston boston Temperatures accompanying the storm were unseasonably cold for   so close to : average daily maximum temperatures, in mid-March, are around  in ,  in , and  in .
+115_boston boston During the  storm, these places were all below freezing, and parts of   saw daily maximum temperatures as low as .
+116_boston boston Record low temperatures for  were recorded in much of the southern    recorded a record low of  during the storm.
+117_boston boston At  Axis transports were seen advancing to within  yards of the  Brigade positions and they were engaged with machine- and anti-tank gun fire from the Imperial Light Horse.
+118_boston boston During the early morning , the  Light had lost direction and veered too far north, resulting in the clash with ILH.
+119_boston boston While the Rand Light Infantry were driving off  towed artillery, South African    light bombers bombed their supply columns.
+120_boston boston By  the  Light had been halted and were pinned down by the  , determined to avenge  and the surrender of .
+121_boston boston The  Light only managing to extracate mselves under cover of a dust storm later in  .
+122_boston boston The  attack had been stopped all along the  line of defence.
+123_boston boston On   200 a water pipe in   broke and began flooding into the  .
+124_boston boston This led to unsanitary water conditions in the greater  area which resulted in Governor   declaring a state of emergency and an order for residents to boil drinking water.
+125_boston boston The leak was stopped on  .On  , the order was lifted.
+126_boston boston President   signed an emergency disaster declaration fering federal help, authorizing the          to coordinate disaster relief efforts with .
+127_boston boston The rupture worsened as the afternoon progressed, eventually resulting in the loss of access to clean water from the Quabbin and Wachusett Reservoirs for approximately   residents of  cities and towns, including .
+128_boston boston At the height of the spill, approximately  of water entered the   per .
+129_boston boston By evening, the     had activated the backup water system, which was drawing water from the  ,   , and Spot Pond .
+130_boston boston Because water from these older surface reservoirs is not treated, the  issued a boil order for the affected communities.
+131_boston boston On    hot wear over    culminated into record-breaking temperatures across  province of  also in   upstate   and  shattering long held records.
+132_boston boston reached  for the  time in   .
+133_boston boston The humidex reached  at the downtown station by late afternoon.
+134_boston boston It was deemed so hot that the unusual decision was made to close the dome at the   during the    baseball game, usually done in the event of cold weather or rain.
+135_boston boston The intense heat moved eastwards and  peaked along    corridor on    with    breaking  record for   at  which was  hottest temperature  city had experienced in over  .
+136_boston boston ,   also reached an all-time record high of , as did     in  at .
+137_boston boston surpassed its daily record when it reached , and  tied for the  highest temperature on record at , making it the hottest  in  .
+138_boston boston The heat was blamed for at least  deaths across the  and the Northeast.
+139_boston boston Daily high temperatures warmer than normal began on the southern plains during  , accompanied by  of the most severe droughts ever recorded.
+140_boston boston The heat wave continued to intensify, with temperatures in north  exceeding  most  beginning in mid-June.
+141_boston boston The "    riot" was a public disturbance that broke out in the downtown core of     on    .
+142_boston boston The riots happened immediately after the conclusion of the  ' win over the   in game  of the   , which won the   for .
+143_boston boston At least  people were reported as injured during the incident,  critically; at least  people were stabbed,  police officers were injured, and  people were arrested that night, with  further arrests following the event.
+144_boston boston The earthquake was felt throughout much of the    states.
+145_boston boston In  , , play at the     at  tennis tournament was stopped for   and the main stadium was evacuated while the fire department checked it for damage.
+146_boston boston No damage or injuries were reported.
+147_boston boston In , the     reported tremors and swaying buildings but no damage.
+148_boston boston The    in   was evacuated and the     closed early.
+149_boston boston In , the earthquake was felt as far north as  and , but no damage was reported in the state.
+150_boston boston After the publication of his  book about the   , Lord's literary agent suggested that he write about the  since he knew Lord had researched the subject for his amusement.
+151_boston boston Lord began his research for the book by going to the Library of  in   to read the   inquiry into the sinking.
+152_boston boston Realizing that he would have to interview survivors of the disaster to give him a full understanding of the sinking Lord, who was on a tight buget, began writing letters to the editors of various newspapers asking survivors to get in touch with him.
+153_boston boston Lord sent his letters to papers in  , , , , , , and   places he felt people connected to the  would come from.
+154_boston boston Additionally he was put in touch with survivors through   , who had just released the  movie "Titanic", who had themeselves been in touch with several of the survivors.
+155_boston boston Lord was eventually able to locate and correspond with nearly  survivors.
+156_boston boston After   of combat, "" lost its cross-jack yard and by 05:45 had suffered significant damage to its rigging and sails, rendering the ship significantly less manoeuvrable than "Embuscade".
+157_boston boston At 06:10 the main topmast was knocked over and the mizzen mast badly damaged, and   , as he was exhorting his men to greater efforts, a cannonball struck the rail where Captain Couray and   Lieuant   were standing.
+158_boston boston was killed instantly and  fell to the deck unresponsive, possibly killed.
+159_boston boston Believing his commander to be dead, Lieutenant   assumed command and had the bodies thrown overboard in an effort to prevent his sailors losing morale from the death of their captain.
+160_boston boston "Boston" continued to suffer under the heavier guns of the  ship and by 06:40 the mizzen mast was close to collapse and much of the remaining rigging had been shot away.
+161_boston boston Casualties mounted, with Lieutenant  and   both badly wounded, the latter blinded and the former struck on the head and briefly rendered unconscious.
+162_boston boston On  , , lying in wait off Point ,  , sighted and fired on SS "Black Point", a collier underway for , .
+163_boston boston Her torpedoes struck, and within  , "Black Point" had capsized in  of water, the last  merchant ship sunk in   .
+164_boston boston men died and  were rescued.
+165_boston boston of the rescuing ships — SS "Kamen" — sent a report of the torpedoing that was picked up the destroyer , destroyer escorts  and , and frigate ; they discovered "U-853" bottomed in , and dropped more than  depth charges through the night.
+166_boston boston ,  blimps from ,   — "K-16" and "K-58" — joined the attack, locating oil slicks and marking suspected locations with smoke and dye markers.
+167_boston boston "K-16" also attacked with  rocket bombs.
+168_boston boston Finally, planking, life rafts, a chart tabletop, clothing, and an officer's cap floated to the surface, indicating destruction with all  men.
+169_boston boston "U-853" was destroyed at sometime between midnight, when success was  claimed, and , when it was confirmed.
+170_boston boston In contrast, in the Central and Eastern  (CEUS) the crust is thicker, colder, older, and more stable.
+171_boston boston Furthermore, the CEUS is thousands of miles from active plate boundaries, so the rates of deformation are low in this region.
+172_boston boston Nevertheless, the  has had some rather large earthquakes in historical times, including a series of major earthquakes near  ,  in , a large earthquake near ,   in , and the   earthquake northeast of  in .
+173_boston boston This particular DC-9 had experienced a number of problems over   leading up to  incident;  maintenance reports had been filed in  plane's logs in   , and   records  telling  to "put [ tripping breakers] in  book re" when  breakers fail to respond to   reset attempt at 18:52.
+174_boston boston on    the plane then serving as   Flight  (  to   ) had suffered an explosive decompression in the rear bulkhead that required rebuilding the tail section and replacing or splicing most of the wiring and hydraulic lines in the back of the plane;  noted in an interview for the "Fire Flight" episode of "Mayday" that the   maintenance crew "did a heck of a job getting everything put back together" after the decompression incident.
+175_boston boston Investigators were unable to find signs of arcing in any of the wire splices from the repairs done   , though much of the wiring in the rear of the plane was severely damaged or destroyed by the fire itself.
+176_boston boston But the media did not ignore him.
+177_boston boston 's   would write about his outbursts as a  Indian: :It was a taken in baseball circles that   was nuts...
+178_boston boston The  billed him $10,000  yer for the dmge he cused in clubhouses on the rod nd t home, nd tolerted his behvior only becuse he ws n wesome slugger...
+179_boston boston He slurped coffee constantly and seemed to be on a perpetual caffeinated frenzy.
+180_boston boston Few escaped his wrath: on some  he would destroy the postgame buffet...launching plates into the shower... after  poor at-bat against , he retreated to the visitors' clubhouse and took a bat to teammate  's boombox.
+181_boston boston preferred to have the clubhouse cold, below  degrees, and when  chilly teammate turned up the heat,  walked over, turned down the thermostat and smashed it with his bat.
+182_boston boston His nickname, thereafter, was "Mr.
+183_boston boston Freeze."
+184_boston boston Several ships were torpedoed within sight of   cities such as   and ; indeed, some civilians sat on beaches and watched battles between  and  ships.
+185_boston boston The only documented    sinking of a U-boat close to   shores occurred on   194 when the U-83 torpedoed and sank the collier "Black Point" off port  .
+186_boston boston When the " " was hit, the   immediately chased down the sub and began dropping depth charges.
+187_boston boston , when an oil slick and floating debris appeared, they confirmed that the  and its entire crew had been destroyed.
+188_boston boston In  , the  has become a popular dive site.
+189_boston boston Its intact hull, with open hatches, is located in  of water off  ,  .
+190_boston boston A wreck discovered in  off the   coast was concluded in  to be that of U-869.
+191_boston boston , U-869 had been thought to have been sunk off , .
+192_boston boston The  Airborne's drop, mission "", began at 01:51.
+193_boston boston It was also a lift of  serials organized in  waves, totaling  paratroopers carried by  C-47s.
+194_boston boston The C-47s carrying the 505th did not experience the difficulties that had plagued the 101st's drops.
+195_boston boston Pathfinders on DZ O turned on their  beacons as the   serial crossed the initial point and lighted holophane markers on all  battalion assembly areas.
+196_boston boston As a result the 505th enjoyed the most accurate of the D-Day drops, half the regiment dropping on or within a mile of its DZ, and  per cent within .
+197_boston boston Americana has tropical climate, with hot summers and chilly winters.
+198_boston boston The median high temperature in  is F (C) and the median low is F (C), comparable to .
+199_boston boston In , the median high temperature is F (C) and the median low temperature is F (C), comparable to , .
+200_boston boston On     "Bennie"  (&ndash;) the  son of President-elect   and his wife   was killed in a train accident in town.
+201_boston boston noon express, traveling from  to , was moving at  miles  per  when an axle broke.
+202_boston boston The only coach, in which   was also riding, went down an embankment and broke in .
+203_boston boston (The baggage car and locomotive had remained on the track.)
+204_boston boston 's son was the only  killed, but it was initially reported that  was also a fatality.
+205_boston boston He was only badly bruised.
+206_boston boston The Pierces had  lost  other children.
+207_boston boston The death is said to have cast a pall on the couple, especially , who entertained hardly at all in the White House and spent much of her time writing letters to her dead children.
+208_boston boston She died, still grief-stricken, in .
+209_boston boston was seriously injured in a car accident on the night of   .
+210_boston boston He was driving from  to his home in , , and he stopped to assist  disabled motorists—brother and sister  and  .
+211_boston boston As  assisted the injured  to the side of the highway, an oncoming car swerved and hit them.
+212_boston boston was killed instantly;  survived because  had pushed her out of the way.
+213_boston boston was critically injured and both his legs were crushed.
+214_boston boston After a series of unsuccessful operations, his right leg was amputated above the knee, and he eventually lost the use of his left leg.
+215_boston boston spent   undergoing a series of painful operations and extensive physical therapy.
+216_boston boston Despite his efforts to walk with a prosthesis, chronic infections confined him to a wheelchair for the remainder of his life, and he battled clinical depression as a result of his condition.
+217_boston boston Over the course of these struggles 's  wife left him, taking with her their  young daughters.
+218_boston boston They tried to stand down during the storm just outside the    but the "James" lost all  anchors as no canvas or rope would hold but on    torn to pieces and not  death all  hundred-plus passengers aboard the "James" managed to make it to     .
+219_boston boston The  that fell at 's    was  third-biggest snowstorm in  history (biggest in    ) behind    blizzard   () and  Norastern   blizzard    and made    's snowiest  on record ( previous record being a mere ).
+220_boston boston It also set a record for 's greatest   snowfall.
+221_boston boston Parts of   received  to  mph wind gusts at the height of the storm.
+222_boston boston Providence recorded  of snow which was the  greatest on record at the time.
+223_boston boston Other parts of   reported more than   and up to  feet with  receiving , the city's largest snowfall in history.
+224_boston boston During the peak of the storm from about 11 p.m.   to 3 a.m.
+225_boston boston , snow fell in  at the rate of  per .
+226_boston boston Numerous lightning strikes and thunderclaps accompanied the extremely heavy snow, which accumulated  foot () in just that   period.
+227_boston boston Moderate to heavy snow continued through midmorning before tapering off.
+228_boston boston Prior to the storm,  had received just  of snow for the season.
+229_boston boston On  ,  was sunny with a high temperature of F and a cold front passed    dropping  temperature into  40s.
+230_boston boston Just prior to dawn on   , precipitation began to fall in the form of light rain.
+231_boston boston In  the rain began to mix with wet snow mid-morning and eventually turned to wet snow and became heavier just after 7 p.m. From 7 p.m. to 11 p.m. the snow fell at a rate of at least  per .
+232_boston boston A state of emergency was declared by  Gov.   .
+233_boston boston The snow came down too fast for road crews to keep up with and roads became impassable and thousands of cars were stranded.
+234_boston boston Commuter trolleys in  were closed for the  time in   , public transportation was crippled, about  motorists spent the night stranded in their cars and  stayed in shelters.
+235_boston boston Some of the narrow side streets of  were completely buried and portions of Interstate  and Route  were shut down because of the snow.
+236_boston boston The min rods nd highwys were clered within    dys but the secondry rods remined  mess mking trvel difficult.
+237_boston boston after the storm, subways and commuter rails were still sluggish because of fallen trees and signal problems.
+238_boston boston had many different hobbies.
+239_boston boston He was fascinated by  work of firefighters and would travel in his own vehicle to large fires in and around  at any time of   or night to watch  firefighters at work.
+240_boston boston He was even made an "Honorary Captain" in the   .
+241_boston boston A number of other fire departments gave him honorary fire helmets and/or badges.
+242_boston boston The official biography of  reports that the conductor  helped in the rescue efforts at the tragic Cocoanut Grove fire in  in .
+243_boston boston An avid sailor, he volunteered during    of    for  Temporary Reserve of     and was later a member of    .
+244_boston boston 's climate is variable.
+245_boston boston are typically cold, with frequent Nor'easters and occasional blizzards.
+246_boston boston Snowfall ranges widely from season to season, although the average is about .
+247_boston boston In the recent , there has been as little as  of snow (in the –  season) to  inches (in –).
+248_boston boston The amount decreases dramatically eastward towards  because of the influence of the  .
+249_boston boston Snowfall amounts can also decrease rapidly south of .
+250_boston boston Low temperatures below  are not uncommon in , and the lowest recent temperatures have been  below in   and  below in  .
+251_boston boston Average  high temperatures are in the low 30s.
+252_boston boston Average  low temperatures are in the upper teens.
+253_boston boston Snow depth can reach  feet or more during the  season.
+254_boston boston was notable for snow depths  nearly  inches during  and .
+255_boston boston Nearly  inches of snowfall was recorded in  in   alone.
+256_boston boston temperatures can be mitigated by penetrating cold fronts originating from the  , known as "Backdoor Cold Fronts".
+257_boston boston Typically, high temperatures consistently above  degrees do not set in until  .
+258_boston boston The last frost is usually in .
+259_boston boston Summers are generally comfortable, with periods of high humidity.
+260_boston boston Prolonged heat waves of  or more  with highs of  or above are uncommon but can occur.
+261_boston boston In   an unusually high temperature of  was reached.
+262_boston boston Average  high temperatures are in the low  and average lows are around .Severe  weather is not as common as areas to the west in  .
+263_boston boston However on    high winds occurred causing widespread tree damage through most of  with several homes damaged.
+264_boston boston This storm was part of a complex of severe storms that spawned several EF0 and EF1 tornadoes in towns in some neighboring counties.
+265_boston boston is pleasant with the  frost usually around  , and the peak of the  foliage season averages around  2. can expect a "white"  slightly over 50 percent of the time.
+266_boston boston Adult ALBs can be seen from   to fall, depending on the climate.
+267_boston boston The ALB was  discovered in the   in  in the  section of .
+268_boston boston Shortly after, another infestation was detected in  on  .
+269_boston boston Since then infestations have been found in the  area of   in  and in .
+270_boston boston In fact, several infested trees were removed around Central Park.
+271_boston boston The ALB was discovered in  in .
+272_boston boston An ALB infestation was detected in  ,   in  and in the     and Union Counties in .
+273_boston boston In  a sizeable infestation resulting in the removal of more than  trees was discovered in , .
+274_boston boston Ongoing inspection of host trees within the  quarantine area of   has revealed that, since , over  trees were infested; there is some evidence that the infestation may date back as far as .
+275_boston boston On     infested trees were found on the grounds of the   in the   neighborhood of   which is across the street from the   where an infestation is poised to devastate the oldest arboretum in .
+276_boston boston As of , the ALB is considered a threat to the forestry industry in  and steps are being taken to eradicate it.
+277_boston boston The aurora is thought to have been produced by  of the most intense coronal mass ejections in history, very near the maximum intensity that the  is thought to be capable of producing.
+278_boston boston It is also notable for the fact that it is the  time where the phenomena of auroral activity and electricity were unambiguously linked.
+279_boston boston This insight was made possible not only due to scientific magnetometer measurements of the era, but also as a result of a significant portion of the  of telegraph lines then in service being significantly disrupted for many  throughout the storm.
+280_boston boston Some telegraph lines, however, seem to have been of the appropriate length and orientation to produce a sufficient geomagnetically induced  from the electromagnetic field to allow for continued communication with the telegraph operator power supplies switched off.
+281_boston boston The following conversation occurred between  operators of the American Telegraph Line between  and , , on the night of 2   and reported in the " Traveler":
+282_boston boston The auroras that resulted from the "great geomagnetic storm" on both   and    are thought the most spectacular in recent recorded history.
+283_boston boston , in a paper to the   on   , described both auroral events as documented by a self-recording magnetograph at the   and established the connection between the    auroral storm and the  flare event when he observed that "it is not impossible to suppose that in this case our luminary was taken "in the act"."
+284_boston boston The  auroral event, which occurred on    as a result of the exceptionally intense  white light solar flare on   , produced auroras so widespread and extraordinarily brilliant that they were seen and reported in published scientific measurements, ship logs, and newspapers throughout the  , , , and .
+285_boston boston It was reported by the "  " that in  on     the aurora was "so brilliant that at about one o'clock ordinary print could be read by the light".
+286_boston boston One o'clock  time on   , would have been 6:00 GMT and the self-recording magnetograph at the   was recording the geomagnetic storm, which was then   , at its full intensity.
+287_boston boston Between  and ,   published a series of  papers on the Great Auroral Exhibition of  in the "American Journal of Science" where he collected world wide reports of the auroral event.
+288_boston boston The works on Breed's  did not go unnoticed by the .
+289_boston boston General , out on reconnaissance that night, was aware of them, and tried to convince  and  that they needed to prepare to attack the position at daylight.
+290_boston boston sentries were also aware of the activity, but most apparently did not think it cause for alarm.
+291_boston boston Then, in the early predawn, around 4:00 am, a sentry on board  spotted the new fortification, and notified her captain.
+292_boston boston "Lively" opened fire, temporarily halting the colonists' work.
+293_boston boston Aboard his flagship , Admiral   awoke, irritated by the gunfire that he had not ordered.
+294_boston boston He stopped it, only to have General  countermand his decision when he became fully aware of the situation in the morning.
+295_boston boston He ordered all  guns in the harbor, as well as batteries atop 's  in , to fire on the colonial position, which had relatively little effect.
+296_boston boston The rising sun also alerted  to a significant problem with the location of the redoubt – it could easily be flanked on either side.
+297_boston boston He promptly ordered his men to begin constructing a breastwork running down the hill to the east, deciding he did not have the manpower to also build additional defenses to the west of the redoubt.
+298_boston boston Some of Stark's men were engaged in driving the livestock further up the coast.
+299_boston boston Others noticed that "" was in trouble, and called for reinforcements.
+300_boston boston General  and as many as  troops (including  ) came up on the shore near "Diana", a place at the mouth of  , in the modern  neighborhood by the  bridge to  .
+301_boston boston waded out into the harbor up to his waist and offered quarter to the sailors of "Diana" if they would surrender, but its cannon continued to fire, and attempts to tow her into deeper water continued.
+302_boston boston Colonial forces continued firing on the ship, supported by  field pieces positioned on the shore.
+303_boston boston "Britannia" and field pieces the  had landed on 's  also joined the cannonade.
+304_boston boston At about 10 pm, the  rowers were forced to abandon the rescue of "Diana" due to the heavy fire.
+305_boston boston "Diana" drifted and ran aground again on the   side of the  coast, tipping onto  side.
+306_boston boston Lieutenant Graves abandoned "Diana" and transferred his men to "Britannia", which was successfully towed to deeper water.
+307_boston boston A captains' conference on the "" revealed little damage and no men killed.
+308_boston boston It was discovered that the original ammunition message had been garbled - instead of only  rounds of ammunition per gun remaining, the message had meant to say only  rounds of ammunition per gun had been expended.
+309_boston boston During the conference reports arrived that sounds of exploding ammunition had been heard and fires sighted on the "Cristina" and "Castilla".
+310_boston boston At 10:40 AM action was resumed but the  offered little resistance and  issued orders for the remaining ships to be scuttled and the breechblocks of their guns taken ashore.
+311_boston boston The "Olympia", "Baltimore" and "" then fired on the   battery putting it out of action and followed up by sinking the "Ulloa".
+312_boston boston The "Concord" fired on the transport "", whose crew immediately abandoned ship.
+313_boston boston The "Petrel" fired on the government offices next to the arsenal and a white flag was raised over the building after which all firing ceased.
+314_boston boston The  colors were struck at 12:40 PM.
+315_boston boston On  , "U-83" was lying in wait off the point when she sighted and fired on the  " ", a collier with armed guards aboard underway for , .
+316_boston boston Her torpedoes struck, and within  , "Black Point" had capsized in  of water, the last  merchant ship sunk in the war.
+317_boston boston men died, including  of the guards, and  others were rescued by nearby vessels.
+318_boston boston of the rescuing ships, the SS "Kamen", sent a report of the torpedoing that was picked up by    HQ, in  , and  Naval District HQ, in , who immediately started to assemble a search and destroy mission.
+319_boston boston The attacks continued through the night, and at  oil, planking, life rafts, a chart tabletop, clothing, and an officer's cap were detected.
+320_boston boston Nevertheless destruction of "U-853" was not accepted by HQ in , and the hunt continued.
+321_boston boston After daybreak,  K class blimps, "K-16" and "K-58", from ,  , joined the attack, locating oil slicks and marking suspected locations with smoke and dye markers.
+322_boston boston "K-16" also attacked with  rocket bombs.
+323_boston boston Finally, at ,    HQ accepted the destruction of the U-boat, and the hunt was called off.
+324_boston boston The men  chose for his expedition were volunteers drawn from   companies serving in the Siege of .
+325_boston boston They were formed into  battalions for the expedition; a  battalion was composed of riflemen from  and  under Lieutenant Colonel  's command.
+326_boston boston The trek through the wilderness of  was long and difficult.
+327_boston boston The conditions were wet and cold, and the journey took much longer than either  or  had expected.
+328_boston boston Bad weather and wrecked boats spoiled much of the expedition's food stores, and about  men of the original  died en route or turned back.
+329_boston boston Those who turned back, including  of the   battalions, took many of the remaining provisions with them.
+330_boston boston The men who continued on were starving by the time they reached the   settlements in  .
+331_boston boston On  , the  survivors of 's  from  to  arrived at  , on the south shore of the Saint  opposite  .
+332_boston boston Despite the condition of his troops,  immediately began to gather boats to make a crossing.
+333_boston boston He was prepared to do so on the night of  , but a storm delayed him for  .
+334_boston boston on the other side of the Saint ,  moved his troops onto the Plains of , about  miles ( km) from the city walls.
+335_boston boston took the land route across   and over the  , which some enterprising colonists had stripped of its planking to delay their way.
+336_boston boston His men then came upon an absent-minded tutor at   and asked him which road would take them to .
+337_boston boston The Harvard man, apparently oblivious to the reality of what was happening around him, showed him the proper road without thinking.
+338_boston boston (He was later compelled to leave the country for inadvertently supporting the enemy.)
+339_boston boston 's troops arrived in  at about 2:00 pm.
+340_boston boston They could hear gunfire in the distance as they set up their cannon and lines of regulars on high ground with commanding views of the town.
+341_boston boston Colonel 's men approached like a fleeing mob with the full complement of colonial militia in close formation pursuing them.
+342_boston boston ordered his artillery to open fire at extreme range, dispersing the colonial militiamen.
+343_boston boston 's men collapsed with exhaustion  they reached the safety of 's lines.
+344_boston boston The  began to awaken their troops at 9 pm on the night of   and assembled them on the water's edge on the western end of  Common by 10 pm.
+345_boston boston The   to and from  was a disorganized experience from start to finish.
+346_boston boston Colonel  was late in arriving, and there was no organized boat-loading operation, resulting in confusion at the staging area.
+347_boston boston The boats used were naval barges that were packed so tightly that there was no room to sit down.
+348_boston boston When they disembarked at   in , it was into waist-deep water at midnight.
+349_boston boston After a lengthy halt to unload their gear, the regulars began their   to  at about 2 am.
+350_boston boston During the wait they were provided with extra ammunition, cold salt pork, and hard sea biscuits.
+351_boston boston They did not carry knapsacks, since they would not be encamped.
+352_boston boston They carried their haversacks (food bags), canteens, muskets, and accoutrements, and marched off in wet, muddy shoes and soggy uniforms.
+353_boston boston As they marched through Menotomy, sounds of the colonial alarms throughout the countryside caused the few officers who were aware of their mission to realize they had lost the element of surprise.
+354_boston boston of the regulars recorded in his journal,
+355_boston boston The ride of , , and  triggered a flexible system of "alarm and muster" that had been carefully developed  before, in reaction to the colonists' impotent response to the Powder Alarm.
+356_boston boston This system was an improved version of an old network of widespread notification and fast deployment of local militia forces in times of emergency.
+357_boston boston The colonists had periodically used this system all  way back to    of  wars in  colony, before it fell into disuse in   and  .
+358_boston boston In addition to other express riders delivering messages, bells, drums, alarm guns, bonfires and a trumpet were used for rapid communication from town to town, notifying the rebels in dozens of eastern  villages that they should muster their militias because the regulars in numbers greater than  were leaving , with possible hostile intentions.
+359_boston boston This system was so effective that people in towns  from  were aware of the army's movements while they were still unloading boats in .
+360_boston boston These early warnings played a crucial role in assembling a sufficient number of colonial militia to inflict heavy damage on   regulars later in  .
+361_boston boston and  were eventually moved to safety,  to what is   and later to .
+362_boston boston It was the deadliest fire in the   since  when  people were killed in the Cocoanut Grove fire in .
+363_boston boston On    a major leak in the Interstate  north tunnel forced the closure of the tunnel while repairs were conducted.
+364_boston boston This also forced the   to release information regarding its non-disclosure of prior leaks.
+365_boston boston A follow-up reported on "extensive" leaks that were more severe than state authorities had  acknowledged.
+366_boston boston The report went on to state that the $14.6 billion tunnel system was riddled with more than  leaks.
+367_boston boston A " " report, however, countered that by stating there were nearly  leaks in a single  section of tunnel beneath South Station.
+368_boston boston Turnpike officials also stated that the number of leaks being investigated was down from   .
+369_boston boston The "Big Dig ceiling collapse" occurred on    when a concrete ceiling panel weighing  tons ( kg) and measuring  by  ft ( by  m) fell in 's    .
+370_boston boston The panel fell on a car traveling on the two-lane ramp connecting northbound I-93 to eastbound I-90 in  , killing a passenger and injuring the driver.
+371_boston boston The collapse caused a section of the tunnel to be closed for almost a full .
+372_boston boston On   ,  led a sortie on the   in which his  was hit repeatedly by  anti-aircraft fire, damaging fuselage, wings, fuel tanks and undercarriage.
+373_boston boston In spite of this he continued his ttck nd dropped his bombs t low level on buildings, mmunition dumps nd fuel stores, returning for   pss t the trget in order to strfe it with mchine-gun fire.
+374_boston boston managed to get his crippled machine back to base, where it was found to be marked with  bullet holes.
+375_boston boston , he and his two-man crew made a further attack on  with  other Bostons.
+376_boston boston As he bombed his designated target, 's plane was seen to burst into flames, raked by cannon fire from the ground.
+377_boston boston Attempting to keep his aircraft aloft as long as possible to get his crew away from enemy lines, he was able to ditch in the sea approximately  offshore.
+378_boston boston Just   , on  , Black Eagle Dam suffered damage in yet another flood.
+379_boston boston Almost  of rain fell in  , and the   rose by almost  in  .
+380_boston boston The   rose  above flood stage (which itself was  above the median water level).
+381_boston boston people in the city drowned.
+382_boston boston The  and  smelter toppled  fully loaded railroad cars into the Missouri just north of    in an attempt to divert the floodwaters from the plant.
+383_boston boston The worst flood in the city's history at the time, several buildings in town were also washed away.
+384_boston boston They smashed against   , and some went over the dam to break up on the waterfalls below.
+385_boston boston The pedestrian suspension bridge over the dam also washed out.
+386_boston boston (A plaque was placed on the  Street underpass to mark the extent of the high water.
+387_boston boston It can be seen there .)
+388_boston boston The dam itself suffered some damage as well.
+389_boston boston This damage was repaired, and the old wooden bridge to   replaced with a single-span steel  truss bridge capable of handling automobiles.
+390_boston boston The island  began to also serve as a parking lot for powerhouse and smelter workers.
+391_boston boston On    at about 2:30 PM  —a steel dam about  miles upstream from  — failed.
+392_boston boston A surge of water  to  high swept downstream.
+393_boston boston A  Northern Railway locomotive was dispatched to the city of  , warning stations along the way about the dam break.
+394_boston boston Workers at the  and  Smelter in   improvised a wing dam to deflect the floodwaters away from the smelter site and dynamited a portion of Black Eagle Dam to allow the floodwaters to go downstream.
+395_boston boston Their efforts were not needed, as the   only rose  by the time it reached that city.
+396_boston boston deaths occurred while the dynamiting attempt was made, however:  man drowned while trying to remove flashboards from the dam, and another drowned when his boat capsized.
+397_boston boston The ship's captain was dismissed and replaced with captain .
+398_boston boston The following season's journey to  was relatively uneventful, only involving the loss of the mizzen topgallant mast in a collision.
+399_boston boston was moved to command "Cutty sark" and replaced with  , who had been mate on the maiden voyage.
+400_boston boston Carrying coal from  to  she was caught in a typhoon, which caused the ship to heel over so much that the main and mizzen masts had to be cut away   more to right her.
+401_boston boston The cargo had shifted and had to be moved before the ship could be properly righted, but she limped on to  where new masts were fitted and she proceeded to  and loaded a cargo for  .
+402_boston boston In the  sea the ship hit an uncharted reef and stuck fast, despite throwing the cargo overboard.
+403_boston boston the ship was abandoned and the crew taken off by  "Albyn's isle", which had come to their assistance.
+404_boston boston A squall sprang up, which  blew the ship clear of the reef and after  a chase of some  the crew managed to reboard the ship and take control of their vessel again.
+405_boston boston A slow journey to  followed.
+406_boston boston For the  season she was commanded by captain .
+407_boston boston The "Blue   ", also known as "Great Blue  Weather ", "Blue  Weather ", or simply the "Blue  ", in ,  is the foremost structure associated with the history of weather observations in the  .
+408_boston boston Located atop    at  junction of Interstate 20px and Route20px about  miles ( km) south of , , it is home to  oldest continuous wear record in  , and was  location of  earliest kite soundings of  atmosphere in   in  , as well as  development of  radiosonde in  .
+409_boston boston The  bomber crews had intended to bomb the Haagse Bos where the  had installed V-2 launching facilities that had been used to attack  cities.
+410_boston boston But the pilots were issued with the wrong coordinates so the meteorological instruments of the bombers had been set incorrectly, and fog and clouds obscured their vision.
+411_boston boston The bombs were instead dropped on the Bezuidenhout residential neighbourhood.
+412_boston boston On the morning of 3 ,  medium and light bombers of the B-25  and  types from No.  and No.  Wings of the     took off from the airfields  near  and  in  .
+413_boston boston Between  and 9 o'clock in the morning the bombers dropped  tonnes of brisant bombs on the , wreaking widespread destruction.
+414_boston boston On    in the   neighborhood a large molasses storage tank burst and a wave of molasses rushed through the streets at an estimated  killing  and injuring 0.
+415_boston boston event has entered local folklore, known as    .
+416_boston boston Summers are typically warm, rainy, and humid, while winters are cold, windy, and snowy.
+417_boston boston and  are usually mild, but conditions are widely varied, depending on wind direction and jet stream positioning.
+418_boston boston Prevailing wind patterns that blow offshore affect , minimizing the influence of the  .
+419_boston boston 's coastal location on the  , although it moderates temperatures, also makes the city very prone to Nor'easter weather systems that can produce much snow and rain.
+420_boston boston The city verges  of precipittion  yer, with  of snowfll  yer.
+421_boston boston Snowfall increases dramatically as  goes inland away from the city (especially north and west of the city)—away from the warming influence of the ocean.
+422_boston boston Most snowfall occurs from  through .
+423_boston boston There is usually little or no snow in  and , and snow is rare in  and .
+424_boston boston Fog is somewhat common, particularly in  and  , and the occasional tropical storm or hurricane can threaten the region, especially in  .
+425_boston boston Due to its situation along   ,  city is often subjected to sea breezes, especially in   , when water temperatures are still quite cold and temperatures at  coast can be more than  colder than a few miles inland, sometimes dropping by that amount near midday.
+426_boston boston From  to , the city experiences thunderstorms that are occasionally severe; large hail, damaging winds and heavy downpours accompany such severe events.
+427_boston boston Although downtown  has never been struck by a violent tornado, the city itself has seen its fair share of tornado warnings, but damaging storms are more common to areas north, west, and northwest of the city.
+428_boston boston In ,    was asked to help transport flood victims in , .
+429_boston boston Torrential rains had left   area of  isolated and the  were brought in to ferry people in and out of their neighborhood until the waters receded.
+430_boston boston The  "Great Fire" of  began on   .
+431_boston boston The fire destroyed  buildings, killed  people, and caused $75,000,000 in property damage.
+432_boston boston The fire required mutual aid companies from as far away as  ,  and ,  .
+433_boston boston On    only   after the fatal accident another apparatus malfunction occurred.
+434_boston boston Ladder  was en route to  Fire Headquarters to have maintenance work done when the turbo fuel injector malfunctioned, flooding the engine thus launching the truck into a parked vehicle.
+435_boston boston That  Ladder  was using a    reserve apparatus out of the Boylston Street fire station.
+436_boston boston It's  frontline piece was out for maintenance.
+437_boston boston On    the  Street Conflagration occurred and ultimately destroyed or damaged  multi-family dwellings.
+438_boston boston This conflagration would greatly tax the resources of the    and the   mutual-aid network before being brought under control.
+439_boston boston Although many firefighters and citizens were injured, no fatalities were recorded.
+440_boston boston Questions have been raised about the safety of the apparatus on the   .
+441_boston boston On   200 Lieutenant    was killed and  other firefighters were seriously injured when the apparatus they were riding on Ladder  struck a building while returning to the station from a medical call.
+442_boston boston A braking malfunction has been cited as the culprit of the fatal accident.
+443_boston boston Ladder , accompanied by Engine , was stationed out of the   fire station which has been said to be the busiest in .
+444_boston boston The " Fire Department" ("BFD") provides fire protection services for , , .
+445_boston boston In addition to fire protection, the  also provides emergency medical services at the  level and respond to a variety of emergencies such as, but not limited to, motor vehicle accidents, hazardous material spills, electrical hazards, floods, and construction accidents.
+446_boston boston The department serves approximately  people in a  area of the city proper and additional mutual aid to  surrounding communities of the     including   .
+447_boston boston Headquarters is located at   , .
+448_boston boston The Training Academy is located on   in  .
+449_boston boston The    responds to approximately  emergency calls annually.
+450_boston boston At 2:35 PM on     an alarm from Box  was received at  Fire Alarm for the Hotel Vendome on Commonwealth Avenue at   in the  .
+451_boston boston It took    to stop the 4-alarm blaze.
+452_boston boston During overhauling operations the southeast section of the building unexpectedly collapsed killing   firefighters: Lieutenant    (Engine ), Lieutenant    (Ladder ), Firefighter    (Engine ), Firefighter    (Engine ), Firefighter    (Engine ), Firefighter    (Engine ), Firefighter    (Ladder ), Firefighter    (Ladder ) and Firefighter    (Engine ); and injuring  more.
+453_boston boston The famous  fire of  led to the appointment of a board of fire commissioners.
+454_boston boston The    also provided assistance in the Great Chelsea  of  and the Great Salem  of .
+455_boston boston A large fire occurred at  Federal Street on   .
+456_boston boston The building was constructed of granite and wood, and occupied by an axe manufacturer and a bindery.
+457_boston boston Boston Firefighters were killed as a result of the fire, when a wall collapsed onto the roof of a nearby building on which they were performing their duties.
+458_boston boston The deceased firefighters were the   persons interred at the Fireman's Lot at   .
+459_boston boston Both incidents raised questions about the safety of the fire department's apparatus.
+460_boston boston The fighters Union called upon the    Vehicle Inspection Unit to inspect all fire apparatus at the   .
+461_boston boston This fire was the worst tragedy in the history of the    and  of the most deadly fires in the history of  firefighting.
+462_boston boston On the evening of    firefighters responded to a report of a fire in the Tai-Ho  restaurant in the   neighborhood of .
+463_boston boston It ws reported tht smoke ws observed on rrivl, nd   lrm ws promptly trnsmitted out of concern for the djoining businesses.
+464_boston boston In , the height of the tower was raised to  and it was listed as a second-order station.
+465_boston boston On    the square rigger "Maritana"  tons which had sailed from     with Captain  ran into heavy seas in   and approached  in a blinding snow driven by a howling southeaster.
+466_boston boston At  o’clock in the morning of  , she sighted   and headed for it, but crashed on Shag Rocks soon after, with passengers and crew ordered into the weather chains after the crew had cut the masts away.
+467_boston boston The ship broke in  and Captain  was crushed to death, but  persons floated to Shag Rocks atop the pilot house, while  others swam to the ledge, as fragments of the wreckage started coming ashore on both sides of   .
+468_boston boston A dory from the pilot boat rescued the survivors from the rocks.
+469_boston boston When the "Fanny Pike" went ashore on Shag Rocks in , Keeper   rowed out and took the crew safely off the ledge.
+470_boston boston The " " called the "Incident on King Street" by the  was an incident on    in which   soldiers killed  civilian men and injured  others.
+471_boston boston troops had been stationed in , capital of the Province of  , since  in order to protect and support crown-appointed colonial officials  attempting to enforce unpopular Parliamentary legislation.
+472_boston boston Amid ongoing tense relations between the population and the soldiers, a mob formed around a  sentry, who was subjected to verbal abuse and harassment.
+473_boston boston He was eventually supported by  additional soldiers, who were subjected to verbal threats and thrown objects.
+474_boston boston They fired into the crowd, without orders, instantly killing  people and wounding others.
+475_boston boston more people died later of wounds sustained in the incident.
+476_boston boston to the scene were  cadets under the direction of Lieutenant Commander    from USS "Nantucket", a training ship of the    (which is  the   ), that was docked nearby at the playground pier.
+477_boston boston They ran several blocks toward the accident.
+478_boston boston They worked to keep the curious from getting in the way of the rescuers while others entered into the knee-deep sticky mess to pull out the survivors.
+479_boston boston Soon the  ,  ,  and other  personnel arrived.
+480_boston boston Some nurses from the   dived into the molasses, while others tended to the wounded, keeping them warm as well as keeping the exhausted workers fed.
+481_boston boston Many of these people worked through the night.
+482_boston boston The injured were so numerous that doctors and surgeons set up a makeshift hospital in a nearby building.
+483_boston boston Rescuers found it difficult to make their way through the syrup to help the victims.
+484_boston boston It took   before they stopped searching for victims; many dead were so glazed over in molasses, they were hard to recognize.
+485_boston boston "The  " reported that people "were picked up by a rush of air and hurled many feet."
+486_boston boston Others had debris hurled at them from the rush of sweet-smelling air.
+487_boston boston A truck was picked up and hurled into  .
+488_boston boston Approximately  were injured;  people and several horses were killed — some were crushed and drowned by the molasses.
+489_boston boston The wounded included people, horses, and dogs; coughing fits became  of the most common ailments after the initial blast.
+490_boston boston The collapse unleashed an immense wave of molasses between    ft (   m) high, moving at  mph ( km/h),  exerting a pressure of  ton/ft² (00 kPa).
+491_boston boston The molasses wave was of sufficient force to damage the girders of the adjacent   's   structure and tip a railroad car momentarily off the tracks.
+492_boston boston Nearby, buildings were swept off their foundations and crushed.
+493_boston boston Several blocks were flooded to a depth of .
+494_boston boston As described by author  :
+495_boston boston The " Molasses Disaster" also known as the "Great Molasses Flood" and the "Great  Molasses Tragedy" occurred on    in the   neighborhood of   in the  .
+496_boston boston A large molasses storage tank burst, and a wave of molasses rushed through the streets at an estimated  mph ( km/h), killing  and injuring .
+497_boston boston The event has entered local folklore, and residents claim that on hot  , the area still smells of molasses.
+498_boston boston The   was originally about  wide at normal high tide.
+499_boston boston The  wave of settlers built a wooden town gate and earthen wall on the neck in   to prevent attacks from  and to keep out unwanted animals and people.
+500_boston boston The gate was constantly guarded and usually locked during certain times during the evening.
+501_boston boston No residents could enter or leave during that period.
+502_boston boston There was a wooden gallows just outside the town gate.
+503_boston boston Burglars and pickpockets were commonly executed in those , as well as murderers.
+504_boston boston Violence peaked        –.
+505_boston boston Businesses were better prepared.
+506_boston boston Some had boarded up and others stayed open all night with armed guards visible to discourage thieves taking advantage of the strike.
+507_boston boston Gamblers played dice in open view, and women had their handbags snatched.
+508_boston boston But the  proved inexperienced at handling crowds and they were quick to assert control without regard for loss of life.
+509_boston boston Gunfire in   left  dead and others wounded.
+510_boston boston Scollay Square, a center of amusement halls and theaters, was reportedly the scene of a riot where  died.
+511_boston boston Whether the crowds were threatening property or making trouble because they were in sympathy with the strikers is unknown.
+512_boston boston The death total ultimately reached .
+513_boston boston Although pay was the primary grievance of the  police, there were many other problems.
+514_boston boston Beyond the py scle there ws the mtter of , which hd not chnged in over hlf  .
+515_boston boston worked a  , with   off every 15 s.
+516_boston boston Ptrolmen who worked   shift put in     nd "night men" worked    , while "wgon men" worked  .
+517_boston boston After  dy off, the men were required to serve  "house dy" which ment they were on cll t the sttion from 8:00m until 6:00pm performing vrious tsks such s recording duty, wgon runs nd ttending to the "signl desk."
+518_boston boston After a  break, they reported back to the station house at 9:00pm where they slept for   until 12:00am at which time the bell rang for roll call and they "went out on the street" until 8:00am.
+519_boston boston After that, they could go home, but had to be back at 6:00pm for what they called an "evening on the floor" which meant performing the same type of duties such as taking care of prisoners, wagon trips or "whatever turned up."
+520_boston boston At 9:00pm the patrolman went back to bed for  .
+521_boston boston On    at 9:00 AM the  Explosion severely destroyed much of the city.
+522_boston boston authorities learned of the disaster via telegraph, and quickly organized and dispatched a relief train around 10:00 PM that night, to assist survivors.
+523_boston boston A blizzard following the explosion delayed the train, which finally arrived in the early morning on  , and immediately began distributing food, water, and medical supplies.
+524_boston boston Numerous personnel on the train were able to relieve the   medical staff, most of whom had worked without rest since the explosion occurred.
+525_boston boston Town meeting authorized a new light, which was completed in , which lasted until .
+526_boston boston From     issue  The   nd    nd Advertiser "We her from  tht on      Instnt () t   o’clock in  Morning y hd  most violent Gust  Wind tht perhps ws ever known re but it lsted only   .
+527_boston boston It seemed to come in a narrow Vein, and in its progress blew down.
+528_boston boston and totally destroyed the Light-House on that , besides several Shops, Barns, etc.Had the Gust continued   it is thought it would not have left more than half the Buildings standing, in the Course that it passed.
+529_boston boston But we don’t hear of any Persons receiving much hurt, nor much Damage done, except the loss of the Light-House which in every respect is considerable."
+530_boston boston was also close to the scene of  of 's worst train accidents.
+531_boston boston The  occurred on   19 about a mile south of the station near where   (CT ) passes underneath and   passes overhead.
+532_boston boston people were killed and  injured; excessive speed through a crossover was the cause.
+533_boston boston The  occurred on    due to excessive speed on a sharp curve approaching the station;  person was killed and  were injured.
+534_boston boston Both accidents involved the same train, the northbound " " overnight train from ,  to .
+535_boston boston The "Broad Street Riot" occurred in    on   .
+536_boston boston The riot began when a company of  firefighters met with an  funeral procession on Broad Street.
+537_boston boston Fire Engine Company  was returning from a fire in .
+538_boston boston Many of the firefighters went to a saloon nearby.
+539_boston boston Afterwards, while traveling back to the firestation,   either insulted or shoved members of a passing  funeral procession.
+540_boston boston The  and firemen began to fight, but under the orders of  , the firemen ran to the station.
+541_boston boston sounded the emergency alarm, calling all of the fire engines in .
+542_boston boston Although many of the  had left the scene, the fire companies continued to come as called.
+543_boston boston As the fight continued, local  and  joined the row.
+544_boston boston Eventually  people were included in the melee, though no  was killed.
+545_boston boston Several houses were broken into and vandalized, and the rioters launched rocks and other missiles at each other.
+546_boston boston The fight was broken up when Mayor    commanded  companies from the military to patrol the neighborhoods surrounding Broad Street.
+547_boston boston Construction on the Phalanstery was progressing well until the evening of    when it was discovered that the Phalanstery had caught fire.
+548_boston boston Within  , the structure had completely burned down; firefighters from  arrived too late.
+549_boston boston The fire was likely caused by a defective chimney.
+550_boston boston participant noted, "Ere long the flames were chasing  another in a mad riot over the structure; running across long corridors and up and down the supporting columns of wood, until the huge edifice was a mass of firework".
+551_boston boston The financial blow from the loss of the uninsured building was $7,000 and it marked the beginning of the end of  .
+552_boston boston was  of the  victims of the  Cocoanut Grove fire in , , dying   after the   blaze.
+553_boston boston For , legend held that 's fatal injuries were the result of his going back into the burning building to save victims, but it is  kn that he was trapped in the fire.
+554_boston boston producer    (–), who was hosting a party being held in 's honor, was seriously hurt but survived.
+555_boston boston In , a 15-meter high molasses tank in  burst, killing  and injuring .
+556_boston boston A few other tanks have failed in a similar manner in the  , but they have usually resulted in relatively few deaths.
+557_boston boston However, bunding's main purpose in unoccupied areas is to prevent environmental damage.
+558_boston boston Bund wall failures have occurred in the , such as at ,   in .
+559_boston boston A polypropylene tank holding about  tonnes of 40% aqueous caustic soda sprang a leak about halfway down the main wall.
+560_boston boston The corrosive fluid jetted out over the bund wall, causing great damage to the surrounding factory and adjacent premises.
+561_boston boston The bunding at  also failed to contain  petrol and other fluids.
+562_boston boston At , Captain   took command of "" on   , and on  , put to sea to meet the waiting HMS "Shannon", the frigate whose written challenge had just missed ""s sailing.
+563_boston boston During   of firing, the vessels fired  full broadsides;  shots struck "Chesapeake", while  struck "Shannon".
+564_boston boston "Chesapeake" suffered early in the exchange of broadsides, having her wheel shot away, costing her her maneuverability.
+565_boston boston himself was mortally wounded and was carried below.
+566_boston boston The crew struggled to carry out their captain's last order, "Don't give up the ship!", but the  boarding party overwhelmed them.
+567_boston boston The battle lasted  , killing or wounding  men.
+568_boston boston ""s Captain   was severely injured in fighting on the forecastle.
+569_boston boston "Chesapeake" and her crew were taken to ,   where the sailors were imprisoned; the ship was repaired and taken into service by the  .
+570_boston boston She was sold at ,  in  and broken up.
+571_boston boston Surviving timbers were used to build the nearby   in  and can be seen and visited to  .
+572_boston boston Many of his ascents were made alone, as when he went up from  in  , and again in  when he made a night ascent from .
+573_boston boston During his career he had many dangerous experiences.
+574_boston boston In , when ascending from , accompanied by Mr. , some malicious person partly severed the ropes which attached the car to the balloon, so that in starting the car broke away from the balloon, and its occupants had to take refuge on the hoop of the balloon, in which position they had a perilous journey and a most dangerous descent, when they were both injured.
+575_boston boston Mr.  received a serious contusion on the left side of the chest, and Mr.  a severe injury of the spine.
+576_boston boston This is the only case on record of such a balloon voyage.
+577_boston boston In   made his  ascent, from  in , accompanied by   of Reading, a deaf and dumb gentleman, when a violent thunderstorm threatened the safety of the balloon.
+578_boston boston On   , on going up from  with Mr. , a jerk of the grappling-iron upset the car and went near to throwing out the aeronaut and his companion.
+579_boston boston was the  to demonstrate, in , that coal-gas was applicable to the inflation of balloons.
+580_boston boston Before his time pure hydrogen gas was used, a substance very expensive, the generation of which was so slow that   were required to fill a large balloon, and then the gas was excessively volatile.
+581_boston boston He was also the inventor of ‘the guide-rope,’ a rope trailing from the car, which could be lowered or raised by means of a windlass and used to regulate the ascent and descent of the balloon.
+582_boston boston After living in retirement for many  he died suddenly of heart disease at his residence,  ,   , , ,   .
+583_boston boston On    at around 1:30am a   bound train derailed just before the    stop.
+584_boston boston It struck a nearby utility pole which brought down the overhead wires, causing the trolley to catch fire.
+585_boston boston Train service was replaced by buses well into   .
+586_boston boston No injuries were reported, but the trolley suffered significant damage.
+587_boston boston In , a re-investigation of 's Cocoanut Grove nightclub fire in  cited a chloromethane leak from a refrigerator as a major cause of that disaster.

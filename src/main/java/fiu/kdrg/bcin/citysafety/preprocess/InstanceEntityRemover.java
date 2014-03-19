@@ -24,10 +24,10 @@ import edu.stanford.nlp.util.CoreMap;
 import fiu.kdrg.bcin.citysafety.core.Instance;
 import fiu.kdrg.bcin.citysafety.util.Constants;
 
-public class InstanceEnityRemover {
+public class InstanceEntityRemover {
 
 	private static Logger logger = LoggerFactory
-			.getLogger(InstanceEnityRemover.class);
+			.getLogger(InstanceEntityRemover.class);
 	private static StanfordCoreNLP pipeline;
 
 	static {
@@ -41,9 +41,9 @@ public class InstanceEnityRemover {
 	
 	public static void main(String[] args) {
 		
-		InstanceEnityRemover entityRemover = new InstanceEnityRemover();
+		InstanceEntityRemover entityRemover = new InstanceEntityRemover();
 //		preprocessor.removeEntity(Constants.testString);
-		String city = "chicago";
+		String city = "san+francisco";
 		String input = String.format(Constants.dataBaseUrl + "disaster-%s.txt", city);
 		String mOutput = String.format(Constants.dataBaseUrl + "disaster-%s-NER.txt", city);
 		String oOutput = String.format(Constants.dataBaseUrl + "disaster-%s-OBJ.txt", city);

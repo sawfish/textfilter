@@ -367,9 +367,12 @@ public class ComparisonBrain extends TrainedModel {
 	public static void main(String[] args) {
 		
 		
-		String cityOne = "miami";
-		String cityTwo = "chicago";
+		String cityOne = "los+angeles";
+		String cityTwo = "philadelphia";
 		ComparisonBrain brain = new ComparisonBrain(cityOne, cityTwo);
+		System.out.println(String.format("city %s %s.", cityOne,brain.getNumOfcityOneInst()));
+		System.out.println(String.format("city %s %s.", cityTwo,brain.getNumOfcityTwoInst()));
+		
 		
 		List<Edge> edges = brain.queryEdges(cityOne);
 		System.out.println(edges.size());
@@ -384,7 +387,8 @@ public class ComparisonBrain extends TrainedModel {
 		EdgeUtil.printEdges(edges);
 		
 		Edge edge = brain.queryEdges(cityOne, 0, 0);
-		System.out.println(edge.toString());
+		if(edge != null)
+			System.out.println(edge.toString());
 //		EdgeUtil.printEdges(edges);
 		brain.computeStat();
 		
