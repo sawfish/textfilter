@@ -66,7 +66,7 @@ function createBipartiteGraph(data){
 	for(var i = 0; i < effects.length; i++){
 		var effect = effects[i];
 		var eNode = $("<div class='node e_node' id='effect_" 
-				+ effect.id +"' style='top:" + i*5 +"px;left:400px'></div>");
+				+ effect.id +"' style='top:" + i*5 +"px;left:500px'></div>");
 		$("#graph_panel").append(eNode);
 		//generate word cloud
 		$("#effect_" + effect.id).jQCloud(effect.words);
@@ -93,7 +93,7 @@ function createBipartiteGraph(data){
 				location : 0.8
 			} ],
 			["Label",{
-				location: 0.8,
+				location: 0.7,
 				label: edge.weight.toFixed(2),
 				cssClass:"wLabel " + cityOne + "_wLabel"
 			}]]
@@ -116,7 +116,7 @@ function createBipartiteGraph(data){
 				location : 1
 			} ],
 			["Label",{
-				location: 1,
+				location: 0.9,
 				label: edge.weight.toFixed(2),
 				cssClass:"wLabel " + cityTwo + "_wLabel"
 			}]]
@@ -213,7 +213,7 @@ function jsPlumbInit() {
 	var colorCityOne = "#2FCC22";
 	jsPlumb.cityOneEndpoint = {
 			endpoint: ["Dot", {
-	            radius: 3
+	            radius: 4
 	        }],
 	        paintStyle: {
 	            fillStyle: colorCityOne
@@ -237,8 +237,8 @@ function jsPlumbInit() {
 	
 	var colorCityTwo = "#6498f3";
 	jsPlumb.cityTwoEndpoint = {
-			endpoint: ["Dot", {
-	            radius: 3
+			endpoint: ["Rectangle", {
+	            radius: 1
 	        }],
 	        anchor: "BottomLeft",
 	        paintStyle: {
@@ -255,7 +255,10 @@ function jsPlumbInit() {
 	        	outlineWidth: 2,
 	        	outlineColor: "white"
 	        },
-	        connector: "Straight",
+//	        connector: ["StateMachine",{
+//	        	curviness: 20
+//	        }],
+	        connector:"Straight",
 	        maxConnections: -1,
 	        isSource: true,
 	        scope: 'cityTwo',
