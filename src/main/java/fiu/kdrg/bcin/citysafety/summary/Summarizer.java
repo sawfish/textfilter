@@ -7,10 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fiu.kdrg.bcin.citysafety.core.Instance;
+import fiu.kdrg.textmining.data.DocumentCorpus;
+import fiu.kdrg.textmining.data.Sentence;
+import fiu.kdrg.textmining.summ.comparative.CompAlg;
+import fiu.kdrg.textmining.summ.comparative.ConceptBasedILP;
 
 public class Summarizer {
 
   private Logger logger = LoggerFactory.getLogger(Summarizer.class);
+  private List<String> summaries = new ArrayList<String>();
   
   
   /**
@@ -21,9 +26,20 @@ public class Summarizer {
    *    A array which first element is summarization for corpusOne, second is for corpusTwo
    */
   public List<String> summarize(List<Instance> corpusOne, List<Instance> corpusTwo){
-    List<String> summaries = new ArrayList<String>();
-    summaries.add(summarizeInstance(corpusOne));
-    summaries.add(summarizeInstance(corpusTwo));
+    if(summaries.size() == 2)
+      return summaries;
+    
+    if(corpusOne.size() == 0 || corpusTwo.size() == 0){
+      summaries.add("No Comparative Information.");
+      summaries.add("No Comparative Information.");
+    }
+    
+    DocumentCorpus a = DocumentCorpus.loadACorpus(new InstancesReader(corpusOne));
+    DocumentCorpus b = DocumentCorpus.loadACorpus(new InstancesReader(corpusTwo));
+    
+    CompAlg comp = new ConceptBasedILP();
+    extractSummaries(comp.summarize(a, b).toString());
+    
     return summaries;
   } 
   
@@ -43,6 +59,31 @@ public class Summarizer {
     	return sb.toString().substring(0,200);
     else
     	return sb.toString();
+  }
+  
+  
+  private String stritifySummary(List<Sentence> summary){
+    String sum = "";
+    for(Sentence se : summary){
+      sum += se.getText() + "\n";
+    }
+    
+    return sum;
+  }
+  
+  
+  private void extractSummaries(String ss){
+    
+    String[] sum = ss.split("\n\n");
+    if(sum.length != 2){
+      logger.info("something wrong here");
+      summaries.add("No Comparative Information.");
+      summaries.add("No Comparative Information.");
+      return;
+    }
+    
+    summaries.add(sum[0]);
+    summaries.add(sum[1]);
   }
   
   

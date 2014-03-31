@@ -1,5 +1,7 @@
 package fiu.kdrg.bcin.citysafety.core;
 
+import fiu.kdrg.textmining.data.Sentence;
+
 /**
  * 
  * @author zhouwubai
@@ -76,4 +78,5 @@ public class Instance {
 	public String genRealID(){
 		return this.sid+"_"+this.city;
 	}
+	
 }
