@@ -26,7 +26,7 @@ public class InstancesReader implements CorpusReader {
   @Override
   public Document next() {
     // TODO Auto-generated method stub
-    if (counter <= ss.size()) {
+    if (counter < ss.size()) {
       Document doc = new Document(ss.get(counter).getText(), String.format(
           "%s_%d", ss.get(counter).getCity(), ss.get(counter).getSid()));
       counter++;

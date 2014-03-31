@@ -6,7 +6,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fiu.kdrg.bcin.citysafety.core.ComparisonBrain;
 import fiu.kdrg.bcin.citysafety.core.Instance;
+import fiu.kdrg.bcin.citysafety.servlet.helper.ModelCache;
 import fiu.kdrg.textmining.data.DocumentCorpus;
 import fiu.kdrg.textmining.data.Sentence;
 import fiu.kdrg.textmining.summ.comparative.CompAlg;
@@ -85,6 +87,51 @@ public class Summarizer {
     summaries.add(sum[0]);
     summaries.add(sum[1]);
   }
+  
+  
+  
+  public static void main(String[] args) {
+	
+	  	String cityOne = "miami";
+	    String cityTwo = "chicago";
+	    String dID = "1";
+	    String eID = "2";
+	    
+	    
+	    ComparisonBrain brain = ModelCache.query(cityOne, cityTwo);
+	    List<Instance> cityOneInsts = null;
+	    List<Instance> cityTwoInsts = null;
+	    
+	    if(dID.isEmpty() && eID.isEmpty()){
+	      cityOneInsts = brain.queryInstances(cityOne);
+	      cityTwoInsts = brain.queryInstances(cityTwo);
+	    }else if(dID.isEmpty() || eID.isEmpty()){
+	      
+	      //this has been implemented yet
+	      if(dID.isEmpty()){
+	        
+	      }
+	      
+	      if(eID.isEmpty()){
+	        cityOneInsts = brain.queryInstances(cityOne, Integer.parseInt(dID));
+	        cityTwoInsts = brain.queryInstances(cityTwo, Integer.parseInt(dID));
+	      }
+	      
+	    }else{
+	      
+	      cityOneInsts = brain.queryInstances(cityOne, Integer.parseInt(dID), Integer.parseInt(eID));
+	      cityTwoInsts = brain.queryInstances(cityTwo, Integer.parseInt(dID), Integer.parseInt(eID));
+	      
+	    }
+	    
+	    List<String> summaries = (new Summarizer()).summarize(cityOneInsts, cityTwoInsts);
+	    System.out.println(summaries.get(0));
+	    System.out.println();
+	    System.out.println(summaries.get(1));
+	  
+}
+  
+  
   
   
 }
