@@ -22,7 +22,8 @@ public class Constants {
 	    + "in British Hong Kong, as Chan Kong-sang, to Charles and Lee-Lee Chan, refugees from the Chinese Civil War.";
 	
 //	public static String dataBaseUrl = "/home/zhouwubai/U/workplace/textfilter/data/";
-	public static String dataBaseUrl = "/home/zhouwubai/Documents/workspace/java/textfilter/data/";
+//	public static String dataBaseUrl = "/home/zhouwubai/Documents/workspace/java/textfilter/data/";
+	public static String dataBaseUrl = "/home/users/wzhou005/workspace/textfilter/data/";
 	
 	
 }

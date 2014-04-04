@@ -12,13 +12,13 @@ import fiu.kdrg.bcin.citysafety.servlet.helper.ModelCache;
 import fiu.kdrg.textmining.data.DocumentCorpus;
 import fiu.kdrg.textmining.data.Sentence;
 import fiu.kdrg.textmining.summ.comparative.CompAlg;
+import fiu.kdrg.textmining.summ.comparative.ComparativeSummary;
 import fiu.kdrg.textmining.summ.comparative.ConceptBasedILP;
 
 public class Summarizer {
 
   private Logger logger = LoggerFactory.getLogger(Summarizer.class);
-  private List<String> summaries = new ArrayList<String>();
-  
+  private static CompAlg comp = new ConceptBasedILP();
   
   /**
    * 
@@ -28,19 +28,27 @@ public class Summarizer {
    *    A array which first element is summarization for corpusOne, second is for corpusTwo
    */
   public List<String> summarize(List<Instance> corpusOne, List<Instance> corpusTwo){
-    if(summaries.size() == 2)
-      return summaries;
     
+	 List<String> summaries = new ArrayList<String>();
+	  
     if(corpusOne.size() == 0 || corpusTwo.size() == 0){
       summaries.add("No Comparative Information.");
       summaries.add("No Comparative Information.");
+      return summaries;
     }
     
     DocumentCorpus a = DocumentCorpus.loadACorpus(new InstancesReader(corpusOne));
     DocumentCorpus b = DocumentCorpus.loadACorpus(new InstancesReader(corpusTwo));
     
-    CompAlg comp = new ConceptBasedILP();
-    extractSummaries(comp.summarize(a, b).toString());
+    comp = new ConceptBasedILP();
+    ComparativeSummary cSummary = comp.summarize(a, b);
+    if(cSummary == null){
+    	logger.info("cSummary none");
+    	summaries.add("No Comparative Information.");
+        summaries.add("No Comparative Information.");
+    }else{
+    	summaries = extractSummaries(cSummary.toString());
+    }
     
     return summaries;
   } 
@@ -74,18 +82,21 @@ public class Summarizer {
   }
   
   
-  private void extractSummaries(String ss){
+  private List<String> extractSummaries(String ss){
     
+	List<String> summaries = new ArrayList<String>();
+	
     String[] sum = ss.split("\n\n");
     if(sum.length != 2){
       logger.info("something wrong here");
       summaries.add("No Comparative Information.");
       summaries.add("No Comparative Information.");
-      return;
+      return summaries;
     }
     
     summaries.add(sum[0]);
     summaries.add(sum[1]);
+    return summaries;
   }
   
   
@@ -113,8 +124,8 @@ public class Summarizer {
 	      }
 	      
 	      if(eID.isEmpty()){
-	        cityOneInsts = brain.queryInstances(cityOne, Integer.parseInt(dID));
-	        cityTwoInsts = brain.queryInstances(cityTwo, Integer.parseInt(dID));
+	        cityOneInsts = brain.queryInstancesByDisaster(cityOne, Integer.parseInt(dID));
+	        cityTwoInsts = brain.queryInstancesByDisaster(cityTwo, Integer.parseInt(dID));
 	      }
 	      
 	    }else{

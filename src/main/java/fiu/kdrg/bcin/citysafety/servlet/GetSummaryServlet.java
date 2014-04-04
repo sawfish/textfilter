@@ -74,8 +74,8 @@ public class GetSummaryServlet extends HttpServlet {
       }
       
       if(eID.isEmpty()){
-        cityOneInsts = brain.queryInstances(cityOne, Integer.parseInt(dID));
-        cityTwoInsts = brain.queryInstances(cityTwo, Integer.parseInt(dID));
+        cityOneInsts = brain.queryInstancesByDisaster(cityOne, Integer.parseInt(dID));
+        cityTwoInsts = brain.queryInstancesByDisaster(cityTwo, Integer.parseInt(dID));
       }
       
     }else{

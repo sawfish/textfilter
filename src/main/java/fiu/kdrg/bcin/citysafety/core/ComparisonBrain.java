@@ -95,20 +95,58 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	// queryInstances API, return empty size array if none
+	/**
+	 * Function query instances according disaster id and effect id. 
+	 * if disasterIdx == -1, filtering will not be imposed upon disaster,
+	 * same for effect. If both equals to -1, it will query all instances
+	 * about one city.
+	 * 
+	 * @param city
+	 * @param disasterIdx 
+	 * 			-1 means no disaster node select
+	 * @param topicIdx  
+	 * 			-1 means no topic node select
+	 * @return 
+	 * 			A list of instances filtered by disaster and effect
+	 */
 	public List<Instance> queryInstances(String city, int disasterIdx,
 			int topicIdx) {
+		
+		//some special case we take care of.
+		if(disasterIdx == -1 || topicIdx == -1){
+			if(disasterIdx == -1 && topicIdx == -1){
+				return queryInstances(city);
+			}else if(disasterIdx == -1){
+				return queryInstancesByTopic(city, topicIdx);
+			}else{
+				return queryInstancesByDisaster(city, disasterIdx);
+			}
+		}
+		
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
-		List<Instance> insts = queryInstances(city, disasterIdx);
+		List<Instance> insts = queryInstancesByDisaster(city, disasterIdx);
 		int[][] sortIdx = docTopicM.rowSortingPermutations();
 
 		return filterInstanceByTopic(insts, sortIdx, topicIdx);
 
 	}
 
-	public List<Instance> queryInstances(String city, int disasterIdx) {
+	public List<Instance> queryInstancesByDisaster(String city, int disasterIdx) {
+	
 		return filterInstanceByKeyWords(queryInstances(city),
 				disaster[disasterIdx]);
 	}
+	
+	
+	public List<Instance> queryInstancesByTopic(String city, int topicIdx){
+		
+		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
+		List<Instance> insts = queryInstances(city);
+		int[][] sortIdx = docTopicM.rowSortingPermutations();
+	
+		return filterInstanceByTopic(insts, sortIdx, topicIdx);				
+	}
+	
 
 	public List<Instance> queryInstances(String city) {
 		return loadCityInstances(city);
@@ -226,7 +264,12 @@ public class ComparisonBrain extends TrainedModel {
 
 	
 	
-	
+	/**
+	 * For every city, I first extract all instances related to disasters.
+	 * for every disaster, there is an ArrayList<Instance> corresponds to it.
+	 * for every instance, Only make contribution to the effect which it most
+	 * likely belongs to (This might be changed in the future).
+	 */
 	private void computeAllEdges() {
 		if (!edgesOfCities.isEmpty())
 			return;
@@ -237,7 +280,7 @@ public class ComparisonBrain extends TrainedModel {
 		Map<Integer, List<Instance>> disasterInstsCityOne = new HashMap<Integer, List<Instance>>();
 
 		for (int i = 0; i < disaster.length; i++) {
-			disasterInstsCityOne.put(i, queryInstances(cityOne, i));
+			disasterInstsCityOne.put(i, queryInstancesByDisaster(cityOne, i));
 		}
 
 		Map<String, Edge> edgesMCityOne = new HashMap<String, Edge>();
@@ -268,7 +311,7 @@ public class ComparisonBrain extends TrainedModel {
 		Map<Integer,List<Instance>> disasterInstsCityTwo = new HashMap<Integer, List<Instance>>();
 		
 		for (int i = 0; i < disaster.length; i++){
-			disasterInstsCityTwo.put(i, queryInstances(cityTwo, i));
+			disasterInstsCityTwo.put(i, queryInstancesByDisaster(cityTwo, i));
 		}
 		
 		Map<String,Edge> edgesMCityTwo = new HashMap<String, Edge>();
@@ -316,8 +359,8 @@ public class ComparisonBrain extends TrainedModel {
 		//compute instance number level 1
 		DoubleMatrix cities = new DoubleMatrix(2,numD);
 		for(int d = 0; d < numD; d++){
-			cities.put(0, d, queryInstances(cityOne, d).size());
-			cities.put(1, d, queryInstances(cityTwo, d).size());
+			cities.put(0, d, queryInstancesByDisaster(cityOne, d).size());
+			cities.put(1, d, queryInstancesByDisaster(cityTwo, d).size());
 		}
 		System.out.println(cities.toString("%2.0f"));
 		
