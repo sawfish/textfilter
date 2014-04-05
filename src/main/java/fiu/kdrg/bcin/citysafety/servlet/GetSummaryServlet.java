@@ -1,6 +1,9 @@
 package fiu.kdrg.bcin.citysafety.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
@@ -13,11 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import fiu.kdrg.bcin.citysafety.core.ComparativeSummaryPair;
 import fiu.kdrg.bcin.citysafety.core.ComparisonBrain;
 import fiu.kdrg.bcin.citysafety.core.Disaster;
 import fiu.kdrg.bcin.citysafety.core.Edge;
 import fiu.kdrg.bcin.citysafety.core.Effect;
 import fiu.kdrg.bcin.citysafety.core.Instance;
+import fiu.kdrg.bcin.citysafety.db.DBConnection;
 import fiu.kdrg.bcin.citysafety.servlet.helper.ModelCache;
 import fiu.kdrg.bcin.citysafety.summary.Summarizer;
 
@@ -59,33 +64,8 @@ public class GetSummaryServlet extends HttpServlet {
     String eID = request.getParameter("eID");
     
     
-    ComparisonBrain brain = ModelCache.query(cityOne, cityTwo);
-    List<Instance> cityOneInsts = null;
-    List<Instance> cityTwoInsts = null;
-    
-    if(dID.isEmpty() && eID.isEmpty()){
-      cityOneInsts = brain.queryInstances(cityOne);
-      cityTwoInsts = brain.queryInstances(cityTwo);
-    }else if(dID.isEmpty() || eID.isEmpty()){
-      
-      //this has been implemented yet
-      if(dID.isEmpty()){
-        
-      }
-      
-      if(eID.isEmpty()){
-        cityOneInsts = brain.queryInstancesByDisaster(cityOne, Integer.parseInt(dID));
-        cityTwoInsts = brain.queryInstancesByDisaster(cityTwo, Integer.parseInt(dID));
-      }
-      
-    }else{
-      
-      cityOneInsts = brain.queryInstances(cityOne, Integer.parseInt(dID), Integer.parseInt(eID));
-      cityTwoInsts = brain.queryInstances(cityTwo, Integer.parseInt(dID), Integer.parseInt(eID));
-      
-    }
-    
-    List<String> summaries = (new Summarizer()).summarize(cityOneInsts, cityTwoInsts);
+    ComparativeSummaryPair csp = getSummary(cityOne, cityTwo, 
+    		Integer.parseInt(dID), Integer.parseInt(eID));
     
 //    Gson gson = new Gson();
     JsonObject jsonObj = new JsonObject();
@@ -93,8 +73,8 @@ public class GetSummaryServlet extends HttpServlet {
 //    jsonObj.add("disasters", gson.toJsonTree(disasters));
     jsonObj.addProperty("cityOne", cityOne);
     jsonObj.addProperty("cityTwo", cityTwo);
-    jsonObj.addProperty("cityOneSummary", summaries.get(0));
-    jsonObj.addProperty("cityTwoSummary", summaries.get(1));
+    jsonObj.addProperty("cityOneSummary", csp.getSummary1());
+    jsonObj.addProperty("cityTwoSummary", csp.getSummary2());
     
 //  System.out.println(jsonObj.toString());
     
@@ -106,5 +86,49 @@ public class GetSummaryServlet extends HttpServlet {
     
     
   }
+  
+  
+  
+  
+  private ComparativeSummaryPair getSummary(String cityOne,String cityTwo,int dID,int eID){
+	  
+	 String sql = "select * from summary where city1 = ? and city2 = ? and cid = ? and eid = ?";
+	 
+	 Connection conn = null;
+	 PreparedStatement pstm = null;
+	 
+	 try {
+		 conn = DBConnection.getConnection();
+		 pstm = conn.prepareStatement(sql);
+		 
+		 pstm.setString(1, cityOne);
+		 pstm.setString(2, cityTwo);
+		 pstm.setInt(3, dID);
+		 pstm.setInt(4, eID);
+		 
+		 ResultSet rs = pstm.executeQuery();
+		 ComparativeSummaryPair csp = new ComparativeSummaryPair();
+		 
+		 if(rs.next()){
+			csp.setCityOne(cityOne);
+			csp.setCityTwo(cityTwo);
+			csp.setCid(dID);
+			csp.setEid(eID);
+			csp.setSummary1(rs.getString("summary1"));
+			csp.setSummary2(rs.getString("summary2"));
+		 }
+		 
+		 return csp;
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	 
+	 return null;
+	  
+  }
+  
+  
+  
+  
 
 }

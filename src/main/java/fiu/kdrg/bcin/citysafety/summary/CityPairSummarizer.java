@@ -97,6 +97,7 @@ public class CityPairSummarizer extends Summarizer {
 			pstm.executeBatch();
 			conn.commit();
 			conn.setAutoCommit(true);
+			conn.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
