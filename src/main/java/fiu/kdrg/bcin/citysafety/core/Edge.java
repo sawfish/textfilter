@@ -1,11 +1,15 @@
 package fiu.kdrg.bcin.citysafety.core;
 
-public class Edge {
+import java.io.Serializable;
 
-  double weight;
-  int source;
-  int target;
-  String city;
+public class Edge implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+
+  private double weight;
+  private int source;
+  private int target;
+  private String city;
 
 
   public Edge(String city, int source, int target, double weight){

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jblas.DoubleMatrix;
 import org.slf4j.Logger;
@@ -22,107 +23,103 @@ public class ComparisonBrain extends TrainedModel {
 			"tornado" };
 
 	private Map<String, List<Edge>> edgesOfCities;
+	private Map<String, List<Edge>> normEdgesByD;
+	private Map<String, List<Edge>> normEdgesByE;
 	private int numTopics;
 
 	public ComparisonBrain(String cityOne, String cityTwo) {
 		super(cityOne, cityTwo);
 		edgesOfCities = new HashMap<String, List<Edge>>();
+		normEdgesByD = new HashMap<String, List<Edge>>();
+		normEdgesByE = new HashMap<String, List<Edge>>();
 		loadModel();
 		numTopics = topicWeightedWords.size();
 	}
 
-	
-	
-	
-	//query basic element about this topic
-	public List<Disaster> queryAllDisaster(){
-		
+	// query basic element about this topic
+	public List<Disaster> queryAllDisaster() {
+
 		List<Disaster> ds = new ArrayList<Disaster>();
-		for(int i = 0; i < disaster.length; i++){
+		for (int i = 0; i < disaster.length; i++) {
 			ds.add(new Disaster(i, disaster[i]));
 		}
-		
+
 		return ds;
 	}
-	
-	
-	
-	
+
 	/**
 	 * 
-	 * @param eSize eSize indicates how many words we will extract.remember eSize 
-	 *  should be less than word size. Here we will skip this check.
+	 * @param eSize
+	 *            eSize indicates how many words we will extract.remember eSize
+	 *            should be less than word size. Here we will skip this check.
 	 * @return
 	 */
-	public List<Effect> queryAllEffect(int eSize){
-		
+	public List<Effect> queryAllEffect(int eSize) {
+
 		List<Effect> effects = new ArrayList<Effect>();
-		
-		for(Map.Entry<Integer, Map<String,Double>> en : getTopicWeightedWords().entrySet()){
-			
+
+		for (Map.Entry<Integer, Map<String, Double>> en : getTopicWeightedWords()
+				.entrySet()) {
+
 			int did = en.getKey();
-			Map<String,Double> words = en.getValue();
+			Map<String, Double> words = en.getValue();
 			List<Double> prob = new ArrayList<Double>();
-			for(Map.Entry<String, Double> en2 : words.entrySet()){
+			for (Map.Entry<String, Double> en2 : words.entrySet()) {
 				prob.add(en2.getValue());
 			}
-			Collections.sort(prob,Collections.reverseOrder());
-			
+			Collections.sort(prob, Collections.reverseOrder());
+
 			Double threshold = prob.get(eSize - 1);
 			List<Word> tWords = new ArrayList<Word>();
 			int count = 0;
-			for(Map.Entry<String, Double> en2 : words.entrySet()){
-				if(count >= eSize) break;
-				if(en2.getValue() >= threshold){
+			for (Map.Entry<String, Double> en2 : words.entrySet()) {
+				if (count >= eSize)
+					break;
+				if (en2.getValue() >= threshold) {
 					tWords.add(new Word(en2.getKey(), en2.getValue()));
-					count ++;
+					count++;
 				}
 			}
-			
+
 			effects.add(new Effect(did, tWords));
-			
+
 		}
-		
+
 		return effects;
 	}
-	
-	
-	//default eSize 50
-	public List<Effect> queryAllEffect(){
+
+	// default eSize 50
+	public List<Effect> queryAllEffect() {
 		return queryAllEffect(50);
 	}
-	
-	
-	
+
 	// queryInstances API, return empty size array if none
 	/**
-	 * Function query instances according disaster id and effect id. 
-	 * if disasterIdx == -1, filtering will not be imposed upon disaster,
-	 * same for effect. If both equals to -1, it will query all instances
-	 * about one city.
+	 * Function query instances according disaster id and effect id. if
+	 * disasterIdx == -1, filtering will not be imposed upon disaster, same for
+	 * effect. If both equals to -1, it will query all instances about one city.
 	 * 
 	 * @param city
-	 * @param disasterIdx 
-	 * 			-1 means no disaster node select
-	 * @param topicIdx  
-	 * 			-1 means no topic node select
-	 * @return 
-	 * 			A list of instances filtered by disaster and effect
+	 * @param disasterIdx
+	 *            -1 means no disaster node select
+	 * @param topicIdx
+	 *            -1 means no topic node select
+	 * @return A list of instances filtered by disaster and effect
 	 */
 	public List<Instance> queryInstances(String city, int disasterIdx,
 			int topicIdx) {
-		
-		//some special case we take care of.
-		if(disasterIdx == -1 || topicIdx == -1){
-			if(disasterIdx == -1 && topicIdx == -1){
+
+		// some special case we take care of.
+		if (disasterIdx == -1 || topicIdx == -1) {
+			if (disasterIdx == -1 && topicIdx == -1) {
 				return queryInstances(city);
-			}else if(disasterIdx == -1){
+			} else if (disasterIdx == -1) {
 				return queryInstancesByTopic(city, topicIdx);
-			}else{
+			} else {
 				return queryInstancesByDisaster(city, disasterIdx);
 			}
 		}
-		
+
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstancesByDisaster(city, disasterIdx);
 		int[][] sortIdx = docTopicM.rowSortingPermutations();
@@ -132,21 +129,19 @@ public class ComparisonBrain extends TrainedModel {
 	}
 
 	public List<Instance> queryInstancesByDisaster(String city, int disasterIdx) {
-	
+
 		return filterInstanceByKeyWords(queryInstances(city),
 				disaster[disasterIdx]);
 	}
-	
-	
-	public List<Instance> queryInstancesByTopic(String city, int topicIdx){
-		
+
+	public List<Instance> queryInstancesByTopic(String city, int topicIdx) {
+
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstances(city);
 		int[][] sortIdx = docTopicM.rowSortingPermutations();
-	
-		return filterInstanceByTopic(insts, sortIdx, topicIdx);				
+
+		return filterInstanceByTopic(insts, sortIdx, topicIdx);
 	}
-	
 
 	public List<Instance> queryInstances(String city) {
 		return loadCityInstances(city);
@@ -155,57 +150,70 @@ public class ComparisonBrain extends TrainedModel {
 	
 	
 	
-	//queryEdges API, return empty size array if none, return null if none for single Edge
+	// queryEdges API, return empty size array if none, return null if none for
+	// single Edge
+	public static int UNNORMALIZED = 1;
+	public static int NORMALIZED_D = 2;
+	public static int NORMALIZED_E = 3;
+	private int typeOfEdges = NORMALIZED_D;//default value
+	
 	/**
-	 * @return
-	 * 		return map containing edges about two cities.
+	 * @return return map containing edges about two cities.
 	 */
-	public Map<String, List<Edge>> queryAllEdges(){
-		if(edgesOfCities.isEmpty())
+	public Map<String, List<Edge>> queryAllEdges() {
+		if (edgesOfCities.isEmpty())
 			computeAllEdges();
+
+		Map<String,List<Edge>> edges = null;
+		switch (typeOfEdges) {
+		case 1:
+			edges = edgesOfCities;
+			break;
+		case 2:
+			edges = normEdgesByD;
+			break;
+		case 3:
+			edges = normEdgesByE;
+			break;
+			
+		default:
+			edges = edgesOfCities;
+			break;
+		}
 		
-		return edgesOfCities;
+		return edges;
 	}
-	
+
 	public List<Edge> queryEdges(String city) {
-		if(edgesOfCities.isEmpty())
-			computeAllEdges();
-		
-		return edgesOfCities.get(city);
+		return queryAllEdges().get(city);
 	}
-	
-	
-	public List<Edge> queryEdges(String city, int disaster){
-		
+
+	public List<Edge> queryEdges(String city, int disaster) {
+
 		List<Edge> edges = queryEdges(city);
 		List<Edge> qualifiedEdges = new ArrayList<Edge>();
-		
-		for(Edge edge : edges){
-			if(edge.getSource() == disaster){
+
+		for (Edge edge : edges) {
+			if (edge.getSource() == disaster) {
 				qualifiedEdges.add(edge);
 			}
 		}
-		
+
 		return qualifiedEdges;
 	}
-	
-	
-	
-	public Edge queryEdges(String city, int disaster, int topic){
+
+	public Edge queryEdges(String city, int disaster, int topic) {
 		List<Edge> edges = queryEdges(city, disaster);
-		
-		for(Edge edge : edges){
-			if(edge.getTarget() == topic){
+
+		for (Edge edge : edges) {
+			if (edge.getTarget() == topic) {
 				return edge;
 			}
 		}
-		
+
 		return null;
 	}
-	
-	
-	
-	
+
 	private void loadModel() {
 
 		loadCityInstances(cityOne);
@@ -220,8 +228,6 @@ public class ComparisonBrain extends TrainedModel {
 
 	}
 
-	
-	
 	private List<Instance> filterInstanceByKeyWords(List<Instance> insts,
 			String keyword) {
 		List<Instance> rtn = new ArrayList<Instance>();
@@ -232,8 +238,6 @@ public class ComparisonBrain extends TrainedModel {
 		return rtn;
 	}
 
-	
-	
 	/**
 	 * insts and sortIdx must be about same city.
 	 * 
@@ -262,13 +266,11 @@ public class ComparisonBrain extends TrainedModel {
 		return rtn;
 	}
 
-	
-	
 	/**
-	 * For every city, I first extract all instances related to disasters.
-	 * for every disaster, there is an ArrayList<Instance> corresponds to it.
-	 * for every instance, Only make contribution to the effect which it most
-	 * likely belongs to (This might be changed in the future).
+	 * For every city, I first extract all instances related to disasters. for
+	 * every disaster, there is an ArrayList<Instance> corresponds to it. for
+	 * every instance, Only make contribution to the effect which it most likely
+	 * belongs to (This might be changed in the future).
 	 */
 	private void computeAllEdges() {
 		if (!edgesOfCities.isEmpty())
@@ -284,17 +286,24 @@ public class ComparisonBrain extends TrainedModel {
 		}
 
 		Map<String, Edge> edgesMCityOne = new HashMap<String, Edge>();
-		for (Map.Entry<Integer, List<Instance>> entry : disasterInstsCityOne.entrySet()) {
+		for (Map.Entry<Integer, List<Instance>> entry : disasterInstsCityOne
+				.entrySet()) {
 			int key = entry.getKey();// disaster id
-			List<Instance> value = entry.getValue(); // all related instance about this cityOne on this disaster
+			List<Instance> value = entry.getValue(); // all related instance
+														// about this cityOne on
+														// this disaster
 
 			for (Instance inst : value) {
-				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst.getSid()].length - 1];
-				if(docTopicCityOne.get(key,wEntry) <= 0) continue;
-				
-				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(key,wEntry));
+				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst
+						.getSid()].length - 1];
+				if (docTopicCityOne.get(key, wEntry) <= 0)
+					continue;
+
+				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(
+						key, wEntry));
 				if (edgesMCityOne.containsKey(tmp.genRealID())) {
-					edgesMCityOne.get(tmp.genRealID()).addWeight(tmp.getWeight());
+					edgesMCityOne.get(tmp.genRealID()).addWeight(
+							tmp.getWeight());
 				} else {
 					edgesMCityOne.put(tmp.genRealID(), tmp);
 				}
@@ -303,29 +312,35 @@ public class ComparisonBrain extends TrainedModel {
 		}
 		edgesOfCities.put(cityOne, new ArrayList<Edge>(edgesMCityOne.values()));
 		logger.info(String.format("compute edges of %s city done!", cityOne));
-		
-		
-		//compute cityTwo
+
+		// compute cityTwo
 		DoubleMatrix docTopicCityTwo = getCityDocsWeightedTopicsMatrix(cityTwo);
 		int[][] sortIdxCityTwo = docTopicCityTwo.rowSortingPermutations();
-		Map<Integer,List<Instance>> disasterInstsCityTwo = new HashMap<Integer, List<Instance>>();
-		
-		for (int i = 0; i < disaster.length; i++){
+		Map<Integer, List<Instance>> disasterInstsCityTwo = new HashMap<Integer, List<Instance>>();
+
+		for (int i = 0; i < disaster.length; i++) {
 			disasterInstsCityTwo.put(i, queryInstancesByDisaster(cityTwo, i));
 		}
-		
-		Map<String,Edge> edgesMCityTwo = new HashMap<String, Edge>();
-		for(Map.Entry<Integer, List<Instance>> entry : disasterInstsCityTwo.entrySet()){
-			int key = entry.getKey();//disaster id
-			List<Instance> value = entry.getValue(); // all realted instance about this cityTwo on this disaster
-			
-			for(Instance inst : value){
-				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst.getSid()].length - 1];
-				if(docTopicCityTwo.get(key, wEntry) <= 0) continue;
-				
-				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(key, wEntry));
-				if (edgesMCityTwo.containsKey(tmp.genRealID())){
-					edgesMCityTwo.get(tmp.genRealID()).addWeight(tmp.getWeight());
+
+		Map<String, Edge> edgesMCityTwo = new HashMap<String, Edge>();
+		for (Map.Entry<Integer, List<Instance>> entry : disasterInstsCityTwo
+				.entrySet()) {
+			int key = entry.getKey();// disaster id
+			List<Instance> value = entry.getValue(); // all realted instance
+														// about this cityTwo on
+														// this disaster
+
+			for (Instance inst : value) {
+				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst
+						.getSid()].length - 1];
+				if (docTopicCityTwo.get(key, wEntry) <= 0)
+					continue;
+
+				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(
+						key, wEntry));
+				if (edgesMCityTwo.containsKey(tmp.genRealID())) {
+					edgesMCityTwo.get(tmp.genRealID()).addWeight(
+							tmp.getWeight());
 				} else {
 					edgesMCityTwo.put(tmp.genRealID(), tmp);
 				}
@@ -333,112 +348,193 @@ public class ComparisonBrain extends TrainedModel {
 		}
 		edgesOfCities.put(cityTwo, new ArrayList<Edge>(edgesMCityTwo.values()));
 		logger.info(String.format("compute edges of %s city done!", cityTwo));
-	}
 
+		normalizeEdges();
+	}
 	
 	
 	
+
+	/**
+	 * normalize all edges. There are two direction we do the normalization One:
+	 * from disaster viewpoint. Two: from effect viewpoint
+	 */
+	@SuppressWarnings("unchecked")
+	private void normalizeEdges() {
+
+		// normalization from disaster viewpoint
+		normEdgesByD.put(cityOne, (List<Edge>) SerializationUtils
+				.clone((ArrayList<Edge>) edgesOfCities.get(cityOne)));
+		normEdgesByD.put(cityTwo, (List<Edge>) SerializationUtils
+				.clone((ArrayList<Edge>) edgesOfCities.get(cityTwo)));
+
+		// cityOne
+		Map<Integer, Double> N = new HashMap<Integer, Double>();
+		for (Edge e : normEdgesByD.get(cityOne)) {
+			int s = e.getSource();
+			if (N.containsKey(s)) {
+				N.put(s, N.get(s) + e.getWeight());
+			} else {
+				N.put(s, e.getWeight());
+			}
+		}
+		for (Edge e : normEdgesByD.get(cityOne)) {
+			e.setWeight(e.getWeight() / N.get(e.getSource()));
+		}
+		// cityTwo
+		N.clear();
+		for (Edge e : normEdgesByD.get(cityTwo)) {
+			int s = e.getSource();
+			if (N.containsKey(s)) {
+				N.put(s, N.get(s) + e.getWeight());
+			} else {
+				N.put(s, e.getWeight());
+			}
+		}
+		for (Edge e : normEdgesByD.get(cityTwo)) {
+			e.setWeight(e.getWeight() / N.get(e.getSource()));
+		}
+		logger.info("normalization done from disaster view point");
+
+		
+		
+		// normalization from effect viewpoint
+		normEdgesByE.put(cityOne, (List<Edge>) SerializationUtils
+				.clone((ArrayList<Edge>) edgesOfCities.get(cityOne)));
+		normEdgesByE.put(cityTwo, (List<Edge>) SerializationUtils
+				.clone((ArrayList<Edge>) edgesOfCities.get(cityTwo)));
+
+		// cityOne
+		N.clear();
+		for (Edge e : normEdgesByE.get(cityOne)) {
+			int s = e.getSource();
+			if (N.containsKey(s)) {
+				N.put(s, N.get(s) + e.getWeight());
+			} else {
+				N.put(s, e.getWeight());
+			}
+		}
+		for (Edge e : normEdgesByE.get(cityOne)) {
+			e.setWeight(e.getWeight() / N.get(e.getSource()));
+		}
+		// cityTwo
+		N.clear();
+		for (Edge e : normEdgesByE.get(cityTwo)) {
+			int s = e.getSource();
+			if (N.containsKey(s)) {
+				N.put(s, N.get(s) + e.getWeight());
+			} else {
+				N.put(s, e.getWeight());
+			}
+		}
+		for (Edge e : normEdgesByE.get(cityTwo)) {
+			e.setWeight(e.getWeight() / N.get(e.getSource()));
+		}
+		logger.info("normalization done from effect view point");
+
+	}
 	
+
 	public int getNumTopics() {
 		return numTopics;
 	}
-	
-	
-	public int getNumDisasters(){
+
+	public int getNumDisasters() {
 		return disaster.length;
 	}
 
 	
-	
-	public void computeStat(){
-		
+	public void setTypeOfEdges(int typeOfEdges) {
+		this.typeOfEdges = typeOfEdges;
+	}
+
+	public void computeStat() {
+
 		int numD = getNumDisasters();
 		int numT = getNumTopics();
-		System.out.println(String.format("number of disaster %d, number of topic %d.", numD,numT));
-		
-		//compute instance number level 1
-		DoubleMatrix cities = new DoubleMatrix(2,numD);
-		for(int d = 0; d < numD; d++){
+		System.out.println(String.format(
+				"number of disaster %d, number of topic %d.", numD, numT));
+
+		// compute instance number level 1
+		DoubleMatrix cities = new DoubleMatrix(2, numD);
+		for (int d = 0; d < numD; d++) {
 			cities.put(0, d, queryInstancesByDisaster(cityOne, d).size());
 			cities.put(1, d, queryInstancesByDisaster(cityTwo, d).size());
 		}
 		System.out.println(cities.toString("%2.0f"));
-		
-		//compute instance number
+
+		// compute instance number
 		DoubleMatrix cityOneM = new DoubleMatrix(numD, numT);
-		for(int row = 0; row < numD; row ++){
-			for(int col = 0; col < numT; col ++){
+		for (int row = 0; row < numD; row++) {
+			for (int col = 0; col < numT; col++) {
 				cityOneM.put(row, col, queryInstances(cityOne, row, col).size());
 			}
 		}
 		System.out.println(cityOneM.toString("%2.0f"));
-		
+
 		DoubleMatrix cityTwoM = new DoubleMatrix(numD, numT);
-		for(int row = 0; row < numD; row ++){
-			for(int col = 0; col < numT; col ++){
+		for (int row = 0; row < numD; row++) {
+			for (int col = 0; col < numT; col++) {
 				cityTwoM.put(row, col, queryInstances(cityTwo, row, col).size());
 			}
 		}
 		System.out.println(cityTwoM.toString("%2.0f"));
-		
-		
-		
-		//compute edge weight
+
+		// compute edge weight
 		DoubleMatrix cityOneE = new DoubleMatrix(numD, numT);
-		for(int row = 0; row < numD; row ++){
-			for(int col = 0; col < numT; col ++){
+		for (int row = 0; row < numD; row++) {
+			for (int col = 0; col < numT; col++) {
 				Edge edge = queryEdges(cityOne, row, col);
-				if(edge != null && edge.getWeight() > 0)
+				if (edge != null && edge.getWeight() > 0)
 					cityOneE.put(row, col, edge.getWeight());
 			}
 		}
 		System.out.println(cityOneE.toString("%3.1f"));
-		
+
 		DoubleMatrix cityTwoE = new DoubleMatrix(numD, numT);
-		for(int row = 0; row < numD; row ++){
-			for(int col = 0; col < numT; col ++){
+		for (int row = 0; row < numD; row++) {
+			for (int col = 0; col < numT; col++) {
 				Edge edge = queryEdges(cityTwo, row, col);
-				if(edge != null && edge.getWeight() > 0)
+				if (edge != null && edge.getWeight() > 0)
 					cityTwoE.put(row, col, edge.getWeight());
 			}
 		}
 		System.out.println(cityTwoE.toString("%3.1f"));
-		
+
 	}
+
+	
 	
 	
 	public static void main(String[] args) {
-		
-		
+
 		String cityOne = "los+angeles";
 		String cityTwo = "philadelphia";
 		ComparisonBrain brain = new ComparisonBrain(cityOne, cityTwo);
-		System.out.println(String.format("city %s %s.", cityOne,brain.getNumOfcityOneInst()));
-		System.out.println(String.format("city %s %s.", cityTwo,brain.getNumOfcityTwoInst()));
-		
-		
+		System.out.println(String.format("city %s %s.", cityOne,
+				brain.getNumOfcityOneInst()));
+		System.out.println(String.format("city %s %s.", cityTwo,
+				brain.getNumOfcityTwoInst()));
+
+		brain.setTypeOfEdges(ComparisonBrain.NORMALIZED_D);
 		List<Edge> edges = brain.queryEdges(cityOne);
 		System.out.println(edges.size());
 		EdgeUtil.printEdges(edges);
-		
+
 		edges = brain.queryEdges(cityTwo);
 		System.out.println(edges.size());
 		EdgeUtil.printEdges(edges);
-		
+
 		edges = brain.queryEdges(cityOne, 0);
 		System.out.println(edges.size());
 		EdgeUtil.printEdges(edges);
-		
+
 		Edge edge = brain.queryEdges(cityOne, 0, 0);
-		if(edge != null)
+		if (edge != null)
 			System.out.println(edge.toString());
-//		EdgeUtil.printEdges(edges);
+		// EdgeUtil.printEdges(edges);
 		brain.computeStat();
-		
-		
+
 	}
-	
-	
-	
-	
+
 }

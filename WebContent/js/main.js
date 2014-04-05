@@ -136,7 +136,7 @@ function createBipartiteGraph(data){
 			}else{
 				con.setHover(true);
 				var dID = con.sourceId;
-				visualizeSummaries(cityOne,cityTwo,dID.substring(dID.lastIndexOf("_")+1),"");
+				visualizeSummaries(cityOne,cityTwo,dID.substring(dID.lastIndexOf("_")+1),"-1");
 			}
 		});
 	});

@@ -63,7 +63,6 @@ public class GetSummaryServlet extends HttpServlet {
     String dID = request.getParameter("dID");
     String eID = request.getParameter("eID");
     
-    
     ComparativeSummaryPair csp = getSummary(cityOne, cityTwo, 
     		Integer.parseInt(dID), Integer.parseInt(eID));
     
