@@ -3,10 +3,8 @@ package fiu.kdrg.bcin.citysafety.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang.SerializationUtils;
 import org.apache.commons.lang.StringUtils;
@@ -201,6 +199,22 @@ public class ComparisonBrain extends TrainedModel {
 
 		return qualifiedEdges;
 	}
+	
+	
+	public List<Edge> queryEdgesByEffect(String city, int topic){
+		
+		List<Edge> edges = queryEdges(city);
+		List<Edge> qualifiedEdges = new ArrayList<Edge>();
+		
+		for (Edge edge : edges) {
+			if (edge.getTarget() == topic) {
+				qualifiedEdges.add(edge);
+			}
+		}
+		
+		return qualifiedEdges;
+	}
+	
 
 	public Edge queryEdges(String city, int disaster, int topic) {
 		List<Edge> edges = queryEdges(city, disaster);
@@ -213,6 +227,8 @@ public class ComparisonBrain extends TrainedModel {
 
 		return null;
 	}
+	
+	
 
 	private void loadModel() {
 
