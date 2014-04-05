@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiu.kdrg.bcin.citysafety.core.TrainedModel;
-import fiu.kdrg.bcin.citysafety.util.MatrixUtil;
+import fiu.kdrg.bcin.citysafety.util.MathUtil;
 
 public class TrainedModelTest {
 
@@ -37,7 +37,7 @@ public class TrainedModelTest {
 		assertTrue(model.loadCityInstances(cityOne).get(1).getSid() == 1);
 		assertTrue(model.loadCityInstances(cityTwo).get(0).getSid() == 0);
 		assertTrue(model.loadCityInstances(cityTwo).get(1).getSid() == 1);
-		DoubleMatrix dm = MatrixUtil.transformMapToMatrix(model.getCityDocsWeightedTopics(cityOne));
+		DoubleMatrix dm = MathUtil.transformMapToMatrix(model.getCityDocsWeightedTopics(cityOne));
 		System.out.println(dm.columns);
 		System.out.println(dm.rows);
 		

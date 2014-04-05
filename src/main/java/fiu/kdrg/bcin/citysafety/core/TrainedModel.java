@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import fiu.kdrg.bcin.citysafety.util.Constants;
 import fiu.kdrg.bcin.citysafety.util.InstanceUtil;
-import fiu.kdrg.bcin.citysafety.util.MatrixUtil;
+import fiu.kdrg.bcin.citysafety.util.MathUtil;
 
 /**
  * 
@@ -94,7 +94,7 @@ public class TrainedModel {
 	 * and column corresponds to topics, value is the weight.
 	 */
 	public DoubleMatrix getCityDocsWeightedTopicsMatrix(String city){
-	  return MatrixUtil.transformMapToMatrix(getCityDocsWeightedTopics(city));
+	  return MathUtil.transformMapToMatrix(getCityDocsWeightedTopics(city));
 	}
 	
 
