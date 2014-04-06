@@ -66,5 +66,51 @@ public class MathUtil {
 
 		return klDiv / log2;
 	}
-
+	
+	
+	
+	/**
+	 * return index of maximal number
+	 */
+	public static int maxIndex(double[] arr){
+	  
+	  if(arr.length <= 0) return -1;
+	  
+	  double max = Double.MIN_VALUE;
+	  int index = 0;
+	  
+	  for(int i = 0; i < arr.length; i++){
+	    if(arr[i] > max){
+	      max = arr[i];
+	      index = i;
+	    }
+	  }
+	  
+	  return index;
+	}
+	
+	
+	
+	/**
+         * return index of minimal number
+         */
+        public static int minIndex(double[] arr){
+          
+          if(arr.length <= 0) return -1;
+          
+          double min = Double.MAX_VALUE;
+          int index = 0;
+          
+          for(int i = 0; i < arr.length; i++){
+            if(arr[i] < min){
+              min = arr[i];
+              index = i;
+            }
+          }
+          
+          return index;
+        }
+        
+        
+        
 }

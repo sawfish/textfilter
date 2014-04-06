@@ -24,6 +24,7 @@ public class ComparisonBrain extends TrainedModel {
 	private Map<String, List<Edge>> normEdgesByD;
 	private Map<String, List<Edge>> normEdgesByE;
 	private int numTopics;
+	private int eSize = 50;//
 
 	public ComparisonBrain(String cityOne, String cityTwo) {
 		super(cityOne, cityTwo);
@@ -88,7 +89,7 @@ public class ComparisonBrain extends TrainedModel {
 
 	// default eSize 50
 	public List<Effect> queryAllEffect() {
-		return queryAllEffect(50);
+		return queryAllEffect(eSize);
 	}
 
 	// queryInstances API, return empty size array if none
@@ -458,13 +459,26 @@ public class ComparisonBrain extends TrainedModel {
 	public int getNumDisasters() {
 		return disaster.length;
 	}
+	
+	
+	public String[] getDisaster(){
+	  return disaster;
+	}
 
 	
 	public void setTypeOfEdges(int typeOfEdges) {
 		this.typeOfEdges = typeOfEdges;
 	}
+	
+	
+	
+	
 
-	public void computeStat() {
+	public void seteSize(int eSize) {
+          this.eSize = eSize;
+        }
+
+  public void computeStat() {
 
 		int numD = getNumDisasters();
 		int numT = getNumTopics();
