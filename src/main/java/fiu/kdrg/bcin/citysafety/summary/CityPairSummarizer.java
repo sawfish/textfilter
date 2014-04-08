@@ -12,6 +12,7 @@ import fiu.kdrg.bcin.citysafety.core.ComparativeSummaryPair;
 import fiu.kdrg.bcin.citysafety.core.ComparisonBrain;
 import fiu.kdrg.bcin.citysafety.core.Instance;
 import fiu.kdrg.bcin.citysafety.db.DBConnection;
+import fiu.kdrg.bcin.citysafety.util.Constants;
 
 public class CityPairSummarizer extends Summarizer {
 
@@ -111,8 +112,16 @@ public class CityPairSummarizer extends Summarizer {
 	public static void main(String[] args) {
 		
 		
-		CityPairSummarizer summarizer = new CityPairSummarizer("los+angeles", "philadelphia");
-		summarizer.emitSummariesToDB();
+		int pairNum = Constants.cityOnes.length;
+		for(int i = 0; i < pairNum; i++){
+			
+			String cityOne = Constants.cityOnes[i];
+			String cityTwo = Constants.cityTwos[i];
+			
+			CityPairSummarizer summarizer = new CityPairSummarizer(cityOne, cityTwo);
+			summarizer.emitSummariesToDB();
+			
+		}
 		
 	}
 	

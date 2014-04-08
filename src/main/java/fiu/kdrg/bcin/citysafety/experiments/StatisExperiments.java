@@ -168,10 +168,19 @@ public class StatisExperiments {
 	
 	public static void main(String[] args) {
 		
-		String cityOne = "miami";
-		String cityTwo = "chicago";
-		StatisExperiments se = new StatisExperiments(cityOne, cityTwo);
-		se.runExperiment();
+		int pairNum = 6;
+		String[] cityOnes = {"miami","miami","miami","chicago","chicago","los+angeles"};
+		String[] cityTwos = {"chicago","los+angeles","philadelphia","los+angeles","philadelphia","philadelphia"};
+		
+		for(int i = 0; i < pairNum; i++){
+			
+			String cityOne = cityOnes[i];
+			String cityTwo = cityTwos[i];
+			StatisExperiments se = new StatisExperiments(cityOne, cityTwo);
+			se.runExperiment();
+			
+		}
+		
 		
 	}
 	
