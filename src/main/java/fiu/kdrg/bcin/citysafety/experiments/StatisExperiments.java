@@ -185,7 +185,7 @@ public class StatisExperiments {
 			StatisExperiments se = new StatisExperiments(cityOne, cityTwo);
 			
 			se.getBrain().setUsingThresholdApproach(false);
-			se.getBrain().setMaxApproachNumCandidate(1);
+			se.getBrain().setMaxApproachNumCandidate(2);
 			se.getBrain().setTopicDistThreshold(0.6);
 			
 			se.runExperiment();

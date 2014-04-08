@@ -292,7 +292,7 @@ public class ComparisonBrain extends TrainedModel {
 	 * edge are filtered and generated.
 	 */
 	double topicDistThreshold = 0.5;
-	boolean usingThresholdApproach = true;
+	boolean usingThresholdApproach = false;
 	double maxApproachNumCandidate = 2;
 
 	/**

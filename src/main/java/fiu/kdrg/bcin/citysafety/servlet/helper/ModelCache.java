@@ -22,7 +22,7 @@ public class ModelCache {
 			
 			
 			newModel.setUsingThresholdApproach(false);
-			newModel.setMaxApproachNumCandidate(1);
+			newModel.setMaxApproachNumCandidate(2);
 			newModel.setTopicDistThreshold(0.6);
 			
 			
