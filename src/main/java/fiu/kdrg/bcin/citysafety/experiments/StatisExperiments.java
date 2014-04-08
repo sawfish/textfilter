@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import fiu.kdrg.bcin.citysafety.core.ComparisonBrain;
 import fiu.kdrg.bcin.citysafety.core.Edge;
 import fiu.kdrg.bcin.citysafety.core.Effect;
+import fiu.kdrg.bcin.citysafety.util.Constants;
 import fiu.kdrg.bcin.citysafety.util.MathUtil;
 
 public class StatisExperiments {
@@ -108,7 +109,7 @@ public class StatisExperiments {
 	  String cityOne = brain.getCityOne();
 	  String cityTwo = brain.getCityTwo();
 	  String[] disasters = brain.getDisaster();
-	  brain.seteSize(10);
+	  brain.seteSize(15);
 	  List<Effect> effects = brain.queryAllEffect();
 	  
 	  double[] dDistOne = disasterDist(cityOne);
@@ -116,7 +117,7 @@ public class StatisExperiments {
 	  double[] dDistTwo = disasterDist(cityTwo);
 	  double[] eDistTwo = disasterDist(cityTwo);
 	  
-	  logger.info("table 1");
+	  System.out.println(String.format("\ntable 1 %s vs %s", cityOne,cityTwo));
 	  System.out.println(String.format("most likely disaster is %s for city %s",disasters[MathUtil.maxIndex(dDistOne)],cityOne));
 	  System.out.println(String.format("most likely disaster is %s for city %s",disasters[MathUtil.maxIndex(dDistTwo)],cityTwo));
 	  System.out.println(String.format("most likely effect is %s for city %s", effects.get(MathUtil.maxIndex(eDistOne)), cityOne));
@@ -136,7 +137,7 @@ public class StatisExperiments {
 	  System.out.println(String.format("most similar effect is %s", effects.get(MathUtil.minIndex(klValueOfE))));
 	  
 	  
-	  logger.info("table 2");
+	  System.out.println(String.format("\ntable 2 %s vs %s", cityOne,cityTwo));
 	  for(int i = 0; i < disasters.length; i++ ){
 	    
 	    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
@@ -169,8 +170,8 @@ public class StatisExperiments {
 	public static void main(String[] args) {
 		
 		int pairNum = 6;
-		String[] cityOnes = {"miami","miami","miami","chicago","chicago","los+angeles"};
-		String[] cityTwos = {"chicago","los+angeles","philadelphia","los+angeles","philadelphia","philadelphia"};
+		String[] cityOnes = Constants.cityOnes;
+		String[] cityTwos = Constants.cityTwos;
 		
 		for(int i = 0; i < pairNum; i++){
 			

@@ -43,7 +43,7 @@ public class Effect {
 	public String toString() {
 	  String str = "[";
 	  for(Word w : words){
-	    str += w.text + ":" + w.getWeight() + " ";
+	    str += w.text + " ";
 	  }
 	  str = str.trim() + "]";
 	  return str;

@@ -121,9 +121,9 @@ public class ComparisonBrain extends TrainedModel {
 
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstancesByDisaster(city, disasterIdx);
-		int[][] sortIdx = docTopicM.rowSortingPermutations();
+//		int[][] sortIdx = docTopicM.rowSortingPermutations();
 
-		return filterInstanceByTopic(insts, sortIdx, topicIdx);
+		return filterInstanceByTopic(insts, docTopicM, topicIdx);
 
 	}
 
@@ -137,9 +137,9 @@ public class ComparisonBrain extends TrainedModel {
 
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstances(city);
-		int[][] sortIdx = docTopicM.rowSortingPermutations();
+//		int[][] sortIdx = docTopicM.rowSortingPermutations();
 
-		return filterInstanceByTopic(insts, sortIdx, topicIdx);
+		return filterInstanceByTopic(insts, docTopicM, topicIdx);
 	}
 
 	public List<Instance> queryInstances(String city) {
@@ -256,7 +256,9 @@ public class ComparisonBrain extends TrainedModel {
 	}
 
 	/**
-	 * insts and sortIdx must be about same city.
+	 * insts and sortIdx must be about same city. Here we only choose instances which give 
+	 * the highest probability on topic (this might be change to probability on this topic
+	 * exceeds certain threshold)
 	 * 
 	 * @param insts
 	 *            instances about one city
@@ -267,15 +269,15 @@ public class ComparisonBrain extends TrainedModel {
 	 *         topicIdx
 	 */
 	private List<Instance> filterInstanceByTopic(List<Instance> insts,
-			int[][] sortIdx, int topicIdx) {
+			DoubleMatrix docTopicM, int topicIdx) {
 
 		List<Instance> rtn = new ArrayList<Instance>();
 
 		for (Instance inst : insts) {
-			int instIdx = inst.getSid();
+//			int instIdx = inst.getSid();
 			// last element of sortIdx[instIdx] corresponds to this instance's
 			// most likely topic
-			if (sortIdx[instIdx][sortIdx[instIdx].length - 1] == topicIdx) {
+			if (docTopicM.get(inst.getSid(), topicIdx) >= topicDistThreshold) {
 				rtn.add(inst);
 			}
 		}
@@ -283,6 +285,10 @@ public class ComparisonBrain extends TrainedModel {
 		return rtn;
 	}
 
+	
+	
+	double topicDistThreshold = 0.2;
+	
 	/**
 	 * For every city, I first extract all instances related to disasters. for
 	 * every disaster, there is an ArrayList<Instance> corresponds to it. for
@@ -295,7 +301,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		// compute cityOne
 		DoubleMatrix docTopicCityOne = getCityDocsWeightedTopicsMatrix(cityOne);
-		int[][] sortIdxCityOne = docTopicCityOne.rowSortingPermutations();
+//		int[][] sortIdxCityOne = docTopicCityOne.rowSortingPermutations();
 		Map<Integer, List<Instance>> disasterInstsCityOne = new HashMap<Integer, List<Instance>>();
 
 		for (int i = 0; i < disaster.length; i++) {
@@ -311,19 +317,38 @@ public class ComparisonBrain extends TrainedModel {
 														// this disaster
 
 			for (Instance inst : value) {
-				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst
-						.getSid()].length - 1];
-				if (docTopicCityOne.get(key, wEntry) <= 0)
-					continue;
-
-				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(
-						key, wEntry));
-				if (edgesMCityOne.containsKey(tmp.genRealID())) {
-					edgesMCityOne.get(tmp.genRealID()).addWeight(
-							tmp.getWeight());
-				} else {
-					edgesMCityOne.put(tmp.genRealID(), tmp);
+				
+				
+				for(int col = 0; col < docTopicCityOne.columns; col ++){
+					
+					if(docTopicCityOne.get(inst.getSid(), col) < topicDistThreshold){
+						continue;
+					}
+					
+					Edge tmp = new Edge(cityOne,key,col,docTopicCityOne.get(inst.getSid(), col));
+					if (edgesMCityOne.containsKey(tmp.genRealID())) {
+						edgesMCityOne.get(tmp.genRealID()).addWeight(
+								tmp.getWeight());
+					} else {
+						edgesMCityOne.put(tmp.genRealID(), tmp);
+					}
+					
 				}
+				
+				
+//				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst
+//						.getSid()].length - 1];
+//				if (docTopicCityOne.get(key, wEntry) <= 0)
+//					continue;
+//
+//				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(
+//						key, wEntry));
+//				if (edgesMCityOne.containsKey(tmp.genRealID())) {
+//					edgesMCityOne.get(tmp.genRealID()).addWeight(
+//							tmp.getWeight());
+//				} else {
+//					edgesMCityOne.put(tmp.genRealID(), tmp);
+//				}
 			}
 
 		}
@@ -332,7 +357,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		// compute cityTwo
 		DoubleMatrix docTopicCityTwo = getCityDocsWeightedTopicsMatrix(cityTwo);
-		int[][] sortIdxCityTwo = docTopicCityTwo.rowSortingPermutations();
+//		int[][] sortIdxCityTwo = docTopicCityTwo.rowSortingPermutations();
 		Map<Integer, List<Instance>> disasterInstsCityTwo = new HashMap<Integer, List<Instance>>();
 
 		for (int i = 0; i < disaster.length; i++) {
@@ -348,19 +373,38 @@ public class ComparisonBrain extends TrainedModel {
 														// this disaster
 
 			for (Instance inst : value) {
-				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst
-						.getSid()].length - 1];
-				if (docTopicCityTwo.get(key, wEntry) <= 0)
-					continue;
-
-				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(
-						key, wEntry));
-				if (edgesMCityTwo.containsKey(tmp.genRealID())) {
-					edgesMCityTwo.get(tmp.genRealID()).addWeight(
-							tmp.getWeight());
-				} else {
-					edgesMCityTwo.put(tmp.genRealID(), tmp);
+				
+				
+				for(int col = 0; col < docTopicCityTwo.columns; col ++){
+					
+					if(docTopicCityTwo.get(inst.getSid(), col) < topicDistThreshold){
+						continue;
+					}
+					
+					Edge tmp = new Edge(cityTwo,key,col,docTopicCityTwo.get(inst.getSid(), col));
+					if (edgesMCityTwo.containsKey(tmp.genRealID())) {
+						edgesMCityTwo.get(tmp.genRealID()).addWeight(
+								tmp.getWeight());
+					} else {
+						edgesMCityTwo.put(tmp.genRealID(), tmp);
+					}
+					
 				}
+				
+				
+//				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst
+//						.getSid()].length - 1];
+//				if (docTopicCityTwo.get(key, wEntry) <= 0)
+//					continue;
+//
+//				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(
+//						key, wEntry));
+//				if (edgesMCityTwo.containsKey(tmp.genRealID())) {
+//					edgesMCityTwo.get(tmp.genRealID()).addWeight(
+//							tmp.getWeight());
+//				} else {
+//					edgesMCityTwo.put(tmp.genRealID(), tmp);
+//				}
 			}
 		}
 		edgesOfCities.put(cityTwo, new ArrayList<Edge>(edgesMCityTwo.values()));
