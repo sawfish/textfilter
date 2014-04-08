@@ -127,7 +127,7 @@ function createBipartiteGraph(data){
 //	jsPlumb.draggable($(".d_node"));
 //	jsPlumb.draggable($(".e_node"));
 
-	
+	visualizeSummaries(cityOne,cityTwo,"-1","-1");
 	//add event listner to node
 	$(".d_node").click(function(){
 		jsPlumb.select({source:$(this).attr("id")}).each(function(con){
