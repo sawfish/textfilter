@@ -42,9 +42,9 @@ public class CityPairSummarizer extends Summarizer {
 		
 		List<ComparativeSummaryPair> summaries = new ArrayList<ComparativeSummaryPair>();
 		List<String> oneS = new ArrayList<String>();
-		for(int d = -1; d < 3; d ++){
+		for(int d = -1; d < model.getNumDisasters(); d ++){
 			
-			for(int e = -1; e < 10; e ++){
+			for(int e = -1; e < model.getNumTopics(); e ++){
 				
 				List<Instance> cityOneInsts = model.queryInstances(cityOne, d, e);
 				List<Instance> cityTwoInsts = model.queryInstances(cityTwo, d, e);
