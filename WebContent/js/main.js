@@ -58,7 +58,7 @@ function createBipartiteGraph(data){
 	for(var i = 0; i < disasters.length; i++){
 		var disaster = disasters[i];
 		var dNode = $("<div class='node d_node' id='disaster_" + 
-						disaster.id +"' style='top:" + (i*250 + 200) +"px;left:50px'>" +
+						disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'>" +
 						"<div class='d_content'>"+ disaster.text +"</div></div>");
 		$("#graph_panel").append(dNode);
 	}

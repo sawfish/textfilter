@@ -18,7 +18,7 @@ public class ComparisonBrain extends TrainedModel {
 
 	private Logger logger = LoggerFactory.getLogger(ComparisonBrain.class);
 	private static String[] disaster = new String[] { "hurricane", "storm",
-			"tornado" };
+			"tornado","earthquake"};
 
 	private Map<String, List<Edge>> edgesOfCities;
 	private Map<String, List<Edge>> normEdgesByD;
@@ -121,7 +121,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstancesByDisaster(city, disasterIdx);
-//		int[][] sortIdx = docTopicM.rowSortingPermutations();
+//		 int[][] sortIdx = docTopicM.rowSortingPermutations();
 
 		return filterInstanceByTopic(insts, docTopicM, topicIdx);
 
@@ -137,7 +137,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		DoubleMatrix docTopicM = getCityDocsWeightedTopicsMatrix(city);
 		List<Instance> insts = queryInstances(city);
-//		int[][] sortIdx = docTopicM.rowSortingPermutations();
+//		 int[][] sortIdx = docTopicM.rowSortingPermutations();
 
 		return filterInstanceByTopic(insts, docTopicM, topicIdx);
 	}
@@ -146,16 +146,13 @@ public class ComparisonBrain extends TrainedModel {
 		return loadCityInstances(city);
 	}
 
-	
-	
-	
 	// queryEdges API, return empty size array if none, return null if none for
 	// single Edge
 	public static int UNNORMALIZED = 1;
 	public static int NORMALIZED_D = 2;
 	public static int NORMALIZED_E = 3;
-	private int typeOfEdges = NORMALIZED_D;//default value
-	
+	private int typeOfEdges = NORMALIZED_D;// default value
+
 	/**
 	 * @return return map containing edges about two cities.
 	 */
@@ -163,7 +160,7 @@ public class ComparisonBrain extends TrainedModel {
 		if (edgesOfCities.isEmpty())
 			computeAllEdges();
 
-		Map<String,List<Edge>> edges = null;
+		Map<String, List<Edge>> edges = null;
 		switch (typeOfEdges) {
 		case 1:
 			edges = edgesOfCities;
@@ -174,12 +171,12 @@ public class ComparisonBrain extends TrainedModel {
 		case 3:
 			edges = normEdgesByE;
 			break;
-			
+
 		default:
 			edges = edgesOfCities;
 			break;
 		}
-		
+
 		return edges;
 	}
 
@@ -200,22 +197,20 @@ public class ComparisonBrain extends TrainedModel {
 
 		return qualifiedEdges;
 	}
-	
-	
-	public List<Edge> queryEdgesByEffect(String city, int topic){
-		
+
+	public List<Edge> queryEdgesByEffect(String city, int topic) {
+
 		List<Edge> edges = queryEdges(city);
 		List<Edge> qualifiedEdges = new ArrayList<Edge>();
-		
+
 		for (Edge edge : edges) {
 			if (edge.getTarget() == topic) {
 				qualifiedEdges.add(edge);
 			}
 		}
-		
+
 		return qualifiedEdges;
 	}
-	
 
 	public Edge queryEdges(String city, int disaster, int topic) {
 		List<Edge> edges = queryEdges(city, disaster);
@@ -228,8 +223,6 @@ public class ComparisonBrain extends TrainedModel {
 
 		return null;
 	}
-	
-	
 
 	private void loadModel() {
 
@@ -256,9 +249,9 @@ public class ComparisonBrain extends TrainedModel {
 	}
 
 	/**
-	 * insts and sortIdx must be about same city. Here we only choose instances which give 
-	 * the highest probability on topic (this might be change to probability on this topic
-	 * exceeds certain threshold)
+	 * insts and sortIdx must be about same city. Here we only choose instances
+	 * which give the highest probability on topic (this might be change to
+	 * probability on this topic exceeds certain threshold)
 	 * 
 	 * @param insts
 	 *            instances about one city
@@ -270,25 +263,38 @@ public class ComparisonBrain extends TrainedModel {
 	 */
 	private List<Instance> filterInstanceByTopic(List<Instance> insts,
 			DoubleMatrix docTopicM, int topicIdx) {
-
+		
+		int[][] sortIdx = docTopicM.rowSortingPermutations();
 		List<Instance> rtn = new ArrayList<Instance>();
-
+		
 		for (Instance inst : insts) {
-//			int instIdx = inst.getSid();
+			// int instIdx = inst.getSid();
 			// last element of sortIdx[instIdx] corresponds to this instance's
 			// most likely topic
-			if (docTopicM.get(inst.getSid(), topicIdx) >= topicDistThreshold) {
-				rtn.add(inst);
+			if(usingThresholdApproach){
+				if (docTopicM.get(inst.getSid(), topicIdx) >= topicDistThreshold) {
+					rtn.add(inst);
+				}
+			}else{
+				for (int calN = 0; calN < maxApproachNumCandidate; calN++) {
+					if(sortIdx[inst.getSid()][sortIdx[inst.getSid()].length - calN - 1] == topicIdx){
+						rtn.add(inst);
+					}
+				}
 			}
 		}
 
 		return rtn;
 	}
 
-	
-	
-	double topicDistThreshold = 0.2;
-	
+	/**
+	 * This three parameter is very important. It control how the instance and
+	 * edge are filtered and generated.
+	 */
+	double topicDistThreshold = 0.5;
+	boolean usingThresholdApproach = true;
+	double maxApproachNumCandidate = 2;
+
 	/**
 	 * For every city, I first extract all instances related to disasters. for
 	 * every disaster, there is an ArrayList<Instance> corresponds to it. for
@@ -301,7 +307,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		// compute cityOne
 		DoubleMatrix docTopicCityOne = getCityDocsWeightedTopicsMatrix(cityOne);
-//		int[][] sortIdxCityOne = docTopicCityOne.rowSortingPermutations();
+		int[][] sortIdxCityOne = docTopicCityOne.rowSortingPermutations();
 		Map<Integer, List<Instance>> disasterInstsCityOne = new HashMap<Integer, List<Instance>>();
 
 		for (int i = 0; i < disaster.length; i++) {
@@ -317,38 +323,47 @@ public class ComparisonBrain extends TrainedModel {
 														// this disaster
 
 			for (Instance inst : value) {
-				
-				
-				for(int col = 0; col < docTopicCityOne.columns; col ++){
-					
-					if(docTopicCityOne.get(inst.getSid(), col) < topicDistThreshold){
-						continue;
+
+				if (usingThresholdApproach) {
+
+					for (int col = 0; col < docTopicCityOne.columns; col++) {
+
+						if (docTopicCityOne.get(inst.getSid(), col) < topicDistThreshold) {
+							continue;
+						}
+
+						Edge tmp = new Edge(cityOne, key, col,
+								docTopicCityOne.get(inst.getSid(), col));
+						if (edgesMCityOne.containsKey(tmp.genRealID())) {
+							edgesMCityOne.get(tmp.genRealID()).addWeight(
+									tmp.getWeight());
+						} else {
+							edgesMCityOne.put(tmp.genRealID(), tmp);
+						}
+
 					}
-					
-					Edge tmp = new Edge(cityOne,key,col,docTopicCityOne.get(inst.getSid(), col));
-					if (edgesMCityOne.containsKey(tmp.genRealID())) {
-						edgesMCityOne.get(tmp.genRealID()).addWeight(
-								tmp.getWeight());
-					} else {
-						edgesMCityOne.put(tmp.genRealID(), tmp);
+
+				} else {
+
+					for (int calN = 0; calN < maxApproachNumCandidate; calN++) {
+
+						int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst
+								.getSid()].length - calN - 1];
+						if (docTopicCityOne.get(key, wEntry) <= 0)
+							continue;
+
+						Edge tmp = new Edge(cityOne, key, wEntry,
+								docTopicCityOne.get(key, wEntry));
+						if (edgesMCityOne.containsKey(tmp.genRealID())) {
+							edgesMCityOne.get(tmp.genRealID()).addWeight(
+									tmp.getWeight());
+						} else {
+							edgesMCityOne.put(tmp.genRealID(), tmp);
+						}
+
 					}
-					
 				}
-				
-				
-//				int wEntry = sortIdxCityOne[inst.getSid()][sortIdxCityOne[inst
-//						.getSid()].length - 1];
-//				if (docTopicCityOne.get(key, wEntry) <= 0)
-//					continue;
-//
-//				Edge tmp = new Edge(cityOne, key, wEntry, docTopicCityOne.get(
-//						key, wEntry));
-//				if (edgesMCityOne.containsKey(tmp.genRealID())) {
-//					edgesMCityOne.get(tmp.genRealID()).addWeight(
-//							tmp.getWeight());
-//				} else {
-//					edgesMCityOne.put(tmp.genRealID(), tmp);
-//				}
+
 			}
 
 		}
@@ -357,7 +372,7 @@ public class ComparisonBrain extends TrainedModel {
 
 		// compute cityTwo
 		DoubleMatrix docTopicCityTwo = getCityDocsWeightedTopicsMatrix(cityTwo);
-//		int[][] sortIdxCityTwo = docTopicCityTwo.rowSortingPermutations();
+		int[][] sortIdxCityTwo = docTopicCityTwo.rowSortingPermutations();
 		Map<Integer, List<Instance>> disasterInstsCityTwo = new HashMap<Integer, List<Instance>>();
 
 		for (int i = 0; i < disaster.length; i++) {
@@ -373,38 +388,47 @@ public class ComparisonBrain extends TrainedModel {
 														// this disaster
 
 			for (Instance inst : value) {
-				
-				
-				for(int col = 0; col < docTopicCityTwo.columns; col ++){
-					
-					if(docTopicCityTwo.get(inst.getSid(), col) < topicDistThreshold){
-						continue;
+
+				if (usingThresholdApproach) {
+
+					for (int col = 0; col < docTopicCityTwo.columns; col++) {
+
+						if (docTopicCityTwo.get(inst.getSid(), col) < topicDistThreshold) {
+							continue;
+						}
+
+						Edge tmp = new Edge(cityTwo, key, col,
+								docTopicCityTwo.get(inst.getSid(), col));
+						if (edgesMCityTwo.containsKey(tmp.genRealID())) {
+							edgesMCityTwo.get(tmp.genRealID()).addWeight(
+									tmp.getWeight());
+						} else {
+							edgesMCityTwo.put(tmp.genRealID(), tmp);
+						}
+
 					}
-					
-					Edge tmp = new Edge(cityTwo,key,col,docTopicCityTwo.get(inst.getSid(), col));
-					if (edgesMCityTwo.containsKey(tmp.genRealID())) {
-						edgesMCityTwo.get(tmp.genRealID()).addWeight(
-								tmp.getWeight());
-					} else {
-						edgesMCityTwo.put(tmp.genRealID(), tmp);
+
+				} else {
+
+					for (int calN = 0; calN < maxApproachNumCandidate; calN++) {
+						
+						int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst
+								.getSid()].length - calN - 1];
+						if (docTopicCityTwo.get(key, wEntry) <= 0)
+							continue;
+
+						Edge tmp = new Edge(cityTwo, key, wEntry,
+								docTopicCityTwo.get(key, wEntry));
+						if (edgesMCityTwo.containsKey(tmp.genRealID())) {
+							edgesMCityTwo.get(tmp.genRealID()).addWeight(
+									tmp.getWeight());
+						} else {
+							edgesMCityTwo.put(tmp.genRealID(), tmp);
+						}
 					}
-					
+
 				}
-				
-				
-//				int wEntry = sortIdxCityTwo[inst.getSid()][sortIdxCityTwo[inst
-//						.getSid()].length - 1];
-//				if (docTopicCityTwo.get(key, wEntry) <= 0)
-//					continue;
-//
-//				Edge tmp = new Edge(cityTwo, key, wEntry, docTopicCityTwo.get(
-//						key, wEntry));
-//				if (edgesMCityTwo.containsKey(tmp.genRealID())) {
-//					edgesMCityTwo.get(tmp.genRealID()).addWeight(
-//							tmp.getWeight());
-//				} else {
-//					edgesMCityTwo.put(tmp.genRealID(), tmp);
-//				}
+
 			}
 		}
 		edgesOfCities.put(cityTwo, new ArrayList<Edge>(edgesMCityTwo.values()));
@@ -412,9 +436,6 @@ public class ComparisonBrain extends TrainedModel {
 
 		normalizeEdges();
 	}
-	
-	
-	
 
 	/**
 	 * normalize all edges. There are two direction we do the normalization One:
@@ -457,8 +478,6 @@ public class ComparisonBrain extends TrainedModel {
 		}
 		logger.info("normalization done from disaster view point");
 
-		
-		
 		// normalization from effect viewpoint
 		normEdgesByE.put(cityOne, (List<Edge>) SerializationUtils
 				.clone((ArrayList<Edge>) edgesOfCities.get(cityOne)));
@@ -494,7 +513,6 @@ public class ComparisonBrain extends TrainedModel {
 		logger.info("normalization done from effect view point");
 
 	}
-	
 
 	public int getNumTopics() {
 		return numTopics;
@@ -503,26 +521,32 @@ public class ComparisonBrain extends TrainedModel {
 	public int getNumDisasters() {
 		return disaster.length;
 	}
-	
-	
-	public String[] getDisaster(){
-	  return disaster;
+
+	public String[] getDisaster() {
+		return disaster;
 	}
 
-	
 	public void setTypeOfEdges(int typeOfEdges) {
 		this.typeOfEdges = typeOfEdges;
 	}
-	
-	
-	
-	
+
+	public void setTopicDistThreshold(double topicDistThreshold) {
+		this.topicDistThreshold = topicDistThreshold;
+	}
+
+	public void setUsingThresholdApproach(boolean usingThresholdApproach) {
+		this.usingThresholdApproach = usingThresholdApproach;
+	}
+
+	public void setMaxApproachNumCandidate(double maxApproachNumCandidate) {
+		this.maxApproachNumCandidate = maxApproachNumCandidate;
+	}
 
 	public void seteSize(int eSize) {
-          this.eSize = eSize;
-        }
+		this.eSize = eSize;
+	}
 
-  public void computeStat() {
+	public void computeStat() {
 
 		int numD = getNumDisasters();
 		int numT = getNumTopics();
@@ -577,9 +601,6 @@ public class ComparisonBrain extends TrainedModel {
 
 	}
 
-	
-	
-	
 	public static void main(String[] args) {
 
 		String cityOne = "los+angeles";

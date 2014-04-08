@@ -151,6 +151,11 @@ public class StatisExperiments {
 	
 	
 	
+	public ComparisonBrain getBrain() {
+		return brain;
+	}
+
+
 	/**
 	 * calculate a list of klDivergence values for a list probability distribution
 	 * watch out the dimension of one and two should be exactly same.
@@ -178,6 +183,11 @@ public class StatisExperiments {
 			String cityOne = cityOnes[i];
 			String cityTwo = cityTwos[i];
 			StatisExperiments se = new StatisExperiments(cityOne, cityTwo);
+			
+			se.getBrain().setUsingThresholdApproach(false);
+			se.getBrain().setMaxApproachNumCandidate(1);
+			se.getBrain().setTopicDistThreshold(0.6);
+			
 			se.runExperiment();
 			
 		}
