@@ -109,7 +109,7 @@ public class StatisExperiments {
 	  String cityOne = brain.getCityOne();
 	  String cityTwo = brain.getCityTwo();
 	  String[] disasters = brain.getDisaster();
-	  brain.seteSize(15);
+//	  brain.seteSize(15);
 	  List<Effect> effects = brain.queryAllEffect();
 	  
 	  double[] dDistOne = disasterDist(cityOne);
@@ -187,6 +187,7 @@ public class StatisExperiments {
 			se.getBrain().setUsingThresholdApproach(false);
 			se.getBrain().setMaxApproachNumCandidate(2);
 			se.getBrain().setTopicDistThreshold(0.6);
+			se.getBrain().seteSize(50);
 			
 			se.runExperiment();
 			
@@ -194,7 +195,6 @@ public class StatisExperiments {
 		
 		
 	}
-	
-	
+
 	
 }
