@@ -142,10 +142,20 @@ public class StatisExperiments {
 	    
 	    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
 	                  effects.get(MathUtil.maxIndex(eGivenDOne[i])), cityOne, disasters[i]));
-	    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
-                          effects.get(MathUtil.maxIndex(eGivenDTwo[i])), cityTwo, disasters[i]));
+//	    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
+//                          effects.get(MathUtil.maxIndex(eGivenDTwo[i])), cityTwo, disasters[i]));
 	    
 	  }
+	  
+	  System.out.println();
+	  for(int i = 0; i < disasters.length; i++ ){
+		    
+//		    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
+//		                  effects.get(MathUtil.maxIndex(eGivenDOne[i])), cityOne, disasters[i]));
+		    System.out.println(String.format("most likely effect is %s for city %s on disaster %s", 
+	                          effects.get(MathUtil.maxIndex(eGivenDTwo[i])), cityTwo, disasters[i]));
+		    
+		  }
 	  
 	}
 	
@@ -187,7 +197,7 @@ public class StatisExperiments {
 			se.getBrain().setUsingThresholdApproach(false);
 			se.getBrain().setMaxApproachNumCandidate(2);
 			se.getBrain().setTopicDistThreshold(0.6);
-			se.getBrain().seteSize(50);
+			se.getBrain().seteSize(20);
 			
 			se.runExperiment();
 			

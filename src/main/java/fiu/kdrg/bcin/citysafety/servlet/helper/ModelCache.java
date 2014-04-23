@@ -20,7 +20,7 @@ public class ModelCache {
 		if (!modelCacher.containsKey(generateKey(cityOne, cityTwo))) {
 			ComparisonBrain newModel = new ComparisonBrain(cityOne, cityTwo);
 			
-			
+			newModel.setTypeOfEdges(ComparisonBrain.UNNORMALIZED);
 			newModel.setUsingThresholdApproach(false);
 			newModel.setMaxApproachNumCandidate(2);
 			newModel.setTopicDistThreshold(0.6);
