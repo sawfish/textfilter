@@ -121,11 +121,18 @@
 	cursor: pointer;
 }
 
-.progressBar {
-	width: 400px;
-	height: 22px;
+.progressBarCityOne {
+	width: 100px;
+	height: 10px;
 	border: 1px solid #111;
-	background-color: #298829;
+	background-color: #2FCC22;
+}
+
+.progressBarCityTwo {
+	width: 100px;
+	height: 10px;
+	border: 1px solid #111;
+	background-color: #6498f3;
 }
 
 .progressBar div {

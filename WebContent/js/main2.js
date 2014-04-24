@@ -27,7 +27,7 @@ function progress(percent, element) {
     // With labels:
     element.find('div').animate({
         width: progressBarWidth
-    }, 500).html(percent + "%&nbsp;");
+    }, 100).html(percent + "%&nbsp;");
 
     // Without labels:
     //element.find('div').animate({ width: progressBarWidth }, 500);
@@ -37,10 +37,10 @@ $(document).ready(function () {
     $('.progressBar').each(function () {
         //alert('Hello');
         var bar = $(this);
-        var max = $(this).attr('id');
-        max = max.substring(3);
+//        var max = $(this).attr('id');
+//        max = max.substring(3);
 
-        progress(max, bar);
+//        progress(max, bar);
     });
 });
 
@@ -72,6 +72,20 @@ function refreshMainFramePage(){
 }
 
 
+//<div class="progressBar progressBarCityOne" id="max22">
+//<div></div>
+//</div>
+//<div class="progressBar progressBarCityTwo" id="max92">
+//<div></div>
+//</div>
+function createBar(w1,w2){
+
+	var dBar = $("<div class='progressBar progressBarCityOne' style='width:" + w1 + "'><div></div></div>" + 
+			"<div class='progressBar progressBarCityTwo' style='width:" + w2 + "'><div></div></div>");
+	return dBar;
+}
+
+
 function createBipartiteGraph(data){
 	
 	var disasters = data.disasters;
@@ -82,7 +96,7 @@ function createBipartiteGraph(data){
 		var disaster = disasters[i];
 		var dNode = $("<div class='node d_node' id='disaster_" + 
 						disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'>" +
-						"<div class='d_content'>"+ disaster.text +"</div></div>");
+						"<div class='d_bar'></div><div class='d_content'>"+ disaster.text +"</div></div>");
 		$("#graph_panel").append(dNode);
 	}
 	
@@ -101,6 +115,8 @@ function createBipartiteGraph(data){
 	var cityTwo = data.cityTwo;
 	var cityOneEdges = edges[cityOne];
 	var cityTwoEdges = edges[cityTwo];
+	
+	var dmap = {};
 	
 	for(var i = 0; i < cityOneEdges.length; i++){
 		
