@@ -22,6 +22,29 @@ $(function() {
 });
 
 
+function progress(percent, element) {
+    var progressBarWidth = percent * element.width() / 100;
+    // With labels:
+    element.find('div').animate({
+        width: progressBarWidth
+    }, 100).html(percent + "%&nbsp;");
+
+    // Without labels:
+    //element.find('div').animate({ width: progressBarWidth }, 500);
+}
+
+$(document).ready(function () {
+    $('.progressBar').each(function () {
+        //alert('Hello');
+        var bar = $(this);
+//        var max = $(this).attr('id');
+//        max = max.substring(3);
+
+//        progress(max, bar);
+    });
+});
+
+
 
 function initConnections(cityOne, cityTwo) {
 
@@ -49,6 +72,22 @@ function refreshMainFramePage(){
 }
 
 
+//<div class="progressBar progressBarCityOne" id="max22">
+//<div></div>
+//</div>
+//<div class="progressBar progressBarCityTwo" id="max92">
+//<div></div>
+//</div>
+function createBar(w1,w2, multi){
+
+	if(w1 == undefined) w1 = 0;
+	if(w2 == undefined) w2 = 0;
+	var dBar = $("<div class='progressBar progressBarCityOne' style='width:" + w1 * multi + "px;height:10px;'><div></div></div>" + 
+			"<div class='progressBar progressBarCityTwo' style='width:" + w2 * multi + "px;height:10px;'><div></div></div>");
+	return dBar;
+}
+
+
 function createBipartiteGraph(data){
 	
 	var disasters = data.disasters;
@@ -59,17 +98,20 @@ function createBipartiteGraph(data){
 		var disaster = disasters[i];
 		var dNode = $("<div class='node d_node' id='disaster_" + 
 						disaster.id +"' style='top:" + (i*250 + 100) +"px;left:50px'>" +
-						"<div class='d_content'>"+ disaster.text +"</div></div>");
+						"<div class='d_bar'></div><div class='d_content'>"+ disaster.text +"</div></div>");
 		$("#graph_panel").append(dNode);
 	}
 	
 	for(var i = 0; i < effects.length; i++){
 		var effect = effects[i];
 		var eNode = $("<div class='node e_node' id='effect_" 
-				+ effect.id +"' style='top:" + i*5 +"px;left:500px'></div>");
+				+ effect.id +"' style='top:" + i*5 +"px;left:500px'>" +
+				"<div class='e_cloud'></div><div class='e_bar' style='position:relative;left:440px;bottom: 40px'></div></div>");
+//				"</div>");
 		$("#graph_panel").append(eNode);
 		//generate word cloud
-		$("#effect_" + effect.id).jQCloud(effect.words);
+		$("#effect_" + effect.id + " .e_cloud").jQCloud(effect.words);
+//		$("#effect_" + effect.id).jQCloud(effect.words);
 	}
 //	$("#jqcloud").jQCloud(effects[0].words);
 	
@@ -79,9 +121,17 @@ function createBipartiteGraph(data){
 	var cityOneEdges = edges[cityOne];
 	var cityTwoEdges = edges[cityTwo];
 	
+	var dmapCityOne = {};
+	var emapCityOne = {};
 	for(var i = 0; i < cityOneEdges.length; i++){
 		
 		var edge = cityOneEdges[i];
+//		console.log(edge);
+		var tmp = edge.weight + 1;
+		var lineW = Math.log(tmp)/Math.log(2) + 1;
+//		console.log(tmp);
+//		console.log(lineW);
+		jsPlumb.cityOneEndpoint.connectorStyle.lineWidth = lineW.toFixed(0) * 2;
 		var d = jsPlumb.addEndpoint("disaster_" + edge.source, {anchor:jsPlumb.dAnchor}, jsPlumb.cityOneEndpoint);
 		var t = jsPlumb.addEndpoint("effect_" + edge.target, {anchor:jsPlumb.eAnchor}, jsPlumb.cityOneEndpoint);
 		jsPlumb.connect({
@@ -99,12 +149,33 @@ function createBipartiteGraph(data){
 			}]]
 		});
 		
+		//calculate accumulating value for disaster and effect node for cityOne
+		if(edge.source in dmapCityOne){
+			dmapCityOne[edge.source] += edge.weight;
+		}else{
+			dmapCityOne[edge.source] = 0;
+			dmapCityOne[edge.source] += edge.weight;
+		}
+		
+		if(!(edge.target in emapCityOne)){
+			emapCityOne[edge.target] = 0;
+		}
+		emapCityOne[edge.target] += edge.weight;
+		
 	}
 	
 	
+	var dmapCityTwo = {};
+	var emapCityTwo = {};
 	for(var i = 0; i < cityTwoEdges.length; i++){
 		
 		var edge = cityTwoEdges[i];
+//		console.log(edge);
+		var tmp = edge.weight + 1;
+		var lineW = Math.log(tmp)/Math.log(2) + 1;
+//		console.log(tmp);
+//		console.log(lineW);
+		jsPlumb.cityTwoEndpoint.connectorStyle.lineWidth = lineW.toFixed(0) * 2;
 		var d = jsPlumb.addEndpoint("disaster_" + edge.source, {anchor:jsPlumb.dAnchor}, jsPlumb.cityTwoEndpoint);
 		var t = jsPlumb.addEndpoint("effect_" + edge.target, {anchor:jsPlumb.eAnchor}, jsPlumb.cityTwoEndpoint);
 		jsPlumb.connect({
@@ -122,7 +193,33 @@ function createBipartiteGraph(data){
 			}]]
 		});
 		
+		//calculating disaster and effect node weight for cityTwo
+		if(!(edge.source in dmapCityTwo)){
+			dmapCityTwo[edge.source] = 0;
+		}
+		dmapCityTwo[edge.source] += edge.weight;
+		
+		if(!(edge.target in emapCityTwo)){
+			emapCityTwo[edge.target] = 0;
+		}
+		emapCityTwo[edge.target] += edge.weight;
 	}
+	
+	console.log(dmapCityOne);
+	console.log(dmapCityTwo);
+	console.log(emapCityOne);
+	console.log(emapCityTwo);
+	
+	//insert bar to graph
+	$(".d_node[id^=disaster_]").each(function(index, value){
+		var id = $(this).attr("id").split("_")[1];
+		$(this).find(".d_bar").append(createBar(dmapCityOne[id], dmapCityTwo[id], 1));
+	});
+	
+	$(".e_node[id^=effect_]").each(function(index, value){
+		var id = $(this).attr("id").split("_")[1];
+		$(this).find(".e_bar").append(createBar(emapCityOne[id], emapCityTwo[id], 2));
+	});
 	
 //	jsPlumb.draggable($(".d_node"));
 //	jsPlumb.draggable($(".e_node"));
@@ -223,7 +320,7 @@ function jsPlumbInit() {
 	            lineWidth: 3
 	        },
 	        connectorHoverStyle: {
-	        	lineWidth: 4,
+//	        	lineWidth: 4,
 	        	strokeStyle:"#11F0BA",
 	        	outlineWidth: 2,
 	        	outlineColor: "white"
@@ -242,22 +339,19 @@ function jsPlumbInit() {
 	        }],
 	        anchor: "BottomLeft",
 	        paintStyle: {
-	            fillStyle: colorCityTwo,
-	            opacity: 0.5
+	            fillStyle: colorCityTwo
+//	            opacity: 0.5
 	        },
 	        connectorStyle: {
 	            strokeStyle: colorCityTwo,
-	            lineWidth: 4
+	            lineWidth: 3
 	        },
 	        connectorHoverStyle: {
-	        	lineWidth: 4,
+//	        	lineWidth: 4,
 	        	strokeStyle:"#0d27e7",
 	        	outlineWidth: 2,
 	        	outlineColor: "white"
 	        },
-//	        connector: ["StateMachine",{
-//	        	curviness: 20
-//	        }],
 	        connector:"Straight",
 	        maxConnections: -1,
 	        isSource: true,
